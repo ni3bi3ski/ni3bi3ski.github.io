@@ -518,7 +518,7 @@
   <p class="featured-label" id="feat-label">Wyróżniony projekt</p>
   <div class="featured-card">
     <a class="featured-img" id="feat-img" href="https://niebiezki.myportfolio.com/sportsy" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927" alt="Sportsy">
+      <img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927" alt="Featured">
     </a>
     <div class="featured-body" id="feat-body">
       <div>
@@ -700,7 +700,6 @@
   }, { threshold: 0.12 });
 
   [
-    'feat-label','feat-img','feat-body',
     'work-head',
     'about-img','about-h','about-m','about-s','about-stats','gear',
     'srv-head','srv1','srv2','srv3',
@@ -710,7 +709,58 @@
     if (el) io.observe(el);
   });
 
-  document.querySelectorAll('.p-item:not(.extra)').forEach(el => io.observe(el));
+  document.querySelectorAll('.p-item').forEach(el => io.observe(el));
+
+  const featured = [
+    {
+      title: 'Sportsy',
+      desc: 'Reportaż z kultowego eventu ulicznego. Energia, ruch i kadry, które działy się tylko raz. Dokument chwil, które nie czekają.',
+      href: 'https://niebiezki.myportfolio.com/sportsy',
+      img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927'
+    },
+    {
+      title: 'Sylwester Bielsko-Biała 25/26',
+      desc: 'Nocny reportaż z miasta. Światło, tłum i energia przejścia między starym a nowym rokiem.',
+      href: 'https://niebiezki.myportfolio.com/sylwester-bielsko-biala-31122025',
+      img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/4ebc0e4c-2479-48c8-b3eb-d5867ee9bb5d_rwc_0x508x1365x769x1365.jpg?h=2301dc38cae991b2d07e2d0b0bf1bdf2'
+    },
+    {
+      title: 'Street Yourself 2',
+      desc: 'Street photography i miejski rytm. Ujęcia oparte na ruchu, geście i codziennym napięciu.',
+      href: 'https://niebiezki.myportfolio.com/street-yourself-2-28062025',
+      img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/0bf760d5-d0ef-4a40-9062-1af3265fad7e_rwc_0x305x1638x923x1638.jpg?h=b8da8e5156b530baed52a416b1b99727'
+    },
+    {
+      title: 'Rekord — Sokół · Betclic II liga',
+      desc: 'Meczowy reportaż z koncentracją na emocji, dynamice i detalach boiska.',
+      href: 'https://niebiezki.myportfolio.com/rekord-sokol-15082025',
+      img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/07d83596-9fd8-4a69-aeda-dcefad48ffb9_car_16x9.jpg?h=cfee3d55dc9ef0fc78cadea689acf54e'
+    },
+    {
+      title: 'PSK 2026 — Inauguracja',
+      desc: 'Wydarzenie z charakterem, światłem i ruchem, uchwycone bez upiększania.',
+      href: 'https://niebiezki.myportfolio.com/psk-2026-inauguracja-20022025',
+      img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/406e456c-f088-4069-a7d1-accf2fd26249_rwc_0x96x1920x1082x1920.jpg?h=8ad1e6aa8f30a5b7319024abaa1dca74'
+    },
+    {
+      title: 'Mistrzostwa Polski Roasters 2025',
+      desc: 'Reportaż z branżowego wydarzenia, w którym liczy się tempo, detal i atmosfera.',
+      href: 'https://niebiezki.myportfolio.com/mistrzostwa-polski-roasters-2025-04102025',
+      img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/abb051f4-5ac9-4baa-8044-54693c335c1d_rwc_0x756x1365x769x1365.jpg?h=196e57710072ceadc534c0a5dbb14d5e'
+    },
+    {
+      title: 'Marsz Równości — Bielsko-Biała 2025',
+      desc: 'Dokument miejskiego wydarzenia z naciskiem na emocje i kontekst ulicy.',
+      href: 'https://niebiezki.myportfolio.com/marsz-rownosci-w-bielsku-bialej-22062025',
+      img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/838e1451-a9b9-465d-bbbf-2ad22f272d52_rwc_0x639x1365x769x1365.jpg?h=0ad53312dd4d806a7fe004ae34f6ab51'
+    }
+  ];
+
+  const pick = featured[Math.floor(Math.random() * featured.length)];
+  document.getElementById('feat-img').href = pick.href;
+  document.getElementById('feat-img').querySelector('img').src = pick.img;
+  document.querySelector('.feat-title').textContent = pick.title;
+  document.querySelector('.feat-desc').textContent = pick.desc;
 
   const btn = document.getElementById('btn-more');
   const extras = document.querySelectorAll('.p-item.extra');
