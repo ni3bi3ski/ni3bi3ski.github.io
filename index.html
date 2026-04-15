@@ -7,12 +7,12 @@
   <meta name="description" content="Portfolio fotograficzne Jarka Żurawskiego – fotografia uliczna, reportaż z wydarzeń, portrety editorial.">
   <style>
     :root {
-      --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm:   clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
       --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg:   clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
       --space-1: 0.25rem;
       --space-2: 0.5rem;
       --space-3: 0.75rem;
@@ -25,13 +25,10 @@
       --color-bg: #050608;
       --color-surface: #0a0b0f;
       --color-surface-2: #11131a;
-      --color-surface-offset: #161923;
       --color-text: #f5f5f5;
       --color-text-muted: #9ca3af;
       --color-text-faint: #6b7280;
       --color-accent: #e5b567;
-      --color-border: rgba(148, 163, 184, 0.25);
-      --radius-md: 0.75rem;
       --radius-full: 9999px;
       --shadow-md: 0 18px 45px rgba(0,0,0,0.65);
       --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -48,7 +45,6 @@
       scroll-behavior: smooth;
       text-size-adjust: none;
       -webkit-font-smoothing: antialiased;
-      scroll-padding-top: 5rem;
     }
 
     body {
@@ -58,11 +54,6 @@
       line-height: 1.6;
       color: var(--color-text);
       background: radial-gradient(circle at top, #111827 0, #020304 52%);
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     a {
@@ -86,11 +77,12 @@
 
     @media (max-width: 880px) {
       .shell {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
-    .card {
+    .card,
+    .portfolio-card {
       background: radial-gradient(circle at top left, rgba(229,181,103,0.12), transparent 55%), var(--color-surface);
       border-radius: 1.25rem;
       border: 1px solid rgba(148, 163, 184, 0.18);
@@ -99,36 +91,6 @@
       display: flex;
       flex-direction: column;
       gap: var(--space-6);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      border-radius: inherit;
-      border: 1px solid transparent;
-      background:
-        radial-gradient(circle at 0 0, rgba(229,181,103,0.6), transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(56,189,248,0.4), transparent 55%);
-      mix-blend-mode: soft-light;
-      opacity: 0.22;
-    }
-
-    .card-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-6);
-    }
-
-    header {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
     }
 
     .eyebrow {
@@ -136,17 +98,6 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--color-text-faint);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 36px;
-      height: 1px;
-      border-radius: 999px;
-      background: linear-gradient(to right, transparent, rgba(229,181,103,0.9));
     }
 
     h1 {
@@ -155,17 +106,18 @@
       line-height: 1.1;
     }
 
-    .subtitle {
+    .subtitle,
+    .portfolio-copy,
+    .note {
       font-size: var(--text-sm);
-      max-width: 40rem;
       color: var(--color-text-muted);
     }
 
-    .tags {
+    .tags,
+    .link-list {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-2);
-      margin-top: var(--space-2);
     }
 
     .tag {
@@ -174,8 +126,7 @@
       font-size: var(--text-xs);
       border: 1px solid rgba(148,163,184,0.3);
       color: var(--color-text-muted);
-      background: radial-gradient(circle at top, rgba(15,23,42,0.85), rgba(15,23,42,0.9));
-      backdrop-filter: blur(18px);
+      background: rgba(15,23,42,0.9);
     }
 
     .cta-row {
@@ -185,55 +136,33 @@
       align-items: center;
     }
 
-    .btn-primary {
-      position: relative;
-      padding: 0.7rem 1.45rem;
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.8rem 1.35rem;
       border-radius: var(--radius-full);
       font-size: var(--text-sm);
-      font-weight: 500;
-      background: radial-gradient(circle at top left, #fde68a, #e5b567);
-      color: #111827;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+      transition: transform var(--transition), filter var(--transition);
     }
 
-    .btn-primary span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .btn-primary {
+      background: radial-gradient(circle at top left, #fde68a, #e5b567);
+      color: #111827;
     }
 
-    .btn-primary svg {
-      width: 1rem;
-      height: 1rem;
+    .btn-secondary {
+      border: 1px solid rgba(229,181,103,0.45);
+      color: var(--color-text);
+      background: rgba(255,255,255,0.02);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .btn-secondary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-      filter: brightness(1.02);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    }
-
-    .cta-secondary {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-
-    .cta-secondary a {
-      color: var(--color-accent);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.2em;
+      filter: brightness(1.04);
     }
 
     .meta {
@@ -242,12 +171,6 @@
       gap: var(--space-6);
       padding-top: var(--space-4);
       border-top: 1px solid rgba(148,163,184,0.24);
-    }
-
-    .meta-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
     }
 
     .meta-label {
@@ -262,81 +185,62 @@
       color: var(--color-text-muted);
     }
 
-    /* Right column: gallery */
-    .gallery-card {
-      background: radial-gradient(circle at top right, rgba(56,189,248,0.12), transparent 55%), var(--color-surface-2);
-      border-radius: 1.25rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: var(--shadow-md);
-      padding: var(--space-4);
+    .portfolio-card {
+      background: radial-gradient(circle at top right, rgba(56,189,248,0.1), transparent 55%), var(--color-surface-2);
+      justify-content: space-between;
+    }
+
+    .portfolio-preview {
+      min-height: 320px;
+      border-radius: 1rem;
+      border: 1px solid rgba(148,163,184,0.18);
+      background: linear-gradient(135deg, rgba(10,11,15,0.95), rgba(17,19,26,0.96));
       display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-2);
-    }
-
-    @media (max-width: 600px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .thumb {
+      align-items: flex-end;
+      padding: var(--space-6);
       position: relative;
-      border-radius: 0.85rem;
       overflow: hidden;
-      border: 1px solid rgba(148,163,184,0.3);
-      cursor: pointer;
-      background: #020617;
     }
 
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      transition: transform 220ms ease-out, filter 220ms ease-out;
-    }
-
-    .thumb::after {
+    .portfolio-preview::before,
+    .portfolio-preview::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(15,23,42,0.1), transparent);
-      mix-blend-mode: soft-light;
-      opacity: 0;
-      transition: opacity 200ms ease-out;
+      border-radius: 1rem;
+      opacity: 0.35;
+      background: radial-gradient(circle, rgba(229,181,103,0.35), transparent 70%);
     }
 
-    .thumb:hover img {
-      transform: scale(1.06);
-      filter: contrast(1.04) saturate(1.02);
+    .portfolio-preview::before {
+      width: 220px;
+      height: 220px;
+      top: -40px;
+      right: -30px;
     }
 
-    .thumb:hover::after {
-      opacity: 1;
+    .portfolio-preview::after {
+      width: 160px;
+      height: 160px;
+      bottom: -30px;
+      left: -20px;
     }
 
-    .thumb--tall {
-      grid-row: span 2;
-    }
-
-    .gallery-caption {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: var(--space-2);
+    .portfolio-badge {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
       font-size: var(--text-xs);
-      color: var(--color-text-muted);
+      color: var(--color-accent);
+      border: 1px solid rgba(229,181,103,0.28);
+      background: rgba(0,0,0,0.24);
     }
 
-    .gallery-caption span {
-      color: var(--color-text-faint);
+    .link-list a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
     }
 
     footer {
@@ -362,18 +266,16 @@
       flex-wrap: wrap;
     }
 
-    .footer-links a {
-      color: var(--color-text-muted);
-    }
-
     .footer-links a:hover {
       color: var(--color-accent);
     }
 
     @media (max-width: 640px) {
-      .card, .gallery-card {
+      .card,
+      .portfolio-card {
         padding: var(--space-6);
       }
+
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -384,84 +286,64 @@
 <body>
   <main>
     <section class="shell" aria-label="Portfolio fotograficzne Jarek Żurawski">
-      <!-- Lewa karta: opis i kontakt -->
       <article class="card">
-        <div class="card-inner">
-          <header>
-            <p class="eyebrow">Fotografia &nbsp;·&nbsp; Bielsko‑Biała</p>
-            <h1>Jarek Żurawski<br>fotografia uliczna, reportaż, portret.</h1>
-            <p class="subtitle">
-              Pracuję w przestrzeni miejskiej, na koncertach i wydarzeniach.
-              Łączę dokument z subtelną inscenizacją, szukając autentycznych historii zamiast idealnych póz.
-            </p>
-            <div class="tags">
-              <span class="tag">fotografia uliczna</span>
-              <span class="tag">reportaż z wydarzeń</span>
-              <span class="tag">portret editorial</span>
-            </div>
-          </header>
-
-          <div class="cta-row">
-            <a href="mailto:jarek.zurawski@example.com" class="btn-primary">
-              <span>Zapytaj o zlecenie</span>
-              <span aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M5 12h14"></path>
-                  <path d="M13 6l6 6-6 6"></path>
-                </svg>
-              </span>
-            </a>
-            <p class="cta-secondary">
-              Lub napisz na IG:
-              <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a>
-            </p>
+        <header>
+          <p class="eyebrow">Fotografia · Bielsko-Biała</p>
+          <h1>Jarek Żurawski<br>fotografia uliczna, reportaż, portret.</h1>
+          <p class="subtitle">
+            Pracuję w przestrzeni miejskiej, na koncertach i wydarzeniach.
+            Łączę dokument z subtelną inscenizacją, szukając autentycznych historii zamiast idealnych póz.
+          </p>
+          <div class="tags">
+            <span class="tag">fotografia uliczna</span>
+            <span class="tag">reportaż z wydarzeń</span>
+            <span class="tag">portret editorial</span>
           </div>
+        </header>
 
-          <section aria-label="Informacje o dostępności">
-            <div class="meta">
-              <div class="meta-block">
-                <div class="meta-label">Lokalizacja</div>
-                <div class="meta-value">Bielsko‑Biała · Śląskie · PL</div>
-              </div>
-              <div class="meta-block">
-                <div class="meta-label">Specjalizacja</div>
-                <div class="meta-value">koncerty, eventy, portret w mieście</div>
-              </div>
-              <div class="meta-block">
-                <div class="meta-label">Dostępność</div>
-                <div class="meta-value">PL · EU · zapytania indywidualne</div>
-              </div>
-            </div>
-          </section>
+        <div class="cta-row">
+          <a href="mailto:jarek.zurawski@example.com" class="btn-primary">Zapytaj o zlecenie</a>
+          <a href="https://niebiezki.myportfolio.com/" class="btn-secondary" target="_blank" rel="noopener noreferrer">Pełne portfolio</a>
         </div>
+
+        <p class="note">
+          Lub napisz na IG:
+          <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent);">@niebiezki</a>
+        </p>
+
+        <section aria-label="Informacje o dostępności">
+          <div class="meta">
+            <div>
+              <div class="meta-label">Lokalizacja</div>
+              <div class="meta-value">Bielsko-Biała · Śląskie · PL</div>
+            </div>
+            <div>
+              <div class="meta-label">Specjalizacja</div>
+              <div class="meta-value">koncerty, eventy, portret w mieście</div>
+            </div>
+            <div>
+              <div class="meta-label">Dostępność</div>
+              <div class="meta-value">PL · EU · zapytania indywidualne</div>
+            </div>
+          </div>
+        </section>
       </article>
 
-      <!-- Prawa karta: mini‑galeria -->
-      <aside class="gallery-card" aria-label="Wybrane fotografie">
-        <div class="gallery-grid">
-          <!-- Podmień src na swoje pliki / ścieżki -->
-          <figure class="thumb thumb--tall">
-            <img src="images/street-01.jpg" alt="Nocna scena uliczna, przechodzień w świetle neonów" loading="lazy" width="640" height="960">
-          </figure>
-          <figure class="thumb">
-            <img src="images/event-01.jpg" alt="Koncert, sylwetka muzyka w świetle sceny" loading="lazy" width="640" height="640">
-          </figure>
-          <figure class="thumb">
-            <img src="images/portrait-01.jpg" alt="Portret w miejskiej scenerii" loading="lazy" width="640" height="640">
-          </figure>
-          <figure class="thumb">
-            <img src="images/street-02.jpg" alt="Ulica po deszczu, odbicia świateł w kałużach" loading="lazy" width="640" height="640">
-          </figure>
-          <figure class="thumb thumb--tall">
-            <img src="images/event-02.jpg" alt="Tłum na koncercie, ręce w górze, dym i światło" loading="lazy" width="640" height="960">
-          </figure>
-          <figure class="thumb">
-            <img src="images/portrait-02.jpg" alt="Portret w cieniu, mocne światło boczne" loading="lazy" width="640" height="640">
-          </figure>
+      <aside class="portfolio-card" aria-label="Przejście do pełnego portfolio">
+        <div class="portfolio-preview">
+          <span class="portfolio-badge">Adobe Portfolio · aktywne galerie</span>
         </div>
-        <div class="gallery-caption">
-          <span>Wybrane kadry · 2023–2025</span>
-          <a href="mailto:jarek.zurawski@example.com">Pełne portfolio na życzenie</a>
+
+        <div style="display:flex; flex-direction:column; gap: var(--space-4);">
+          <h2 style="font-size: var(--text-xl); line-height:1.15;">Wybrane serie i pełne galerie</h2>
+          <p class="portfolio-copy">
+            Twoje zdjęcia są już dostępne w Adobe Portfolio.
+            Na tej stronie zostawiamy prostą wizytówkę, a pełne galerie otwierają się po kliknięciu.
+          </p>
+          <div class="link-list">
+            <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Otwórz portfolio</a>
+            <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
         </div>
       </aside>
     </section>
@@ -471,9 +353,9 @@
     <div class="footer-inner">
       <p>© <span id="year"></span> Jarek Żurawski. Wszystkie prawa zastrzeżone.</p>
       <nav class="footer-links" aria-label="Linki zewnętrzne">
-        <a href="mailto:jarek.zurawski@example.com">E‑mail</a>
+        <a href="mailto:jarek.zurawski@example.com">E-mail</a>
         <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <!-- Możesz dodać: <a href="https://niebiezki.myportfolio.com" target="_blank" rel="noopener noreferrer">Adobe Portfolio</a> -->
+        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Adobe Portfolio</a>
       </nav>
     </div>
   </footer>
