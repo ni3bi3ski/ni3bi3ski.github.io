@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jarek Żurawski — Fotografia</title>
-  <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż z wydarzeń i portret editorial. Portfolio i kontakt." />
+  <title>Jarek Żurawski — Portfolio</title>
+  <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż i portret editorial." />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090909;
-      --surface: #111111;
-      --surface-2: #171717;
-      --surface-3: #1d1d1d;
+      --bg: #0a0a0a;
+      --panel: #111111;
+      --panel-2: #151515;
       --border: rgba(255,255,255,0.08);
-      --text: #f2eee7;
-      --muted: #a39d93;
-      --faint: #6f6a62;
-      --accent: #d6b06d;
-      --max: 1380px;
-      --radius: 28px;
-      --shadow: 0 24px 80px rgba(0,0,0,0.38);
+      --text: #f3efe8;
+      --muted: #9f998f;
+      --faint: #6c685f;
+      --accent: #d1af78;
+      --max: 1320px;
+      --radius: 24px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.34);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,9 +28,9 @@
       font-family: 'Satoshi', system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(214,176,109,0.08), transparent 18%),
-        linear-gradient(180deg, #0d0d0d 0%, #070707 100%);
-      line-height: 1.55;
+        radial-gradient(circle at top left, rgba(209,175,120,0.07), transparent 18%),
+        linear-gradient(180deg, #0b0b0b 0%, #080808 100%);
+      line-height: 1.5;
     }
 
     img { display: block; max-width: 100%; }
@@ -40,105 +39,97 @@
     .page {
       width: min(var(--max), calc(100% - 28px));
       margin: 0 auto;
-      padding: 22px 0 40px;
+      padding: 22px 0 32px;
     }
 
-    .topbar {
+    .topbar,
+    .footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 18px;
       flex-wrap: wrap;
+    }
+
+    .topbar {
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
     }
 
     .brand {
       font-size: 14px;
-      letter-spacing: 0.22em;
       text-transform: uppercase;
+      letter-spacing: 0.22em;
       color: var(--faint);
     }
 
-    .nav {
+    .nav,
+    .footer-links {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
-      color: var(--muted);
       font-size: 14px;
+      color: var(--muted);
     }
 
     .nav a:hover,
     .nav a:focus-visible,
     .footer a:hover,
-    .footer a:focus-visible { color: var(--text); }
+    .footer a:focus-visible,
+    .meta a:hover,
+    .meta a:focus-visible { color: var(--text); }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 18px;
-      align-items: start;
+      align-items: stretch;
+      margin-bottom: 18px;
     }
 
     .panel {
-      background: linear-gradient(180deg, rgba(17,17,17,0.94), rgba(11,11,11,0.96));
+      background: linear-gradient(180deg, rgba(17,17,17,0.96), rgba(12,12,12,0.98));
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
     .hero-copy {
-      padding: 34px;
-      min-height: 620px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 560px;
     }
 
     .eyebrow {
       font-size: 11px;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--faint);
       margin-bottom: 18px;
     }
 
-    .section-number {
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
     h1 {
-      font-size: clamp(54px, 10vw, 132px);
-      line-height: 0.88;
-      letter-spacing: -0.08em;
-      max-width: 6ch;
-      margin-bottom: 24px;
+      font-size: clamp(44px, 7vw, 104px);
+      line-height: 0.9;
+      letter-spacing: -0.07em;
       text-transform: uppercase;
-    }
-
-    h2 {
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
+      max-width: 7ch;
     }
 
     .lead {
-      max-width: 34ch;
-      color: var(--muted);
+      max-width: 30ch;
       font-size: 16px;
+      color: var(--muted);
       margin-bottom: 24px;
     }
 
-    .tag-row,
-    .button-row,
-    .footer-links,
-    .contact-links {
+    .tags,
+    .cta-row,
+    .meta {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -148,475 +139,18 @@
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
       font-size: 12px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .meta-list {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .meta-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 14px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-      align-items: start;
-    }
-
-    .meta-item strong {
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-
-    .meta-item span {
-      font-size: 15px;
-      color: var(--muted);
-    }
-
-    .button {
-      min-height: 50px;
-      padding: 0 20px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      transition: transform .18s ease, opacity .18s ease, background .18s ease;
-    }
-
-    .button:hover { transform: translateY(-1px); opacity: .96; }
-
-    .button-primary {
-      background: var(--text);
-      color: #111;
-    }
-
-    .button-secondary {
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--text);
-      background: transparent;
-    }
-
-    .small-note {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 16px;
-    }
-
-    .small-note a,
-    .section-copy a,
-    .contact-copy a,
-    .footer a { color: var(--accent); }
-
-    .hero-visual {
-      display: grid;
-      grid-template-rows: auto auto;
-      gap: 18px;
-      padding: 18px;
-      align-self: start;
-    }
-
-    .visual-main {
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      min-height: 300px;
-      max-height: 380px;
-      background: #151515;
-    }
-
-    .visual-main img {
-      width: 100%;
-      height: 100%;
-      min-height: 300px;
-      max-height: 380px;
-      object-fit: cover;
-      object-position: center 24%;
-    }
-
-    .visual-bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .mini-card,
-    .section,
-    .contact-panel {
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      padding: 22px;
-    }
-
-    .mini-copy,
-    .section-copy,
-    .contact-copy {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 34ch;
-    }
-
-    .gallery {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.9fr 0.9fr;
-      gap: 18px;
-    }
-
-    .gallery-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 26px;
-      border: 1px solid var(--border);
-      background: var(--surface-2);
-      min-height: 380px;
-      box-shadow: var(--shadow);
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      min-height: 380px;
-      object-fit: cover;
-    }
-
-    .gallery-card.large img { object-position: center center; }
-    .gallery-card.tall img { object-position: center 35%; }
-    .gallery-card.alt img { object-position: center 20%; }
-
-    .gallery-label {
-      position: absolute;
-      left: 16px;
-      bottom: 16px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text);
-      background: rgba(0,0,0,0.42);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .sections {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .service-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .service-item {
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-    }
-
-    .service-item strong {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
-
-    .service-item span {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .contact-panel {
-      margin-top: 18px;
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 18px;
-      background: linear-gradient(180deg, rgba(22,22,22,0.98), rgba(12,12,12,0.98));
-      box-shadow: var(--shadow);
-    }
-
-    .contact-copy {
-      max-width: 44ch;
-      margin-bottom: 18px;
-    }
-
-    .contact-boxes {
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact-box {
-      padding: 16px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .contact-box span {
-      display: block;
-      font-size: 11px;
-      color: var(--faint);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin-bottom: 8px;
-    }
-
-    .contact-box strong,
-    .contact-box a {
-      font-size: 15px;
-      color: var(--text);
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 18px 4px 0;
-      margin-top: 18px;
-      border-top: 1px solid var(--border);
-      color: var(--faint);
-      font-size: 13px;
-    }
-
-    @media (max-width: 1100px) {
-      .hero,
-      .gallery,
-      .sections,
-      .contact-panel {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .page { width: min(var(--max), calc(100% - 18px)); }
-      .hero-copy,
-      .hero-visual,
-      .section,
-      .mini-card,
-      .contact-panel { padding: 20px; }
-      .visual-bottom { grid-template-columns: 1fr; }
-      .meta-item { grid-template-columns: 1fr; gap: 6px; }
-      h1 { max-width: none; }
-      .visual-main,
-      .visual-main img { min-height: 260px; max-height: 320px; }
-      .gallery-card,
-      .gallery-card img { min-height: 300px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header class="topbar">
-      <div class="brand">Jarek Żurawski</div>
-      <nav class="nav" aria-label="Główna nawigacja">
-        <a href="#o-mnie">O mnie</a>
-        <a href="#zakres">Zakres</a>
-        <a href="#kontakt">Kontakt</a>
-        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero">
-        <section class="panel hero-copy">
-          <div>
-            <p class="eyebrow">Street / Events / Portraits</p>
-            <h1>Jarek Żurawski</h1>
-            <p class="lead">Fotografia uliczna, reportaż z wydarzeń i portret editorial. Szukam światła, gestu i momentów, które wyglądają prawdziwie, a nie ustawienie.</p>
-
-            <div class="tag-row">
-              <span class="tag">street photography</span>
-              <span class="tag">event report</span>
-              <span class="tag">editorial portrait</span>
-            </div>
-          </div>
-
-          <div>
-            <div class="meta-list">
-              <div class="meta-item">
-                <strong>Base</strong>
-                <span>Bielsko-Biała / Śląsk / Polska</span>
-              </div>
-              <div class="meta-item">
-                <strong>Praca</strong>
-                <span>Koncerty, eventy, portrety, materiały promocyjne i wizualne historie.</span>
-              </div>
-              <div class="meta-item">
-                <strong>Kontakt</strong>
-                <span>jarek.zurawski@gmail.com</span>
-              </div>
-            </div>
-
-            <div class="button-row">
-              <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Zobacz portfolio</a>
-            </div>
-
-            <p class="small-note">Instagram: <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a></p>
-          </div>
-        </section>
-
-        <section class="panel hero-visual" aria-label="Zdjęcie autora i informacje">
-          <div class="visual-main">
-            <img
-              src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
-              alt="Portret Jarka Żurawskiego"
-              width="1600"
-              height="2000"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-
-          <div class="visual-bottom">
-            <article class="mini-card" id="o-mnie">
-              <p class="section-number">01 / O mnie</p>
-              <h2>Kadry bez ustawiania</h2>
-              <p class="mini-copy">Najbliżej mi do zdjęć candid, dokumentu i portretu z charakterem. Interesuje mnie rytm miasta, emocja i atmosfera miejsca.</p>
-            </article>
-
-            <article class="mini-card">
-              <p class="section-number">02 / Kontakt</p>
-              <h2>Napisz bezpośrednio</h2>
-              <p class="
-
-    .page {
-      width: min(var(--max), calc(100% - 28px));
-      margin: 0 auto;
-      padding: 22px 0 36px;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-size: 14px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-
-    .nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible { color: var(--text); }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-      min-height: calc(100vh - 120px);
-      align-items: start;
-    }
-
-    .panel {
-      background: linear-gradient(180deg, rgba(17,17,17,0.94), rgba(11,11,11,0.96));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-copy {
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 640px;
-    }
-
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(54px, 10vw, 132px);
-      line-height: 0.88;
-      letter-spacing: -0.08em;
-      max-width: 6ch;
-      margin-bottom: 26px;
-      text-transform: uppercase;
-    }
-
-    .lead {
-      max-width: 46ch;
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 28px;
-    }
-
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .meta-box {
-      padding: 14px 16px;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .meta-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--faint);
-      margin-bottom: 8px;
-    }
-
-    .meta-value {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .button-row,
-    .footer-links,
-    .tag-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
     }
 
     .button {
       min-height: 48px;
       padding: 0 18px;
-      border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 999px;
       font-size: 14px;
       font-weight: 700;
       transition: transform .18s ease, opacity .18s ease;
@@ -629,159 +163,140 @@
       color: #111;
     }
 
-    .button-secondary {
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--text);
-      background: transparent;
-    }
-
-    .tag {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .small-note {
-      color: var(--muted);
-      font-size: 14px;
+    .meta {
       margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
     }
 
-    .small-note a,
-    .footer a,
-    .section a { color: var(--accent); }
+    .meta span::after {
+      content: "•";
+      margin-left: 10px;
+      color: var(--faint);
+    }
 
-    .hero-visual {
-      position: relative;
+    .meta span:last-child::after { display: none; }
+
+    .hero-image {
       overflow: hidden;
-      display: grid;
-      grid-template-rows: auto auto;
-      gap: 18px;
-      padding: 18px;
-      background: linear-gradient(180deg, rgba(21,21,21,0.94), rgba(8,8,8,0.98));
-      align-self: start;
+      min-height: 560px;
     }
 
-    .visual-main {
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      background: #151515;
-      position: relative;
-      overflow: hidden;
-      min-height: 340px;
-      max-height: 420px;
-    }
-
-    .visual-main img {
+    .hero-image img {
       width: 100%;
       height: 100%;
-      min-height: 340px;
-      max-height: 420px;
+      min-height: 560px;
       object-fit: cover;
-      object-position: center 28%;
-      display: block;
+      object-position: center 24%;
+      filter: saturate(0.92) contrast(1.02);
     }
 
-    .visual-bottom {
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .gallery-card:hover img { transform: scale(1.02); }
+
+    .gallery-card.one img { object-position: center 18%; }
+    .gallery-card.two img { object-position: center 45%; }
+    .gallery-card.three img { object-position: center 28%; }
+
+    .gallery-label {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.42);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .bottom {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
+      margin-bottom: 18px;
     }
 
-    .mini-card {
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 170px;
+    .info,
+    .contact {
+      padding: 24px;
     }
 
     h2 {
       font-size: clamp(22px, 3vw, 34px);
-      line-height: 1;
       letter-spacing: -0.05em;
-      margin-bottom: 10px;
+      line-height: 1;
+      margin-bottom: 12px;
     }
 
-    .section-copy,
-    .mini-copy {
+    .copy {
+      max-width: 38ch;
       color: var(--muted);
-      font-size: 14px;
-      max-width: 34ch;
-    }
-
-    .sections {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .section {
-      padding: 24px;
-      min-height: 260px;
-    }
-
-    .service-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .service-item {
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-    }
-
-    .service-item strong {
-      display: block;
       font-size: 15px;
-      margin-bottom: 4px;
     }
 
-    .service-item span {
+    .contact .copy { margin-bottom: 18px; }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
       font-size: 14px;
       color: var(--muted);
     }
+
+    .contact-list a { color: var(--text); }
 
     .footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 18px 4px 0;
-      margin-top: 18px;
       border-top: 1px solid var(--border);
+      padding-top: 16px;
       color: var(--faint);
       font-size: 13px;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 980px) {
       .hero,
-      .sections { grid-template-columns: 1fr; }
+      .gallery,
+      .bottom { grid-template-columns: 1fr; }
       .hero-copy,
-      .hero-visual { min-height: auto; }
+      .hero-image,
+      .hero-image img { min-height: auto; }
     }
 
     @media (max-width: 700px) {
       .page { width: min(var(--max), calc(100% - 18px)); }
-      .hero-copy { padding: 22px; }
-      .hero-visual { padding: 14px; }
-      .visual-bottom,
-      .meta-grid { grid-template-columns: 1fr; }
+      .hero-copy,
+      .info,
+      .contact { padding: 20px; }
       h1 { max-width: none; }
-
-      .visual-main,
-      .visual-main img {
-        min-height: 280px;
-        max-height: 340px;
-      }
+      .gallery-card,
+      .gallery-card img { min-height: 320px; }
+      .hero-image img { min-height: 360px; }
     }
   </style>
 </head>
@@ -790,11 +305,10 @@
     <header class="topbar">
       <div class="brand">Jarek Żurawski</div>
       <nav class="nav" aria-label="Główna nawigacja">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+        <a href="#prace">Prace</a>
+        <a href="#info">Info</a>
+        <a href="#kontakt">Kontakt</a>
         <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="mailto:jarek.zurawski@gmail.com">Mail</a>
       </nav>
     </header>
 
@@ -802,118 +316,64 @@
       <section class="hero">
         <section class="panel hero-copy">
           <div>
-            <p class="eyebrow">Street / Events / Portraits</p>
+            <p class="eyebrow">Street / Events / Editorial Portraits</p>
             <h1>Jarek Żurawski</h1>
-            <p class="lead">Fotografia uliczna, reportaż z wydarzeń i portret. Pracuję na styku dokumentu i estetyki — szukam prawdziwych momentów, napięcia światła i kadrów, które zostają dłużej niż kilka sekund.</p>
-
-            <div class="tag-row">
-              <span class="tag">street photography</span>
-              <span class="tag">event report</span>
-              <span class="tag">editorial portrait</span>
+            <p class="lead">Fotografia uliczna, reportaż i portret. Szukam momentów, które mają napięcie, światło i prawdziwą obecność.</p>
+            <div class="tags">
+              <span class="tag">street</span>
+              <span class="tag">reportaż</span>
+              <span class="tag">portrait</span>
             </div>
           </div>
 
           <div>
-            <div class="meta-grid">
-              <div class="meta-box">
-                <div class="meta-label">Base</div>
-                <div class="meta-value">Bielsko-Biała / Silesia / Poland</div>
-              </div>
-              <div class="meta-box">
-                <div class="meta-label">Available for</div>
-                <div class="meta-value">concerts, events, portraits, visual stories</div>
-              </div>
-              <div class="meta-box">
-                <div class="meta-label">Contact</div>
-                <div class="meta-value">jarek.zurawski@gmail.com</div>
-              </div>
-              <div class="meta-box">
-                <div class="meta-label">Portfolio</div>
-                <div class="meta-value">niebiezki.myportfolio.com</div>
-              </div>
+            <div class="cta-row">
+              <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Zobacz portfolio</a>
             </div>
-
-            <div class="button-row">
-              <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Open portfolio</a>
-              <a class="button button-secondary" href="mailto:jarek.zurawski@gmail.com">Book a shoot</a>
+            <div class="meta">
+              <span>Bielsko-Biała / Śląsk</span>
+              <span><a href="mailto:jarek.zurawski@gmail.com">jarek.zurawski@gmail.com</a></span>
             </div>
-
-            <p class="small-note">Instagram: <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a></p>
           </div>
         </section>
 
-        <section class="panel hero-visual" aria-label="Intro blocks">
-          <div class="visual-main">
-            <img
-              src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
-              alt="Portret Jarka Żurawskiego"
-              width="1600"
-              height="2000"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-
-          <div class="visual-bottom">
-            <article class="mini-card">
-              <div>
-                <p class="eyebrow">About</p>
-                <h2 id="about">Naturalny dokument</h2>
-                <p class="mini-copy">Najbliżej mi do zdjęć candid, bez ustawiania i bez sztucznego pozowania. Interesuje mnie rytm miasta, emocja i gest.</p>
-              </div>
-            </article>
-
-            <article class="mini-card">
-              <div>
-                <p class="eyebrow">Direct contact</p>
-                <h2>Mail / IG</h2>
-                <p class="mini-copy">Jeśli masz termin, miejsce i krótki opis projektu, napisz. Najszybsza droga to mail albo Instagram.</p>
-              </div>
-            </article>
-          </div>
+        <section class="panel hero-image">
+          <img
+            src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
+            alt="Portret Jarka Żurawskiego"
+            width="1600"
+            height="2000"
+            loading="eager"
+            decoding="async"
+          />
         </section>
       </section>
 
-      <section class="sections">
-        <article class="panel section">
-          <p class="eyebrow">About</p>
-          <h2>Fotografia, która nie wygląda ustawienie.</h2>
-          <p class="section-copy">Pracuję z naturalnym światłem, ruchem i atmosferą miejsca. Zależy mi na kadrach, które mają ciężar, rytm i prawdziwą obecność, a nie tylko estetyczny wygląd.</p>
+      <section class="gallery" id="prace" aria-label="Wybrane zdjęcia">
+        <article class="gallery-card one">
+          <img
+            src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
+            alt="Portret autora"
+            width="1600"
+            height="2000"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="gallery-label">Portret</div>
         </article>
 
-        <article class="panel section" id="services">
-          <p class="eyebrow">Services</p>
-          <h2>Zakres współpracy</h2>
-          <div class="service-list">
-            <div class="service-item">
-              <strong>Reportaż z wydarzeń</strong>
-              <span>Koncerty, eventy, backstage, kultura i dokument miejsca.</span>
-            </div>
-            <div class="service-item">
-              <strong>Portret editorial</strong>
-              <span>Sesje miejskie dla twórców, muzyków i marek osobistych.</span>
-            </div>
-            <div class="service-item">
-              <strong>Materiał promocyjny</strong>
-              <span>Zdjęcia do social mediów, strony i publikacji online.</span>
-            </div>
-          </div>
+        <article class="gallery-card two">
+          <img
+            src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
+            alt="Zdjęcie portfolio"
+            width="1600"
+            height="2000"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="gallery-label">Editorial</div>
         </article>
 
-        <article class="panel section">
-          <p class="eyebrow">Links</p>
-          <h2>Portfolio i kontakt</h2>
-          <p class="section-copy">Pełne galerie są dostępne online. Ta strona ma działać jako szybka, prosta i mocna wizytówka pod własną domeną.</p>
-          <div class="button-row" style="margin-top:18px;">
-            <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-            <a class="button button-secondary" href="mailto:jarek.zurawski@gmail.com">Mail</a>
-          </div>
-        </article>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© <span id="year"></span> Jarek Żurawski</p>
-      <div class="footer-links">
-        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="h
+        <article class="gallery-card three">
+          <img
+            src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/
