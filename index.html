@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jarek Żurawski — Fotografia</title>
   <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż i portret. Portfolio i kontakt." />
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #050608;
@@ -25,11 +28,19 @@
       --shadow: 0 30px 80px rgba(0,0,0,0.45);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       min-height: 100vh;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Satoshi', system-ui, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(216,176,106,0.10), transparent 24%),
@@ -38,8 +49,15 @@
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .page {
       width: min(var(--max), calc(100% - 32px));
@@ -87,7 +105,9 @@
     }
 
     .nav a:hover,
-    .nav a:focus-visible { color: var(--text); }
+    .nav a:focus-visible {
+      color: var(--text);
+    }
 
     .hero {
       display: grid;
@@ -187,12 +207,15 @@
       min-height: 48px;
       padding: 0 18px;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 15px;
       transition: transform .18s ease, filter .18s ease, border-color .18s ease;
     }
 
-    .button:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    .button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
 
     .button-primary {
       background: linear-gradient(180deg, #eed28f, #d8b06a);
@@ -213,7 +236,9 @@
 
     .micro a,
     .inline-links a,
-    .footer-links a { color: var(--accent); }
+    .footer-links a {
+      color: var(--accent);
+    }
 
     .facts {
       display: grid;
@@ -323,20 +348,52 @@
     }
 
     @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-copy { min-height: auto; }
-      .hero-side { grid-template-rows: auto auto; }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+
+      .hero-side {
+        grid-template-rows: auto auto;
+      }
     }
 
     @media (max-width: 700px) {
-      .page { width: min(var(--max), calc(100% - 20px)); padding-top: 18px; }
-      .topbar { padding-bottom: 18px; }
-      .nav { gap: 12px; font-size: 13px; }
-      .hero-copy, .info-card, .visual { padding: 22px; }
-      .visual-frame { inset: 22px; }
-      .facts { grid-template-columns: 1fr; }
-      h1 { max-width: none; }
-      h2 { max-width: none; }
+      .page {
+        width: min(var(--max), calc(100% - 20px));
+        padding-top: 18px;
+      }
+
+      .topbar {
+        padding-bottom: 18px;
+      }
+
+      .nav {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .hero-copy,
+      .info-card,
+      .visual {
+        padding: 22px;
+      }
+
+      .visual-frame {
+        inset: 22px;
+      }
+
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      h1,
+      h2 {
+        max-width: none;
+      }
     }
   </style>
 </head>
@@ -359,7 +416,11 @@
         <div>
           <p class="eyebrow">Fotografia · Bielsko-Biała · Silesia</p>
           <h1>Fotografia <span class="serif">uliczna</span>, reportaż i portret.</h1>
-          <p class="lead">Pracuję w przestrzeni miejskiej, na koncertach i wydarzeniach. Szukam napięcia, światła i prawdziwych momentów — bez przesady, bez sztuczności, z naciskiem na atmosferę kadru.</p>
+          <p class="lead">
+            Pracuję w przestrzeni miejskiej, na koncertach i wydarzeniach.
+            Szukam napięcia, światła i prawdziwych momentów — bez przesady, bez sztuczności,
+            z naciskiem na atmosferę kadru.
+          </p>
 
           <div class="chips" aria-label="Specjalizacje">
             <span class="chip">fotografia uliczna</span>
