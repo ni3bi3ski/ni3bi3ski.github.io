@@ -362,12 +362,20 @@
     { title: 'Mistrzostwa Polski Roasters 2025', desc: 'Reportaż z branżowego wydarzenia, w którym liczy się tempo, detal i atmosfera.', href: 'https://niebiezki.myportfolio.com/mistrzostwa-polski-roasters-2025-04102025', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/abb051f4-5ac9-4baa-8044-54693c335c1d_rwc_0x756x1365x769x1365.jpg?h=196e57710072ceadc534c0a5dbb14d5e' },
     { title: 'Marsz Równości — Bielsko-Biała 2025', desc: 'Dokument miejskiego wydarzenia z naciskiem na emocje i kontekst ulicy.', href: 'https://niebiezki.myportfolio.com/marsz-rownosci-w-bielsku-bialej-22062025', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/838e1451-a9b9-465d-bbbf-2ad22f272d52_rwc_0x639x1365x769x1365.jpg?h=0ad53312dd4d806a7fe004ae34f6ab51' }
   ];
-  const pick = featured[Math.floor(Math.random() * featured.length)];
+  let pick = featured[Math.floor(Math.random() * featured.length)];
+  try {
+    const saved = sessionStorage.getItem('featuredIndex');
+    const idx = saved === null ? -1 : Number(saved);
+    if (Number.isInteger(idx) && idx >= 0 && idx < featured.length) pick = featured[idx];
+    else sessionStorage.setItem('featuredIndex', String(featured.indexOf(pick)));
+  } catch (e) {}
   const featImg = document.getElementById('feat-img');
   featImg.href = pick.href;
   featImg.querySelector('img').src = pick.img;
+  featImg.querySelector('img').alt = pick.title;
   document.querySelector('.feat-title').textContent = pick.title;
   document.querySelector('.feat-desc').textContent = pick.desc;
+  document.querySelector('.feat-num').textContent = 'Wyróżniony projekt';
   const btn = document.getElementById('btn-more');
   const extras = document.querySelectorAll('.p-item.extra');
   const txt = document.getElementById('btn-txt');
