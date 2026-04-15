@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jarek Żurawski — Photography</title>
-  <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż z wydarzeń i portret. Portfolio i kontakt." />
+  <title>Jarek Żurawski — Fotografia</title>
+  <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż z wydarzeń i portret editorial. Portfolio i kontakt." />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090909;
       --surface: #111111;
-      --surface-2: #161616;
+      --surface-2: #171717;
+      --surface-3: #1d1d1d;
       --border: rgba(255,255,255,0.08);
       --text: #f2eee7;
-      --muted: #9e988f;
-      --faint: #6e6a63;
+      --muted: #a39d93;
+      --faint: #6f6a62;
       --accent: #d6b06d;
-      --max: 1360px;
+      --max: 1380px;
       --radius: 28px;
       --shadow: 0 24px 80px rgba(0,0,0,0.38);
     }
@@ -33,7 +34,464 @@
       line-height: 1.55;
     }
 
+    img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 14px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .footer a:hover,
+    .footer a:focus-visible { color: var(--text); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(17,17,17,0.94), rgba(11,11,11,0.96));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 34px;
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 18px;
+    }
+
+    .section-number {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(54px, 10vw, 132px);
+      line-height: 0.88;
+      letter-spacing: -0.08em;
+      max-width: 6ch;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      max-width: 34ch;
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    .tag-row,
+    .button-row,
+    .footer-links,
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .meta-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .meta-item strong {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .meta-item span {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .button {
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .18s ease, opacity .18s ease, background .18s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); opacity: .96; }
+
+    .button-primary {
+      background: var(--text);
+      color: #111;
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 16px;
+    }
+
+    .small-note a,
+    .section-copy a,
+    .contact-copy a,
+    .footer a { color: var(--accent); }
+
+    .hero-visual {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 18px;
+      padding: 18px;
+      align-self: start;
+    }
+
+    .visual-main {
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      min-height: 300px;
+      max-height: 380px;
+      background: #151515;
+    }
+
+    .visual-main img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      max-height: 380px;
+      object-fit: cover;
+      object-position: center 24%;
+    }
+
+    .visual-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mini-card,
+    .section,
+    .contact-panel {
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 22px;
+    }
+
+    .mini-copy,
+    .section-copy,
+    .contact-copy {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 34ch;
+    }
+
+    .gallery {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr;
+      gap: 18px;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      min-height: 380px;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+    }
+
+    .gallery-card.large img { object-position: center center; }
+    .gallery-card.tall img { object-position: center 35%; }
+    .gallery-card.alt img { object-position: center 20%; }
+
+    .gallery-label {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: rgba(0,0,0,0.42);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .sections {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .service-item {
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    .service-item strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .service-item span {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact-panel {
+      margin-top: 18px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      background: linear-gradient(180deg, rgba(22,22,22,0.98), rgba(12,12,12,0.98));
+      box-shadow: var(--shadow);
+    }
+
+    .contact-copy {
+      max-width: 44ch;
+      margin-bottom: 18px;
+    }
+
+    .contact-boxes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-box {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .contact-box span {
+      display: block;
+      font-size: 11px;
+      color: var(--faint);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 8px;
+    }
+
+    .contact-box strong,
+    .contact-box a {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 18px 4px 0;
+      margin-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero,
+      .gallery,
+      .sections,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page { width: min(var(--max), calc(100% - 18px)); }
+      .hero-copy,
+      .hero-visual,
+      .section,
+      .mini-card,
+      .contact-panel { padding: 20px; }
+      .visual-bottom { grid-template-columns: 1fr; }
+      .meta-item { grid-template-columns: 1fr; gap: 6px; }
+      h1 { max-width: none; }
+      .visual-main,
+      .visual-main img { min-height: 260px; max-height: 320px; }
+      .gallery-card,
+      .gallery-card img { min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">Jarek Żurawski</div>
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a href="#o-mnie">O mnie</a>
+        <a href="#zakres">Zakres</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <section class="panel hero-copy">
+          <div>
+            <p class="eyebrow">Street / Events / Portraits</p>
+            <h1>Jarek Żurawski</h1>
+            <p class="lead">Fotografia uliczna, reportaż z wydarzeń i portret editorial. Szukam światła, gestu i momentów, które wyglądają prawdziwie, a nie ustawienie.</p>
+
+            <div class="tag-row">
+              <span class="tag">street photography</span>
+              <span class="tag">event report</span>
+              <span class="tag">editorial portrait</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="meta-list">
+              <div class="meta-item">
+                <strong>Base</strong>
+                <span>Bielsko-Biała / Śląsk / Polska</span>
+              </div>
+              <div class="meta-item">
+                <strong>Praca</strong>
+                <span>Koncerty, eventy, portrety, materiały promocyjne i wizualne historie.</span>
+              </div>
+              <div class="meta-item">
+                <strong>Kontakt</strong>
+                <span>jarek.zurawski@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Zobacz portfolio</a>
+            </div>
+
+            <p class="small-note">Instagram: <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a></p>
+          </div>
+        </section>
+
+        <section class="panel hero-visual" aria-label="Zdjęcie autora i informacje">
+          <div class="visual-main">
+            <img
+              src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
+              alt="Portret Jarka Żurawskiego"
+              width="1600"
+              height="2000"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+
+          <div class="visual-bottom">
+            <article class="mini-card" id="o-mnie">
+              <p class="section-number">01 / O mnie</p>
+              <h2>Kadry bez ustawiania</h2>
+              <p class="mini-copy">Najbliżej mi do zdjęć candid, dokumentu i portretu z charakterem. Interesuje mnie rytm miasta, emocja i atmosfera miejsca.</p>
+            </article>
+
+            <article class="mini-card">
+              <p class="section-number">02 / Kontakt</p>
+              <h2>Napisz bezpośrednio</h2>
+              <p class="
 
     .page {
       width: min(var(--max), calc(100% - 28px));
