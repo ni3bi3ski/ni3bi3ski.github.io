@@ -10,7 +10,6 @@
     :root {
       --bg: #090909;
       --surface: #111111;
-      --surface-2: #161616;
       --border: rgba(255,255,255,0.08);
       --text: #f2eee7;
       --muted: #9e988f;
@@ -23,6 +22,32 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
+    /* Custom cursor */
+    * { cursor: none; }
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(214,176,109,0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s ease, height 0.35s ease, border-color 0.35s ease, transform 0.08s linear;
+    }
+    .cursor.is-hover { width: 6px; height: 6px; }
+    .cursor-ring.is-hover { width: 56px; height: 56px; border-color: var(--accent); }
+
     body {
       min-height: 100vh;
       font-family: 'Satoshi', system-ui, sans-serif;
@@ -52,23 +77,10 @@
       flex-wrap: wrap;
     }
 
-    .brand {
-      font-size: 14px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
+    .brand { font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint); }
 
-    .nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible { color: var(--text); }
+    .nav { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+    .nav a:hover { color: var(--text); }
 
     .hero {
       display: grid;
@@ -94,145 +106,75 @@
     }
 
     .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-bottom: 18px;
+      font-size: 11px; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 18px;
     }
 
     h1 {
       font-size: clamp(54px, 10vw, 132px);
-      line-height: 0.88;
-      letter-spacing: -0.08em;
-      max-width: 6ch;
-      margin-bottom: 26px;
-      text-transform: uppercase;
+      line-height: 0.88; letter-spacing: -0.08em;
+      max-width: 6ch; margin-bottom: 26px; text-transform: uppercase;
     }
 
-    .lead {
-      max-width: 46ch;
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 28px;
-    }
+    .lead { max-width: 46ch; color: var(--muted); font-size: 16px; margin-bottom: 28px; }
 
     .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 28px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px; margin-bottom: 28px;
     }
 
     .meta-box {
-      padding: 14px 16px;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.02);
+      padding: 14px 16px; border: 1px solid var(--border);
+      border-radius: 18px; background: rgba(255,255,255,0.02);
     }
 
-    .meta-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--faint);
-      margin-bottom: 8px;
-    }
-
-    .meta-value {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
+    .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--faint); margin-bottom: 8px; }
+    .meta-value { font-size: 14px; color: var(--muted); }
     .meta-value a { color: var(--accent); transition: opacity .15s; }
     .meta-value a:hover { opacity: 0.75; }
 
-    .tag-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
+    .tag-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .tag {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.02);
+      padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border);
+      font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.02);
     }
 
-    .small-note {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 18px;
-    }
-
-    .small-note a,
-    .footer a,
-    .section a { color: var(--accent); }
+    .small-note { color: var(--muted); font-size: 14px; margin-top: 18px; }
+    .small-note a, .footer a, .section a { color: var(--accent); }
 
     .hero-visual {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-rows: auto auto;
-      gap: 18px;
-      padding: 18px;
+      display: grid; grid-template-rows: auto auto;
+      gap: 18px; padding: 18px;
       background: linear-gradient(180deg, rgba(21,21,21,0.94), rgba(8,8,8,0.98));
       align-self: start;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
     .visual-main {
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      background: #151515;
-      position: relative;
-      overflow: hidden;
-      min-height: 340px;
-      max-height: 420px;
+      border-radius: 22px; border: 1px solid var(--border);
+      background: #151515; overflow: hidden;
+      min-height: 340px; max-height: 420px;
     }
 
     .visual-main img {
-      width: 100%;
-      height: 100%;
-      min-height: 340px;
-      max-height: 420px;
-      object-fit: cover;
-      object-position: center 28%;
-      display: block;
+      width: 100%; height: 100%; min-height: 340px; max-height: 420px;
+      object-fit: cover; object-position: center 28%; display: block;
     }
 
-    .visual-bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
+    .visual-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 
     .mini-card {
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border-radius: 22px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02); padding: 18px;
+      display: flex; flex-direction: column; justify-content: space-between;
       min-height: 170px;
     }
 
-    h2 {
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      margin-bottom: 10px;
-    }
+    h2 { font-size: clamp(22px, 3vw, 34px); line-height: 1; letter-spacing: -0.05em; margin-bottom: 10px; }
 
-    .section-copy,
-    .mini-copy {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 34ch;
-    }
+    .section-copy, .mini-copy { color: var(--muted); font-size: 14px; max-width: 34ch; }
 
     .social-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
     .social-link {
@@ -244,10 +186,7 @@
     }
     .social-link:hover { border-color: var(--accent); color: var(--accent); }
 
-    .about-extra {
-      overflow: hidden; max-height: 0; opacity: 0;
-      transition: max-height 0.45s ease, opacity 0.45s ease;
-    }
+    .about-extra { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.45s ease, opacity 0.45s ease; }
     .about-extra.is-open { max-height: 200px; opacity: 1; }
 
     .btn-more {
@@ -255,118 +194,95 @@
       margin-top: 14px; font-size: 12px; font-weight: 700;
       color: var(--accent); background: none;
       border: 1px solid rgba(214,176,109,0.25); border-radius: 999px;
-      padding: 6px 14px; cursor: pointer; font-family: inherit;
-      transition: opacity .15s, border-color .15s;
-      letter-spacing: 0.04em;
+      padding: 6px 14px; font-family: inherit;
+      transition: opacity .15s, border-color .15s; letter-spacing: 0.04em;
     }
     .btn-more:hover { opacity: 0.8; border-color: var(--accent); }
     .btn-more-arrow { transition: transform 0.3s ease; display: inline-block; }
     .btn-more.is-open .btn-more-arrow { transform: rotate(180deg); }
 
-    .projects-panel {
-      padding: 24px;
-      margin-top: 18px;
-    }
+    /* Projects */
+    .projects-panel { padding: 24px; margin-top: 18px; }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
       margin-top: 14px;
     }
 
     .project-card {
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(14px);
-      max-height: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
+      border-radius: 18px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02); overflow: hidden;
+      display: flex; flex-direction: column;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.25s ease;
+      position: relative;
     }
 
-    .project-card.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-      max-height: 400px;
-      pointer-events: auto;
-    }
+    .project-card.is-visible { opacity: 1; transform: translateY(0); }
+    .project-card:hover { border-color: rgba(214,176,109,0.3); }
 
     .project-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      background: #111;
+      width: 100%; aspect-ratio: 16/9;
+      overflow: hidden; background: #111; position: relative;
     }
 
     .project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
     }
 
-    .project-card:hover .project-thumb img { transform: scale(1.04); }
+    .project-card:hover .project-thumb img { transform: scale(1.06); }
 
+    /* Hover overlay */
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .project-card:hover .project-overlay { opacity: 1; }
+
+    .project-overlay .project-title { font-size: 16px; font-weight: 700; color: var(--text); }
+    .project-overlay .project-meta { font-size: 12px; color: var(--accent); margin-top: 3px; }
+
+    /* Static body hidden by default, visible only without hover on mobile */
     .project-body {
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
+      padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;
     }
 
     .project-title { font-size: 14px; color: var(--text); }
     .project-meta { font-size: 12px; color: var(--faint); }
 
+    /* Sections */
     .sections {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px; margin-top: 18px;
     }
 
-    .section {
-      padding: 24px;
-      min-height: 260px;
-    }
+    .section { padding: 24px; min-height: 260px; }
 
-    .service-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
+    .service-list { display: grid; gap: 12px; margin-top: 10px; }
 
-    .service-item {
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-    }
+    .service-item { border-top: 1px solid var(--border); padding-top: 12px; }
+    .service-item strong { display: block; font-size: 15px; margin-bottom: 4px; }
+    .service-item span { font-size: 14px; color: var(--muted); }
 
-    .service-item strong {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 4px;
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
-
-    .service-item span {
-      font-size: 14px;
-      color: var(--muted);
-    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
     .footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 18px 4px 0;
-      margin-top: 18px;
-      border-top: 1px solid var(--border);
-      color: var(--faint);
-      font-size: 13px;
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding: 18px 4px 0; margin-top: 18px;
+      border-top: 1px solid var(--border); color: var(--faint); font-size: 13px;
     }
 
     @media (max-width: 1100px) {
@@ -383,14 +299,21 @@
       h1 { max-width: none; }
       .visual-main, .visual-main img { min-height: 280px; max-height: 340px; }
       .projects-grid { grid-template-columns: 1fr; }
+      * { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
   <div class="page">
     <header class="topbar">
       <div class="brand">Jarek Żurawski</div>
-      <nav class="nav" aria-label="Główna nawigacja">
+      <nav class="nav">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
@@ -436,7 +359,7 @@
           </div>
         </section>
 
-        <section class="panel hero-visual" aria-label="Intro blocks">
+        <section class="hero-visual">
           <div class="visual-main">
             <img
               src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
@@ -486,13 +409,26 @@
       </section>
 
       <section class="sections">
-        <article class="panel section">
-          <p class="eyebrow">About</p>
-          <h2>Fotografia, która nie wygląda ustawienie.</h2>
-          <p class="section-copy">Pracuję z naturalnym światłem, ruchem i atmosferą miejsca. Zależy mi na kadrach, które mają ciężar, rytm i prawdziwą obecność, a nie tylko estetyczny wygląd.</p>
+        <article class="panel section reveal">
+          <p class="eyebrow">Gear</p>
+          <h2>Czym pracuję</h2>
+          <div class="service-list">
+            <div class="service-item">
+              <strong>Sony A7 IV</strong>
+              <span>Reportaż, eventy, portret — pełna klatka, szybki AF.</span>
+            </div>
+            <div class="service-item">
+              <strong>Ricoh GRIII</strong>
+              <span>Street, candid, dokument — dyskretny i zawsze przy sobie.</span>
+            </div>
+            <div class="service-item">
+              <strong>Sigma Art 24–70 / 85 / 20mm</strong>
+              <span>Naturalne światło, bez kompromisów na ostrość.</span>
+            </div>
+          </div>
         </article>
 
-        <article class="panel section" id="services">
+        <article class="panel section reveal" id="services">
           <p class="eyebrow">Services</p>
           <h2>Zakres współpracy</h2>
           <div class="service-list">
@@ -506,106 +442,4 @@
             </div>
             <div class="service-item">
               <strong>Materiał promocyjny</strong>
-              <span>Zdjęcia do social mediów, strony i publikacji online.</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="panel section">
-          <p class="eyebrow">Links</p>
-          <h2>Portfolio i kontakt</h2>
-          <p class="section-copy">Pełne galerie są dostępne online. Ta strona ma działać jako szybka, prosta i mocna wizytówka pod własną domeną.</p>
-          <div class="service-list" style="margin-top:14px;">
-            <div class="service-item">
-              <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:15px;font-weight:700;">niebiezki.myportfolio.com →</a>
-              <span style="display:block;margin-top:3px;">Pełne portfolio na Adobe Portfolio</span>
-            </div>
-            <div class="service-item">
-              <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:15px;font-weight:700;">@niebiezki →</a>
-              <span style="display:block;margin-top:3px;">Instagram — bieżące projekty i street</span>
-            </div>
-            <div class="service-item">
-              <a href="mailto:jarek.zurawski@gmail.com" style="color:var(--accent);font-size:15px;font-weight:700;">jarek.zurawski@gmail.com →</a>
-              <span style="display:block;margin-top:3px;">Mail — kontakt i wycena</span>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section class="panel projects-panel" id="projects">
-        <p class="eyebrow">Projects</p>
-        <h2>Wybrane projekty</h2>
-        <p class="section-copy">Podgląd wybranych serii i reportaży z Adobe Portfolio. Kliknięcie otwiera pełny projekt w nowej karcie.</p>
-
-        <div class="projects-grid">
-          <a class="project-card is-visible" href="https://niebiezki.myportfolio.com/sportsy" target="_blank" rel="noopener noreferrer">
-            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927" alt="Sportsy" loading="lazy" decoding="async"></div>
-            <div class="project-body"><strong class="project-title">Sportsy</strong><span class="project-meta">Adobe Portfolio</span></div>
-          </a>
-          <a class="project-card is-visible" href="https://niebiezki.myportfolio.com/sylwester-bielsko-biala-31122025" target="_blank" rel="noopener noreferrer">
-            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/4ebc0e4c-2479-48c8-b3eb-d5867ee9bb5d_rwc_0x508x1365x769x1365.jpg?h=2301dc38cae991b2d07e2d0b0bf1bdf2" alt="Sylwester BB 25/26" loading="lazy" decoding="async"></div>
-            <div class="project-body"><strong class="project-title">Sylwester Bielsko-Biała 25/26</strong><span class="project-meta">Adobe Portfolio</span></div>
-          </a>
-          <a class="project-card is-visible" href="https://niebiezki.myportfolio.com/street-yourself-2-28062025" target="_blank" rel="noopener noreferrer">
-            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/0bf760d5-d0ef-4a40-9062-1af3265fad7e_rwc_0x305x1638x923x1638.jpg?h=b8da8e5156b530baed52a416b1b99727" alt="Street Yourself 2" loading="lazy" decoding="async"></div>
-            <div class="project-body"><strong class="project-title">Street Yourself 2</strong><span class="project-meta">Adobe Portfolio</span></div>
-          </a>
-          <a class="project-card" href="https://niebiezki.myportfolio.com/rekord-sokol-15082025" target="_blank" rel="noopener noreferrer">
-            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/07d83596-9fd8-4a69-aeda-dcefad48ffb9_car_16x9.jpg?h=cfee3d55dc9ef0fc78cadea689acf54e" alt="Rekord - Sokół" loading="lazy" decoding="async"></div>
-            <div class="project-body"><strong class="project-title">Rekord - Sokół - Betclic II liga 2025/2026</strong><span class="project-meta">Adobe Portfolio</span></div>
-          </a>
-          <a class="project-card" href="https://niebiezki.myportfolio.com/psk-2026-inauguracja-20022025" target="_blank" rel="noopener noreferrer">
-            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/406e456c-f088-4069-a7d1-accf2fd26249_rwc_0x96x1920x1082x1920.jpg?h=8ad1e6aa8f30a5b7319024abaa1dca74" alt="PSK 2026" loading="lazy" decoding="async"></div>
-            <div class="project-body"><strong class="project-title">PSK 2026 - Inauguracja</strong><span class="project-meta">Adobe Portfolio</span></div>
-          </a>
-          <a class="project-card" href="https://niebiezki.myportfolio.com/mistrzostwa-polski-roasters-2025-04102025" target="_blank" rel="noopener noreferrer">
-            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/abb051f4-5ac9-4baa-8044-54693c335c1d_rwc_0x756x1365x769x1365.jpg?h=196e57710072ceadc534c0a5dbb14d5e" alt="Mistrzostwa Polski Roasters" loading="lazy" decoding="async"></div>
-            <div class="project-body"><strong class="project-title">Mistrzostwa Polski Roasters 2025</strong><span class="project-meta">Adobe Portfolio</span></div>
-          </a>
-          <a class="project-card" href="https://niebiezki.myportfolio.com/marsz-rownosci-w-bielsku-bialej-22062025" target="_blank" rel="noopener noreferrer">
-            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/838e1451-a9b9-465d-bbbf-2ad22f272d52_rwc_0x639x1365x769x1365.jpg?h=0ad53312dd4d806a7fe004ae34f6ab51" alt="Marsz Równości BB" loading="lazy" decoding="async"></div>
-            <div class="project-body"><strong class="project-title">Marsz Równości w Bielsku-Białej 2025</strong><span class="project-meta">Adobe Portfolio</span></div>
-          </a>
-        </div>
-
-        <button class="btn-more" id="btn-projects" aria-expanded="false" style="margin-top:16px;">Pokaż więcej <span class="btn-more-arrow">↓</span></button>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <span>© 2026 Jarek Żurawski</span>
-      <span>
-        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">portfolio</a>
-        &nbsp;·&nbsp;
-        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">instagram</a>
-        &nbsp;·&nbsp;
-        <a href="mailto:jarek.zurawski@gmail.com">mail</a>
-      </span>
-    </footer>
-  </div>
-
-  <script>
-    const btnAbout = document.getElementById('btn-about');
-    const aboutExtra = document.getElementById('about-extra');
-    btnAbout.addEventListener('click', () => {
-      const isOpen = aboutExtra.classList.toggle('is-open');
-      btnAbout.classList.toggle('is-open', isOpen);
-      btnAbout.setAttribute('aria-expanded', isOpen);
-      btnAbout.childNodes[0].textContent = isOpen ? 'Pokaż mniej ' : 'Pokaż więcej ';
-    });
-
-    const btnProjects = document.getElementById('btn-projects');
-    const hiddenCards = document.querySelectorAll('.project-card:not(.is-visible)');
-    let projectsOpen = false;
-    btnProjects.addEventListener('click', () => {
-      projectsOpen = !projectsOpen;
-      hiddenCards.forEach((card, i) => {
-        setTimeout(() => card.classList.toggle('is-visible', projectsOpen), i * 80);
-      });
-      btnProjects.classList.toggle('is-open', projectsOpen);
-      btnProjects.setAttribute('aria-expanded', projectsOpen);
-      btnProjects.childNodes[0].textContent = projectsOpen ? 'Pokaż mniej ' : 'Pokaż więcej ';
-    });
-  </script>
-</body>
-</html>
+              <span>Zdjęcia do social mediów, strony i publik
