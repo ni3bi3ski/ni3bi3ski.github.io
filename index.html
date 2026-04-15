@@ -10,15 +10,14 @@
     :root {
       --bg: #090909;
       --surface: #111111;
-      --surface-2: #161616;
       --border: rgba(255,255,255,0.08);
       --text: #f2eee7;
       --muted: #9e988f;
       --faint: #6e6a63;
       --accent: #d6b06d;
       --max: 1360px;
-      --radius: 28px;
-      --shadow: 0 24px 80px rgba(0,0,0,0.38);
+      --radius-sm: 20px;
+      --shadow: 0 16px 48px rgba(0,0,0,0.34);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,17 +27,20 @@
       font-family: 'Satoshi', system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(214,176,109,0.08), transparent 18%),
+        radial-gradient(circle at top left, rgba(214,176,109,0.06), transparent 16%),
         linear-gradient(180deg, #0d0d0d 0%, #070707 100%);
-      line-height: 1.55;
+      line-height: 1.5;
+      padding-bottom: 24px;
     }
 
     a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; max-width: 100%; }
 
     .page {
-      width: min(var(--max), calc(100% - 28px));
+      width: min(var(--max), calc(100% - 24px));
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 22px 0 36px;
+      padding: 20px 0 0;
     }
 
     .topbar {
@@ -46,14 +48,15 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
       margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
+      font-size: 14px;
     }
 
     .brand {
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--faint);
@@ -61,10 +64,9 @@
 
     .nav {
       display: flex;
-      gap: 18px;
+      gap: 16px;
       flex-wrap: wrap;
       color: var(--muted);
-      font-size: 14px;
     }
 
     .nav a:hover,
@@ -73,24 +75,25 @@
     .hero {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-      min-height: calc(100vh - 120px);
+      gap: 16px;
+      min-height: calc(100vh - 110px);
       align-items: start;
     }
 
     .panel {
       background: linear-gradient(180deg, rgba(17,17,17,0.94), rgba(11,11,11,0.96));
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--radius-sm);
       box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
     .hero-copy {
-      padding: 34px;
+      padding: 28px 26px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 640px;
+      min-height: 580px;
     }
 
     .eyebrow {
@@ -98,63 +101,60 @@
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--faint);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      font-size: clamp(54px, 10vw, 132px);
-      line-height: 0.88;
+      font-size: clamp(46px, 8.5vw, 112px);
+      line-height: 0.9;
       letter-spacing: -0.08em;
-      max-width: 6ch;
-      margin-bottom: 26px;
+      max-width: 7ch;
+      margin-bottom: 22px;
       text-transform: uppercase;
     }
 
     .lead {
-      max-width: 46ch;
+      max-width: 42ch;
       color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 28px;
+      font-size: 15px;
+      margin-bottom: 24px;
     }
 
     .meta-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 28px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
     .meta-box {
-      padding: 14px 16px;
+      padding: 12px 14px;
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 16px;
       background: rgba(255,255,255,0.02);
+      font-size: 13px;
     }
 
     .meta-label {
-      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       color: var(--faint);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .meta-value {
-      font-size: 14px;
       color: var(--muted);
     }
 
-    .button-row,
-    .footer-links,
-    .tag-row {
+    .button-row {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
 
     .button {
-      min-height: 48px;
-      padding: 0 18px;
+      min-height: 44px;
+      padding: 0 16px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
@@ -162,6 +162,7 @@
       font-size: 14px;
       font-weight: 700;
       transition: transform .18s ease, opacity .18s ease;
+      cursor: pointer;
     }
 
     .button:hover { transform: translateY(-1px); opacity: .96; }
@@ -169,6 +170,7 @@
     .button-primary {
       background: var(--text);
       color: #111;
+      border: none;
     }
 
     .button-secondary {
@@ -177,18 +179,25 @@
       background: transparent;
     }
 
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
     .tag {
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
       background: rgba(255,255,255,0.02);
     }
 
     .small-note {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       margin-top: 18px;
     }
 
@@ -201,95 +210,205 @@
       overflow: hidden;
       display: grid;
       grid-template-rows: auto auto;
-      gap: 18px;
-      padding: 18px;
+      gap: 16px;
       background: linear-gradient(180deg, rgba(21,21,21,0.94), rgba(8,8,8,0.98));
       align-self: start;
     }
 
     .visual-main {
-      border-radius: 22px;
+      border-radius: 18px;
       border: 1px solid var(--border);
-      background: #151515;
-      position: relative;
+      background: #161616;
       overflow: hidden;
-      min-height: 340px;
-      max-height: 420px;
+      min-height: 280px;
+      max-height: 380px;
     }
 
     .visual-main img {
       width: 100%;
       height: 100%;
-      min-height: 340px;
-      max-height: 420px;
+      min-height: 280px;
+      max-height: 380px;
       object-fit: cover;
-      object-position: center 28%;
-      display: block;
+      object-position: center 22%;
     }
 
     .visual-bottom {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 16px;
     }
 
     .mini-card {
-      border-radius: 22px;
+      border-radius: 18px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.02);
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 170px;
+      min-height: 140px;
     }
 
     h2 {
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      margin-bottom: 10px;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
     }
 
     .section-copy,
     .mini-copy {
       color: var(--muted);
       font-size: 14px;
-      max-width: 34ch;
+      max-width: 32ch;
     }
 
     .sections {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
     }
 
     .section {
-      padding: 24px;
-      min-height: 260px;
+      padding: 20px 22px;
+      min-height: 240px;
     }
 
     .service-list {
       display: grid;
-      gap: 12px;
+      gap: 10px;
       margin-top: 10px;
     }
 
     .service-item {
       border-top: 1px solid var(--border);
-      padding-top: 12px;
+      padding-top: 10px;
     }
 
     .service-item strong {
       display: block;
-      font-size: 15px;
+      font-size: 14px;
       margin-bottom: 4px;
     }
 
     .service-item span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .projects-panel {
+      margin-top: 16px;
+      padding: 22px 24px 20px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(17,17,17,0.94), rgba(11,11,11,0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .projects-list-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: var(--faint);
+    }
+
+    .projects-headline {
+      font-size: clamp(20px, 2.8vw, 30px);
+      margin-bottom: 8px;
+      max-width: 36ch;
+    }
+
+    .projects-subline {
       font-size: 14px;
       color: var(--muted);
+      max-width: 40ch;
+      margin-bottom: 16px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 0;
+    }
+
+    .project-card {
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      opacity: 0;
+      transform: translateY(16px);
+      max-height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        max-height 0.45s ease,
+        border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 360px;
+      pointer-events: auto;
+    }
+
+    .project-card:hover {
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .project-thumb {
+      position: relative;
+      height: 180px;
+      background: #121212;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .project-thumb img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .project-card:hover .project-thumb img {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+
+    .project-body {
+      padding: 12px 14px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .project-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .button-row {
+      margin-top: 16px;
     }
 
     .footer {
@@ -297,7 +416,7 @@
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      padding: 18px 4px 0;
+      padding: 16px 4px 0;
       margin-top: 18px;
       border-top: 1px solid var(--border);
       color: var(--faint);
@@ -305,25 +424,33 @@
     }
 
     @media (max-width: 1100px) {
-      .hero,
-      .sections { grid-template-columns: 1fr; }
-      .hero-copy,
-      .hero-visual { min-height: auto; }
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-copy {
+        padding: 22px 20px 20px;
+        min-height: auto;
+      }
+      .hero-visual { padding: 14px; }
+      .sections,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 700px) {
-      .page { width: min(var(--max), calc(100% - 18px)); }
-      .hero-copy { padding: 22px; }
-      .hero-visual { padding: 14px; }
-      .visual-bottom,
-      .meta-grid { grid-template-columns: 1fr; }
-      h1 { max-width: none; }
-
-      .visual-main,
-      .visual-main img {
-        min-height: 280px;
-        max-height: 340px;
+      .page {
+        width: calc(100% - 18px);
       }
+      .projects-panel {
+        padding: 20px 18px 18px;
+      }
+      .hero-copy {
+        padding: 20px 18px 18px;
+      }
+      .meta-grid { grid-template-columns: 1fr; }
+      .visual-main img { min-height: 240px; max-height: 320px; }
     }
   </style>
 </head>
@@ -334,6 +461,7 @@
       <nav class="nav" aria-label="Główna nawigacja">
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
         <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
         <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="mailto:jarek.zurawski@gmail.com">Mail</a>
@@ -359,113 +487,4 @@
             <div class="meta-grid">
               <div class="meta-box">
                 <div class="meta-label">Base</div>
-                <div class="meta-value">Bielsko-Biała / Silesia / Poland</div>
-              </div>
-              <div class="meta-box">
-                <div class="meta-label">Available for</div>
-                <div class="meta-value">concerts, events, portraits, visual stories</div>
-              </div>
-              <div class="meta-box">
-                <div class="meta-label">Contact</div>
-                <div class="meta-value">jarek.zurawski@gmail.com</div>
-              </div>
-              <div class="meta-box">
-                <div class="meta-label">Portfolio</div>
-                <div class="meta-value">niebiezki.myportfolio.com</div>
-              </div>
-            </div>
-
-            <div class="button-row">
-              <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Open portfolio</a>
-              <a class="button button-secondary" href="mailto:jarek.zurawski@gmail.com">Book a shoot</a>
-            </div>
-
-            <p class="small-note">Instagram: <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a></p>
-          </div>
-        </section>
-
-        <section class="panel hero-visual" aria-label="Intro blocks">
-          <div class="visual-main">
-            <img
-              src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
-              alt="Portret Jarka Żurawskiego"
-              width="1600"
-              height="2000"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-
-          <div class="visual-bottom">
-            <article class="mini-card">
-              <div>
-                <p class="eyebrow">About</p>
-                <h2 id="about">Naturalny dokument</h2>
-                <p class="mini-copy">Najbliżej mi do zdjęć candid, bez ustawiania i bez sztucznego pozowania. Interesuje mnie rytm miasta, emocja i gest.</p>
-              </div>
-            </article>
-
-            <article class="mini-card">
-              <div>
-                <p class="eyebrow">Direct contact</p>
-                <h2>Mail / IG</h2>
-                <p class="mini-copy">Jeśli masz termin, miejsce i krótki opis projektu, napisz. Najszybsza droga to mail albo Instagram.</p>
-              </div>
-            </article>
-          </div>
-        </section>
-      </section>
-
-      <section class="sections">
-        <article class="panel section">
-          <p class="eyebrow">About</p>
-          <h2>Fotografia, która nie wygląda ustawienie.</h2>
-          <p class="section-copy">Pracuję z naturalnym światłem, ruchem i atmosferą miejsca. Zależy mi na kadrach, które mają ciężar, rytm i prawdziwą obecność, a nie tylko estetyczny wygląd.</p>
-        </article>
-
-        <article class="panel section" id="services">
-          <p class="eyebrow">Services</p>
-          <h2>Zakres współpracy</h2>
-          <div class="service-list">
-            <div class="service-item">
-              <strong>Reportaż z wydarzeń</strong>
-              <span>Koncerty, eventy, backstage, kultura i dokument miejsca.</span>
-            </div>
-            <div class="service-item">
-              <strong>Portret editorial</strong>
-              <span>Sesje miejskie dla twórców, muzyków i marek osobistych.</span>
-            </div>
-            <div class="service-item">
-              <strong>Materiał promocyjny</strong>
-              <span>Zdjęcia do social mediów, strony i publikacji online.</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="panel section">
-          <p class="eyebrow">Links</p>
-          <h2>Portfolio i kontakt</h2>
-          <p class="section-copy">Pełne galerie są dostępne online. Ta strona ma działać jako szybka, prosta i mocna wizytówka pod własną domeną.</p>
-          <div class="button-row" style="margin-top:18px;">
-            <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-            <a class="button button-secondary" href="mailto:jarek.zurawski@gmail.com">Mail</a>
-          </div>
-        </article>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© <span id="year"></span> Jarek Żurawski</p>
-      <div class="footer-links">
-        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Adobe Portfolio</a>
-        <a href="mailto:jarek.zurawski@gmail.com">jarek.zurawski@gmail.com</a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+                <div class="meta-value">Bielsko-Biała
