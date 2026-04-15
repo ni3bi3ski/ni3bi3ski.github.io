@@ -435,16 +435,59 @@
     .contact-h {
       font-size: clamp(56px,10vw,148px); font-weight: 900;
       letter-spacing: -0.07em; text-transform: uppercase; line-height: .84;
-      margin-bottom: 48px;
+      margin-bottom: 18px;
       opacity: 0; transform: translateY(22px);
       transition: opacity .7s ease .08s, transform .7s ease .08s;
     }
     .contact-h.go { opacity: 1; transform: translateY(0); }
     .contact-h em { font-style: normal; color: var(--accent); }
+    .contact-form {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+      text-align: left;
+    }
+    .contact-form label {
+      display: grid;
+      gap: 8px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: var(--text);
+      font: inherit;
+    }
+    .contact-form textarea { resize: vertical; min-height: 160px; }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-color: var(--accent);
+    }
+    .contact-form .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .contact-form .field-label {
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-form .honeypot { display: none; }
     .contact-row {
       display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
       opacity: 0; transform: translateY(14px);
       transition: opacity .6s ease .18s, transform .6s ease .18s;
+      margin-top: 28px;
     }
     .contact-row.go { opacity: 1; transform: translateY(0); }
     .c-link {
@@ -486,6 +529,7 @@
         backdrop-filter: blur(18px);
       }
       .nav-links.open { display: flex; }
+      .contact-form .row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       * { cursor: auto !important; }
@@ -685,11 +729,31 @@
 <section class="contact" id="contact">
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
   <h2 class="contact-h" id="c-h">Masz<br>projekt<em>?</em></h2>
+  <p style="max-width:56ch;margin:0 auto 28px;color:var(--muted);font-size:15px;line-height:1.75;">Wypełnij formularz, a odpiszę tak szybko, jak to możliwe. Nie pokazuję publicznie adresu mailowego.</p>
+  <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+    <input type="hidden" name="form-name" value="contact">
+    <p class="honeypot">
+      <label>Nie wypełniaj tego pola: <input name="bot-field"></label>
+    </p>
+    <div class="row">
+      <label>
+        <span class="field-label">Imię</span>
+        <input name="name" type="text" required placeholder="Twoje imię">
+      </label>
+      <label>
+        <span class="field-label">E-mail</span>
+        <input name="email" type="email" required placeholder="adres@przyklad.pl">
+      </label>
+    </div>
+    <label>
+      <span class="field-label">Wiadomość</span>
+      <textarea name="message" required rows="7" placeholder="Opisz krótko, czego potrzebujesz..."></textarea>
+    </label>
+    <button type="submit" class="btn-more" style="justify-self:start;">Wyślij wiadomość</button>
+  </form>
   <div class="contact-row" id="c-row">
-    <a class="c-link" href="mailto:jarek.zurawski@gmail.com">jarek.zurawski@gmail.com</a>
     <a class="c-link" href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a>
     <a class="c-link" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-    <a class="c-link" href="mailto:jarek.zurawski@gmail.com">Napisz maila</a>
   </div>
 </section>
 
@@ -700,8 +764,6 @@
     <a href="https://niebiezki.myportfolio.com/" target="_blank">Portfolio</a>
     &nbsp;·&nbsp;
     <a href="https://instagram.com/niebiezki" target="_blank">Instagram</a>
-    &nbsp;·&nbsp;
-    <a href="mailto:jarek.zurawski@gmail.com">Mail</a>
   </span>
 </footer>
 
@@ -731,7 +793,7 @@
   window.addEventListener('scroll', () => { if (window.scrollY < window.innerHeight) { heroImg.style.transform = `translateY(${window.scrollY * 0.28}px)`; } }, {passive:true});
   window.addEventListener('load', () => { document.getElementById('hero-title').classList.add('go'); document.getElementById('hero-aside').classList.add('go'); });
   const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('go'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
-  ['feat-label','feat-img','feat-body','work-head','about-img','about-h','about-m','about-s','about-stats','gear','srv-head','srv1','srv2','srv3','c-eye','c-h','c-row'].forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+  ['feat-label','feat-img','feat-body','work-head','about-img','about-h','about-m','about-s','about-stats','gear','srv-head','srv1','srv2','srv3','c-eye','c-row'].forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
   document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   const featured = [
     { title: 'Sportsy', desc: 'Reportaż z kultowego eventu ulicznego. Energia, ruch i kadry, które działy się tylko raz. Dokument chwil, które nie czekają.', href: 'https://niebiezki.myportfolio.com/sportsy', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927' },
