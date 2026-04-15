@@ -72,9 +72,10 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 18px;
       min-height: calc(100vh - 120px);
+      align-items: start;
     }
 
     .panel {
@@ -89,7 +90,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 720px;
+      min-height: 640px;
     }
 
     .eyebrow {
@@ -198,13 +199,12 @@
     .hero-visual {
       position: relative;
       overflow: hidden;
-      min-height: 720px;
       display: grid;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: auto auto;
       gap: 18px;
       padding: 18px;
-      background:
-        linear-gradient(180deg, rgba(21,21,21,0.94), rgba(8,8,8,0.98));
+      background: linear-gradient(180deg, rgba(21,21,21,0.94), rgba(8,8,8,0.98));
+      align-self: start;
     }
 
     .visual-main {
@@ -213,15 +213,17 @@
       background: #151515;
       position: relative;
       overflow: hidden;
-      min-height: 480px;
+      min-height: 340px;
+      max-height: 420px;
     }
 
     .visual-main img {
       width: 100%;
       height: 100%;
-      min-height: 480px;
+      min-height: 340px;
+      max-height: 420px;
       object-fit: cover;
-      object-position: center;
+      object-position: center 28%;
       display: block;
     }
 
@@ -316,6 +318,12 @@
       .visual-bottom,
       .meta-grid { grid-template-columns: 1fr; }
       h1 { max-width: none; }
+
+      .visual-main,
+      .visual-main img {
+        min-height: 280px;
+        max-height: 340px;
+      }
     }
   </style>
 </head>
@@ -401,4 +409,53 @@
               <div>
                 <p class="eyebrow">Direct contact</p>
                 <h2>Mail / IG</h2>
-                <p class="mini-copy">Jeśli masz termin, miejsce i krótki opis projektu, napisz. Najs
+                <p class="mini-copy">Jeśli masz termin, miejsce i krótki opis projektu, napisz. Najszybsza droga to mail albo Instagram.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="sections">
+        <article class="panel section">
+          <p class="eyebrow">About</p>
+          <h2>Fotografia, która nie wygląda ustawienie.</h2>
+          <p class="section-copy">Pracuję z naturalnym światłem, ruchem i atmosferą miejsca. Zależy mi na kadrach, które mają ciężar, rytm i prawdziwą obecność, a nie tylko estetyczny wygląd.</p>
+        </article>
+
+        <article class="panel section" id="services">
+          <p class="eyebrow">Services</p>
+          <h2>Zakres współpracy</h2>
+          <div class="service-list">
+            <div class="service-item">
+              <strong>Reportaż z wydarzeń</strong>
+              <span>Koncerty, eventy, backstage, kultura i dokument miejsca.</span>
+            </div>
+            <div class="service-item">
+              <strong>Portret editorial</strong>
+              <span>Sesje miejskie dla twórców, muzyków i marek osobistych.</span>
+            </div>
+            <div class="service-item">
+              <strong>Materiał promocyjny</strong>
+              <span>Zdjęcia do social mediów, strony i publikacji online.</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel section">
+          <p class="eyebrow">Links</p>
+          <h2>Portfolio i kontakt</h2>
+          <p class="section-copy">Pełne galerie są dostępne online. Ta strona ma działać jako szybka, prosta i mocna wizytówka pod własną domeną.</p>
+          <div class="button-row" style="margin-top:18px;">
+            <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+            <a class="button button-secondary" href="mailto:jarek.zurawski@gmail.com">Mail</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Jarek Żurawski</p>
+      <div class="footer-links">
+        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="h
