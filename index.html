@@ -373,6 +373,11 @@
     }
     .gear-chip:hover { border-color: var(--accent); color: var(--text); }
 
+    .trust {
+      border-top: 1px solid var(--border);
+      padding: clamp(56px,8vw,96px) clamp(20px,4vw,64px);
+    }
+
     .services {
       border-top: 1px solid var(--border);
       padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
@@ -485,6 +490,9 @@
     <div class="hero-aside" id="hero-aside">
       <p class="hero-tag">Ulica · Wydarzenia · Portrety</p>
       <p class="hero-note">Bielsko-Biała<br>Śląsk / Polska</p>
+      <a class="feat-link" href="#contact" style="margin-top:18px;display:inline-flex;">Napisz do mnie
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -598,6 +606,21 @@
       <span class="gear-chip">Sigma Art 85mm</span>
       <span class="gear-chip">Sigma Art 20mm</span>
       <span class="gear-chip">Godox TT685II</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="trust">
+  <div style="max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;">
+    <div>
+      <p class="sec-label">Dlaczego to działa</p>
+      <h2 class="sec-title" style="margin-bottom:18px;">Szybko, naturalnie, konkretnie</h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.75;max-width:62ch;">Pracuję tak, żeby zdjęcia były gotowe do użycia w portfolio, social mediach i materiałach promocyjnych bez zbędnego poprawiania. Najważniejsze jest dla mnie światło, emocja i porządek w całym materiale.</p>
+    </div>
+    <div style="display:grid;gap:12px;">
+      <div style="padding:16px 18px;border:1px solid var(--border);border-radius:14px;color:var(--text);"><strong style="color:var(--accent);font-weight:700;">01</strong> Jasny kontakt i szybka odpowiedź.</div>
+      <div style="padding:16px 18px;border:1px solid var(--border);border-radius:14px;color:var(--text);"><strong style="color:var(--accent);font-weight:700;">02</strong> Reportaż, portret i materiał promocyjny.</div>
+      <div style="padding:16px 18px;border:1px solid var(--border);border-radius:14px;color:var(--text);"><strong style="color:var(--accent);font-weight:700;">03</strong> Bielsko-Biała, Śląsk i wyjazdy dalej.</div>
     </div>
   </div>
 </section>
