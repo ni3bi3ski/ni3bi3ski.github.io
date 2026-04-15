@@ -251,12 +251,15 @@
     .about-extra.is-open { max-height: 200px; opacity: 1; }
 
     .btn-more {
-      display: inline-flex; align-items: center; gap: 5px;
-      margin-top: 10px; font-size: 12px; color: var(--accent);
-      background: none; border: none; cursor: pointer; padding: 0;
-      font-family: inherit; transition: opacity .15s;
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px; font-size: 12px; font-weight: 700;
+      color: var(--accent); background: none;
+      border: 1px solid rgba(214,176,109,0.25); border-radius: 999px;
+      padding: 6px 14px; cursor: pointer; font-family: inherit;
+      transition: opacity .15s, border-color .15s;
+      letter-spacing: 0.04em;
     }
-    .btn-more:hover { opacity: 0.75; }
+    .btn-more:hover { opacity: 0.8; border-color: var(--accent); }
     .btn-more-arrow { transition: transform 0.3s ease; display: inline-block; }
     .btn-more.is-open .btn-more-arrow { transform: rotate(180deg); }
 
@@ -317,15 +320,8 @@
       gap: 3px;
     }
 
-    .project-title {
-      font-size: 14px;
-      color: var(--text);
-    }
-
-    .project-meta {
-      font-size: 12px;
-      color: var(--faint);
-    }
+    .project-title { font-size: 14px; color: var(--text); }
+    .project-meta { font-size: 12px; color: var(--faint); }
 
     .sections {
       display: grid;
@@ -374,10 +370,8 @@
     }
 
     @media (max-width: 1100px) {
-      .hero,
-      .sections { grid-template-columns: 1fr; }
-      .hero-copy,
-      .hero-visual { min-height: auto; }
+      .hero, .sections { grid-template-columns: 1fr; }
+      .hero-copy, .hero-visual { min-height: auto; }
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
@@ -385,11 +379,9 @@
       .page { width: min(var(--max), calc(100% - 18px)); }
       .hero-copy { padding: 22px; }
       .hero-visual { padding: 14px; }
-      .visual-bottom,
-      .meta-grid { grid-template-columns: 1fr; }
+      .visual-bottom, .meta-grid { grid-template-columns: 1fr; }
       h1 { max-width: none; }
-      .visual-main,
-      .visual-main img { min-height: 280px; max-height: 340px; }
+      .visual-main, .visual-main img { min-height: 280px; max-height: 340px; }
       .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -457,6 +449,11 @@
             <article class="mini-card" id="about">
               <div>
                 <p class="eyebrow">About</p>
+                <img
+                  src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg"
+                  alt="Jarek Żurawski"
+                  style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 15%;margin-bottom:10px;border:1px solid rgba(255,255,255,0.1);"
+                />
                 <h2>Naturalny dokument</h2>
                 <p class="mini-copy">Najbliżej mi do zdjęć candid, bez ustawiania i bez sztucznego pozowania. Interesuje mnie rytm miasta, emocja i gest.</p>
                 <div class="about-extra" id="about-extra">
@@ -518,9 +515,19 @@
           <p class="eyebrow">Links</p>
           <h2>Portfolio i kontakt</h2>
           <p class="section-copy">Pełne galerie są dostępne online. Ta strona ma działać jako szybka, prosta i mocna wizytówka pod własną domeną.</p>
-          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a style="min-height:44px;padding:0 16px;border-radius:999px;display:inline-flex;align-items:center;font-size:14px;font-weight:700;background:var(--text);color:#111;" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-            <a style="min-height:44px;padding:0 16px;border-radius:999px;display:inline-flex;align-items:center;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,0.14);color:var(--text);" href="mailto:jarek.zurawski@gmail.com">Mail</a>
+          <div class="service-list" style="margin-top:14px;">
+            <div class="service-item">
+              <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:15px;font-weight:700;">niebiezki.myportfolio.com →</a>
+              <span style="display:block;margin-top:3px;">Pełne portfolio na Adobe Portfolio</span>
+            </div>
+            <div class="service-item">
+              <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:15px;font-weight:700;">@niebiezki →</a>
+              <span style="display:block;margin-top:3px;">Instagram — bieżące projekty i street</span>
+            </div>
+            <div class="service-item">
+              <a href="mailto:jarek.zurawski@gmail.com" style="color:var(--accent);font-size:15px;font-weight:700;">jarek.zurawski@gmail.com →</a>
+              <span style="display:block;margin-top:3px;">Mail — kontakt i wycena</span>
+            </div>
           </div>
         </article>
       </section>
@@ -578,7 +585,6 @@
   </div>
 
   <script>
-    // About
     const btnAbout = document.getElementById('btn-about');
     const aboutExtra = document.getElementById('about-extra');
     btnAbout.addEventListener('click', () => {
@@ -588,7 +594,6 @@
       btnAbout.childNodes[0].textContent = isOpen ? 'Pokaż mniej ' : 'Pokaż więcej ';
     });
 
-    // Projects
     const btnProjects = document.getElementById('btn-projects');
     const hiddenCards = document.querySelectorAll('.project-card:not(.is-visible)');
     let projectsOpen = false;
