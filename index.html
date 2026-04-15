@@ -3,79 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jarek Żurawski — Fotografia uliczna, reportaż i portret</title>
-  <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż z wydarzeń i portret editorial. Portfolio, kontakt i współpraca w Bielsku-Białej, na Śląsku i w całej Polsce." />
-
+  <title>Jarek Żurawski — fotografia uliczna, reportaż, portret</title>
+  <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż z wydarzeń i portret editorial. Portfolio, kontakt i współpraca na Śląsku i w całej Polsce." />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --bg: #f4f1eb;
-      --bg-soft: #ece7df;
-      --surface: rgba(255,255,255,0.76);
+      --bg: #f5f2eb;
+      --bg-2: #ece6dc;
+      --surface: rgba(255,255,255,0.72);
       --surface-strong: rgba(255,255,255,0.9);
-      --border: rgba(34, 31, 28, 0.08);
+      --border: rgba(25, 20, 16, 0.08);
       --text: #171411;
       --muted: #625d56;
-      --faint: #8b857d;
-      --accent: #9f6c2f;
-      --accent-strong: #7d5423;
-      --accent-soft: rgba(159,108,47,0.10);
-      --shadow: 0 24px 70px rgba(40, 28, 18, 0.10);
-      --radius: 28px;
-      --radius-sm: 18px;
-      --max: 1180px;
+      --faint: #8d867f;
+      --accent: #9b6b32;
+      --accent-strong: #7a5225;
+      --accent-soft: rgba(155,107,50,0.10);
+      --shadow: 0 24px 80px rgba(50, 33, 19, 0.10);
+      --radius-lg: 32px;
+      --radius-md: 22px;
+      --radius-sm: 16px;
+      --max: 1200px;
     }
 
     [data-theme="dark"] {
-      --bg: #050608;
-      --bg-soft: #0d1016;
-      --surface: rgba(12, 14, 19, 0.86);
+      --bg: #06070a;
+      --bg-2: #10131a;
+      --surface: rgba(12, 14, 19, 0.82);
       --surface-strong: rgba(17, 20, 28, 0.94);
       --border: rgba(255,255,255,0.09);
       --text: #f5f2eb;
-      --muted: #a8acb8;
-      --faint: #707583;
-      --accent: #d8b06a;
-      --accent-strong: #eed28f;
-      --accent-soft: rgba(216,176,106,0.10);
-      --shadow: 0 30px 80px rgba(0,0,0,0.45);
+      --muted: #abb0bc;
+      --faint: #6e7482;
+      --accent: #d7b06d;
+      --accent-strong: #efd290;
+      --accent-soft: rgba(215,176,109,0.11);
+      --shadow: 0 32px 100px rgba(0,0,0,0.45);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       min-height: 100vh;
       font-family: 'Satoshi', system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, var(--accent-soft), transparent 24%),
-        radial-gradient(circle at 80% 20%, rgba(69,89,143,0.10), transparent 20%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+        radial-gradient(circle at top left, var(--accent-soft), transparent 22%),
+        radial-gradient(circle at 82% 18%, rgba(74,98,160,0.12), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       line-height: 1.6;
       transition: background .25s ease, color .25s ease;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     .page {
       width: min(var(--max), calc(100% - 32px));
@@ -87,8 +71,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
-      padding: 8px 0 28px;
+      gap: 18px;
+      padding: 6px 0 26px;
       flex-wrap: wrap;
     }
 
@@ -103,16 +87,16 @@
     }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      border: 1px solid rgba(216,176,106,0.35);
       display: grid;
       place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
       color: var(--accent);
       font-family: 'Instrument Serif', serif;
-      font-size: 20px;
-      background: rgba(255,255,255,0.02);
+      font-size: 22px;
+      background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
     }
 
     .topbar-right {
@@ -124,53 +108,47 @@
 
     .nav {
       display: flex;
-      gap: 18px;
       flex-wrap: wrap;
+      gap: 18px;
       color: var(--muted);
       font-size: 14px;
     }
 
     .nav a:hover,
-    .nav a:focus-visible {
-      color: var(--text);
-    }
+    .nav a:focus-visible { color: var(--text); }
 
     .theme-toggle {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
-      min-width: 44px;
-      min-height: 44px;
-      border-radius: 999px;
       cursor: pointer;
       font-size: 16px;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap: 22px;
       margin-bottom: 22px;
     }
 
     .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.78));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface-strong) 97%, transparent));
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
     }
 
-    [data-theme="dark"] .panel {
-      background: linear-gradient(180deg, rgba(16,18,24,0.96), rgba(10,12,16,0.94));
-    }
-
     .hero-copy {
-      padding: 38px;
+      padding: 40px;
+      min-height: 690px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 640px;
       position: relative;
       overflow: hidden;
     }
@@ -178,11 +156,11 @@
     .hero-copy::after {
       content: "";
       position: absolute;
-      right: -80px;
-      top: -80px;
-      width: 240px;
-      height: 240px;
-      background: radial-gradient(circle, rgba(216,176,106,0.12), transparent 68%);
+      top: -90px;
+      right: -90px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent), transparent 68%);
       pointer-events: none;
     }
 
@@ -195,16 +173,15 @@
     }
 
     h1 {
-      font-size: clamp(46px, 8vw, 92px);
-      line-height: 0.94;
-      letter-spacing: -0.06em;
+      font-size: clamp(48px, 8vw, 94px);
+      line-height: 0.92;
+      letter-spacing: -0.065em;
       max-width: 8ch;
-      margin-bottom: 24px;
       text-wrap: balance;
+      margin-bottom: 24px;
     }
 
-    h1 .serif,
-    h2 .serif {
+    .serif {
       font-family: 'Instrument Serif', serif;
       font-style: italic;
       font-weight: 400;
@@ -212,19 +189,20 @@
     }
 
     .lead {
-      max-width: 56ch;
-      color: var(--muted);
       font-size: 17px;
+      color: var(--muted);
+      max-width: 56ch;
       margin-bottom: 28px;
     }
 
     .chips,
     .inline-links,
     .footer-links,
-    .service-tags {
+    .service-tags,
+    .button-row {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
     .chip,
@@ -232,87 +210,65 @@
       padding: 9px 14px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.55);
+      background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
       color: var(--muted);
       font-size: 13px;
     }
 
-    [data-theme="dark"] .chip,
-    [data-theme="dark"] .service-tag {
-      background: rgba(255,255,255,0.02);
-    }
-
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
     .button {
+      min-height: 50px;
+      padding: 0 18px;
+      border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 0 18px;
-      border-radius: 999px;
-      font-weight: 700;
       font-size: 15px;
+      font-weight: 700;
       transition: transform .18s ease, filter .18s ease;
     }
 
-    .button:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-    }
+    .button:hover { transform: translateY(-1px); filter: brightness(1.03); }
 
     .button-primary {
-      background: linear-gradient(180deg, #eed28f, #d8b06a);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent-strong) 76%, white 24%), var(--accent));
       color: #111;
     }
 
     .button-secondary {
-      border: 1px solid rgba(216,176,106,0.35);
-      background: rgba(255,255,255,0.35);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
       color: var(--text);
     }
 
-    [data-theme="dark"] .button-secondary {
-      background: rgba(255,255,255,0.02);
-    }
-
     .micro {
+      margin-top: 18px;
       font-size: 14px;
       color: var(--muted);
-      margin-bottom: 28px;
     }
 
     .micro a,
     .inline-links a,
-    .footer-links a {
-      color: var(--accent);
-    }
+    .footer-links a { color: var(--accent); }
 
     .facts {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      padding-top: 22px;
+      padding-top: 24px;
       border-top: 1px solid var(--border);
     }
 
     .fact-label {
       font-size: 11px;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--faint);
       margin-bottom: 8px;
     }
 
     .fact-value {
-      color: var(--muted);
       font-size: 14px;
+      color: var(--muted);
     }
 
     .hero-side {
@@ -322,39 +278,24 @@
     }
 
     .visual {
-      min-height: 430px;
+      min-height: 460px;
       padding: 22px;
-      position: relative;
-      overflow: hidden;
       display: flex;
       align-items: flex-end;
+      position: relative;
+      overflow: hidden;
       background:
-        radial-gradient(circle at 70% 18%, rgba(216,176,106,0.15), transparent 15%),
-        radial-gradient(circle at 35% 75%, rgba(61,84,140,0.16), transparent 18%),
-        linear-gradient(180deg, rgba(245,241,235,0.75), rgba(236,231,223,0.95));
-    }
-
-    [data-theme="dark"] .visual {
-      background:
-        radial-gradient(circle at 70% 18%, rgba(216,176,106,0.15), transparent 15%),
-        radial-gradient(circle at 35% 75%, rgba(61,84,140,0.18), transparent 18%),
-        linear-gradient(180deg, rgba(9,10,14,0.9), rgba(14,17,24,0.98));
+        radial-gradient(circle at 72% 18%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 15%),
+        radial-gradient(circle at 32% 78%, rgba(66,92,150,0.18), transparent 18%),
+        linear-gradient(180deg, color-mix(in srgb, var(--bg) 88%, black 12%), color-mix(in srgb, var(--bg-2) 90%, black 10%));
     }
 
     .visual-frame {
-      width: 100%;
-      height: 100%;
-      min-height: 360px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.38), rgba(255,255,255,0.12));
       position: absolute;
       inset: 22px;
-      overflow: hidden;
-    }
-
-    [data-theme="dark"] .visual-frame {
-      background: linear-gradient(180deg, rgba(5,6,8,0.82), rgba(11,13,18,0.96));
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 80%, transparent), color-mix(in srgb, var(--bg-2) 95%, transparent));
     }
 
     .visual-note {
@@ -363,18 +304,14 @@
       display: inline-flex;
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.5);
-      border: 1px solid rgba(216,176,106,0.28);
+      background: color-mix(in srgb, var(--surface) 84%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
       color: var(--accent);
       font-size: 13px;
     }
 
-    [data-theme="dark"] .visual-note {
-      background: rgba(0,0,0,0.32);
-    }
-
     .info-card,
-    .content-card,
+    .text-card,
     .service-card {
       padding: 30px;
       display: flex;
@@ -389,22 +326,13 @@
       max-width: 12ch;
     }
 
-    h3 {
-      font-size: 22px;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
-
-    .info-copy,
-    .content-copy,
-    .service-copy {
-      color: var(--muted);
+    .copy {
       font-size: 15px;
-      max-width: 52ch;
+      color: var(--muted);
+      max-width: 58ch;
     }
 
-    .content-grid,
-    .services-grid {
+    .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
@@ -420,88 +348,49 @@
       padding: 16px 18px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.4);
-    }
-
-    [data-theme="dark"] .service-item {
-      background: rgba(255,255,255,0.03);
+      background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
     }
 
     .service-item strong {
       display: block;
-      margin-bottom: 6px;
       font-size: 16px;
+      margin-bottom: 6px;
     }
 
     .service-item span {
-      color: var(--muted);
       font-size: 14px;
+      color: var(--muted);
     }
 
     .footer {
-      padding: 30px 6px 0;
       display: flex;
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
+      padding: 30px 6px 0;
       color: var(--faint);
       font-size: 13px;
     }
 
     @media (max-width: 1024px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-copy {
-        min-height: auto;
-      }
-
-      .hero-side {
-        grid-template-rows: auto auto;
-      }
-
-      .content-grid,
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero,
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero-copy { min-height: auto; }
+      .hero-side { grid-template-rows: auto auto; }
     }
 
     @media (max-width: 700px) {
-      .page {
-        width: min(var(--max), calc(100% - 20px));
-        padding-top: 18px;
-      }
-
-      .topbar {
-        padding-bottom: 18px;
-      }
-
-      .nav {
-        gap: 12px;
-        font-size: 13px;
-      }
-
+      .page { width: min(var(--max), calc(100% - 20px)); padding-top: 18px; }
+      .topbar { padding-bottom: 18px; }
+      .nav { gap: 12px; font-size: 13px; }
       .hero-copy,
       .info-card,
-      .visual,
-      .content-card,
-      .service-card {
-        padding: 22px;
-      }
-
-      .visual-frame {
-        inset: 22px;
-      }
-
-      .facts {
-        grid-template-columns: 1fr;
-      }
-
-      h1,
-      h2 {
-        max-width: none;
-      }
+      .text-card,
+      .service-card,
+      .visual { padding: 22px; }
+      .visual-frame { inset: 22px; }
+      .facts { grid-template-columns: 1fr; }
+      h1, h2 { max-width: none; }
     }
   </style>
 </head>
@@ -531,10 +420,7 @@
           <div>
             <p class="eyebrow">Fotografia · Bielsko-Biała · Silesia</p>
             <h1>Fotografia <span class="serif">uliczna</span>, reportaż i portret.</h1>
-            <p class="lead">
-              Pracuję w przestrzeni miejskiej, na koncertach i wydarzeniach. Szukam napięcia,
-              światła i prawdziwych momentów — bez przesady, bez sztuczności, z naciskiem na atmosferę kadru.
-            </p>
+            <p class="lead">Specjalizuję się w fotografii ulicznej, reportażach z wydarzeń i portretach editorialnych. Szukam prawdziwych momentów, naturalnego światła i obrazów, które niosą atmosferę, a nie tylko zapisują obecność w kadrze.</p>
 
             <div class="chips" aria-label="Specjalizacje">
               <span class="chip">fotografia uliczna</span>
@@ -542,15 +428,12 @@
               <span class="chip">portret editorial</span>
             </div>
 
-            <div class="actions">
+            <div class="button-row">
               <a class="button button-primary" href="mailto:jaromir.zurawski@gmail.com">Zapytaj o zlecenie</a>
               <a class="button button-secondary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Zobacz portfolio</a>
             </div>
 
-            <p class="micro">
-              Lub napisz na IG:
-              <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a>
-            </p>
+            <p class="micro">Lub napisz na IG: <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a></p>
           </div>
 
           <div class="facts" aria-label="Informacje podstawowe">
@@ -564,7 +447,7 @@
             </div>
             <div>
               <div class="fact-label">Dostępność</div>
-              <div class="fact-value">PL · EU · zapytania indywidualne</div>
+              <div class="fact-value">PL · EU · współprace indywidualne</div>
             </div>
           </div>
         </section>
@@ -577,10 +460,7 @@
 
           <section class="panel info-card">
             <h2>Wybrane serie i pełne galerie</h2>
-            <p class="info-copy">
-              Twoje pełne portfolio jest już online. Ta strona działa jako szybka wizytówka pod własną domeną,
-              a galerie otwierają się po kliknięciu.
-            </p>
+            <p class="copy">Pełne portfolio działa już online. Ta strona jest Twoją główną wizytówką pod własną domeną, a galerie i większe serie otwierają się bezpośrednio w Adobe Portfolio.</p>
             <div class="inline-links">
               <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Otwórz portfolio</a>
               <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -589,28 +469,18 @@
         </aside>
       </section>
 
-      <section class="content-grid" id="omnie">
-        <article class="panel content-card">
+      <section class="grid-2" id="omnie">
+        <article class="panel text-card">
           <p class="eyebrow">O mnie</p>
           <h2>Dokument, atmosfera i <span class="serif">prawdziwy moment</span>.</h2>
-          <p class="content-copy">
-            Fotografuję ulicę, wydarzenia i portrety w sposób, który stawia na naturalność, napięcie
-            i historię w kadrze. Interesują mnie obrazy, które nie wyglądają jak przypadkowy zapis chwili,
-            tylko jak świadome zatrzymanie emocji i rytmu miejsca.
-          </p>
-          <p class="content-copy">
-            Pracuję głównie na Śląsku, ale jestem otwarty na współprace wyjazdowe, sesje indywidualne
-            i zlecenia dla marek, artystów oraz organizatorów wydarzeń.
-          </p>
+          <p class="copy">Fotografuję ulicę, wydarzenia i portrety w sposób oparty na naturalności, napięciu i historii zawartej w obrazie. Najbardziej interesują mnie kadry, które wyglądają autentycznie i mają w sobie rytm miejsca, światło i emocję.</p>
+          <p class="copy">Pracuję głównie na Śląsku, ale jestem otwarty na współprace wyjazdowe, sesje indywidualne i projekty dla marek, artystów oraz organizatorów wydarzeń.</p>
         </article>
 
-        <article class="panel content-card">
+        <article class="panel text-card">
           <p class="eyebrow">Współpraca</p>
           <h2>Zdjęcia do koncertów, wydarzeń i marki osobistej.</h2>
-          <p class="content-copy">
-            Jeśli potrzebujesz reportażu z eventu, portretów w miejskiej scenerii albo materiału wizualnego
-            do promocji projektu, mogę przygotować spójną serię dopasowaną do charakteru wydarzenia lub osoby.
-          </p>
+          <p class="copy">Jeśli potrzebujesz reportażu z eventu, portretów w miejskiej scenerii albo materiału wizualnego do promocji projektu, przygotuję spójną serię dopasowaną do charakteru wydarzenia, osoby lub marki.</p>
           <div class="service-tags">
             <span class="service-tag">koncerty</span>
             <span class="service-tag">eventy</span>
@@ -620,7 +490,7 @@
         </article>
       </section>
 
-      <section class="services-grid" id="uslugi">
+      <section class="grid-2" id="uslugi">
         <article class="panel service-card">
           <p class="eyebrow">Usługi</p>
           <h2>Zakres współpracy</h2>
@@ -631,11 +501,11 @@
             </div>
             <div class="service-item">
               <strong>Portret editorial</strong>
-              <span>Naturalne portrety w przestrzeni miejskiej, dla twórców, marek osobistych i projektów kreatywnych.</span>
+              <span>Naturalne portrety w przestrzeni miejskiej dla twórców, marek osobistych i projektów kreatywnych.</span>
             </div>
             <div class="service-item">
               <strong>Sesje wizerunkowe</strong>
-              <span>Materiał do social mediów, strony internetowej, portfolio artystycznego i promocji własnej marki.</span>
+              <span>Materiał do social mediów, strony internetowej, portfolio artystycznego i komunikacji marki.</span>
             </div>
           </div>
         </article>
@@ -643,11 +513,8 @@
         <article class="panel service-card">
           <p class="eyebrow">Kontakt</p>
           <h2>Masz projekt? Napisz.</h2>
-          <p class="service-copy">
-            Najprościej odezwać się mailowo albo przez Instagram. Jeśli masz termin, miejsce i krótki opis zlecenia,
-            przygotuję odpowiedź szybciej.
-          </p>
-          <div class="actions">
+          <p class="copy">Najprościej odezwać się mailowo albo przez Instagram. Jeśli podasz termin, miejsce i krótki opis zlecenia, szybciej przygotuję odpowiedź.</p>
+          <div class="button-row">
             <a class="button button-primary" href="mailto:jaromir.zurawski@gmail.com">jaromir.zurawski@gmail.com</a>
             <a class="button button-secondary" href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
@@ -667,12 +534,10 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
     const root = document.documentElement;
     const toggle = document.querySelector('[data-theme-toggle]');
     let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     root.setAttribute('data-theme', theme);
-
     toggle.addEventListener('click', () => {
       theme = theme === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', theme);
