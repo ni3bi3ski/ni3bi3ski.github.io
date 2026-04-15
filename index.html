@@ -1,367 +1,430 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Jarek Żurawski – Fotografia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio fotograficzne Jarka Żurawskiego – fotografia uliczna, reportaż z wydarzeń, portrety editorial.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jarek Żurawski — Fotografia</title>
+  <meta name="description" content="Jarek Żurawski — fotografia uliczna, reportaż i portret. Portfolio i kontakt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     :root {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --space-12: 3rem;
-      --space-16: 4rem;
-      --color-bg: #050608;
-      --color-surface: #0a0b0f;
-      --color-surface-2: #11131a;
-      --color-text: #f5f5f5;
-      --color-text-muted: #9ca3af;
-      --color-text-faint: #6b7280;
-      --color-accent: #e5b567;
-      --radius-full: 9999px;
-      --shadow-md: 0 18px 45px rgba(0,0,0,0.65);
-      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-      --content-width: min(1120px, 100% - 2.5rem);
+      --bg: #050608;
+      --surface: rgba(12, 14, 19, 0.88);
+      --surface-2: rgba(17, 20, 28, 0.92);
+      --border: rgba(255,255,255,0.09);
+      --text: #f5f2eb;
+      --muted: #a8acb8;
+      --faint: #707583;
+      --accent: #d8b06a;
+      --accent-2: #9e7740;
+      --max: 1180px;
+      --radius: 28px;
+      --radius-sm: 18px;
+      --shadow: 0 30px 80px rgba(0,0,0,0.45);
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      text-size-adjust: none;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      font-size: var(--text-base);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(216,176,106,0.10), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(69,89,143,0.16), transparent 22%),
+        linear-gradient(180deg, #0a0c11 0%, #050608 45%, #030406 100%);
       line-height: 1.6;
-      color: var(--color-text);
-      background: radial-gradient(circle at top, #111827 0, #020304 52%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
     }
 
-    main {
-      width: 100%;
-      padding-block: var(--space-12);
+    .topbar {
       display: flex;
-      justify-content: center;
-    }
-
-    .shell {
-      width: var(--content-width);
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: var(--space-8);
-    }
-
-    @media (max-width: 880px) {
-      .shell {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card,
-    .portfolio-card {
-      background: radial-gradient(circle at top left, rgba(229,181,103,0.12), transparent 55%), var(--color-surface);
-      border-radius: 1.25rem;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      box-shadow: var(--shadow-md);
-      padding: var(--space-8);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-6);
-    }
-
-    .eyebrow {
-      font-size: var(--text-xs);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--color-text-faint);
-    }
-
-    h1 {
-      font-size: var(--text-2xl);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-    }
-
-    .subtitle,
-    .portfolio-copy,
-    .note {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-
-    .tags,
-    .link-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-    }
-
-    .tag {
-      padding: 0.3rem 0.75rem;
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      border: 1px solid rgba(148,163,184,0.3);
-      color: var(--color-text-muted);
-      background: rgba(15,23,42,0.9);
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
+      justify-content: space-between;
       align-items: center;
+      gap: 24px;
+      padding: 8px 0 28px;
     }
 
-    .btn-primary,
-    .btn-secondary {
-      padding: 0.8rem 1.35rem;
-      border-radius: var(--radius-full);
-      font-size: var(--text-sm);
-      font-weight: 600;
+    .brand {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: transform var(--transition), filter var(--transition);
+      gap: 12px;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
     }
 
-    .btn-primary {
-      background: radial-gradient(circle at top left, #fde68a, #e5b567);
-      color: #111827;
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(229,181,103,0.45);
-      color: var(--color-text);
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(216,176,106,0.35);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
       background: rgba(255,255,255,0.02);
     }
 
-    .btn-primary:hover,
-    .btn-secondary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.04);
-    }
-
-    .meta {
+    .nav {
       display: flex;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: var(--space-6);
-      padding-top: var(--space-4);
-      border-top: 1px solid rgba(148,163,184,0.24);
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .meta-label {
-      font-size: var(--text-xs);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-text-faint);
+    .nav a:hover,
+    .nav a:focus-visible { color: var(--text); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: stretch;
     }
 
-    .meta-value {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
+    .panel {
+      background: linear-gradient(180deg, rgba(16,18,24,0.96), rgba(10,12,16,0.94));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }
 
-    .portfolio-card {
-      background: radial-gradient(circle at top right, rgba(56,189,248,0.1), transparent 55%), var(--color-surface-2);
-      justify-content: space-between;
-    }
-
-    .portfolio-preview {
-      min-height: 320px;
-      border-radius: 1rem;
-      border: 1px solid rgba(148,163,184,0.18);
-      background: linear-gradient(135deg, rgba(10,11,15,0.95), rgba(17,19,26,0.96));
+    .hero-copy {
+      padding: 38px;
       display: flex;
-      align-items: flex-end;
-      padding: var(--space-6);
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 640px;
       position: relative;
       overflow: hidden;
     }
 
-    .portfolio-preview::before,
-    .portfolio-preview::after {
+    .hero-copy::after {
       content: "";
       position: absolute;
-      border-radius: 1rem;
-      opacity: 0.35;
-      background: radial-gradient(circle, rgba(229,181,103,0.35), transparent 70%);
+      right: -80px;
+      top: -80px;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(216,176,106,0.12), transparent 68%);
+      pointer-events: none;
     }
 
-    .portfolio-preview::before {
-      width: 220px;
-      height: 220px;
-      top: -40px;
-      right: -30px;
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 18px;
     }
 
-    .portfolio-preview::after {
-      width: 160px;
-      height: 160px;
-      bottom: -30px;
-      left: -20px;
+    h1 {
+      font-size: clamp(48px, 8vw, 90px);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      max-width: 8ch;
+      margin-bottom: 24px;
+      text-wrap: balance;
     }
 
-    .portfolio-badge {
+    h1 .serif {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .lead {
+      max-width: 54ch;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 28px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .chip {
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform .18s ease, filter .18s ease, border-color .18s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); filter: brightness(1.03); }
+
+    .button-primary {
+      background: linear-gradient(180deg, #eed28f, #d8b06a);
+      color: #111;
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(216,176,106,0.35);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+    }
+
+    .micro {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .micro a,
+    .inline-links a,
+    .footer-links a { color: var(--accent); }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fact-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 8px;
+    }
+
+    .fact-value {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 22px;
+    }
+
+    .visual {
+      min-height: 430px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background:
+        radial-gradient(circle at 70% 18%, rgba(216,176,106,0.15), transparent 15%),
+        radial-gradient(circle at 35% 75%, rgba(61,84,140,0.18), transparent 18%),
+        linear-gradient(180deg, rgba(9,10,14,0.9), rgba(14,17,24,0.98));
+    }
+
+    .visual-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(5,6,8,0.82), rgba(11,13,18,0.96));
+      position: absolute;
+      inset: 22px;
+      overflow: hidden;
+    }
+
+    .visual-note {
       position: relative;
       z-index: 1;
       display: inline-flex;
-      padding: 0.35rem 0.75rem;
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      color: var(--color-accent);
-      border: 1px solid rgba(229,181,103,0.28);
-      background: rgba(0,0,0,0.24);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.32);
+      border: 1px solid rgba(216,176,106,0.28);
+      color: var(--accent);
+      font-size: 13px;
     }
 
-    .link-list a {
-      color: var(--color-accent);
-      text-decoration: underline;
-      text-underline-offset: 0.2em;
-    }
-
-    footer {
-      width: 100%;
-      padding: var(--space-6) 1.25rem var(--space-8);
+    .info-card {
+      padding: 30px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
     }
 
-    .footer-inner {
-      width: var(--content-width);
+    h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .info-copy {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 36ch;
+    }
+
+    .inline-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 15px;
+    }
+
+    .footer {
+      padding: 28px 6px 0;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: var(--space-4);
-      font-size: var(--text-xs);
-      color: var(--color-text-faint);
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--faint);
+      font-size: 13px;
     }
 
     .footer-links {
       display: flex;
-      gap: var(--space-3);
+      gap: 14px;
       flex-wrap: wrap;
     }
 
-    .footer-links a:hover {
-      color: var(--color-accent);
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { min-height: auto; }
+      .hero-side { grid-template-rows: auto auto; }
     }
 
-    @media (max-width: 640px) {
-      .card,
-      .portfolio-card {
-        padding: var(--space-6);
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    @media (max-width: 700px) {
+      .page { width: min(var(--max), calc(100% - 20px)); padding-top: 18px; }
+      .topbar { padding-bottom: 18px; }
+      .nav { gap: 12px; font-size: 13px; }
+      .hero-copy, .info-card, .visual { padding: 22px; }
+      .visual-frame { inset: 22px; }
+      .facts { grid-template-columns: 1fr; }
+      h1 { max-width: none; }
+      h2 { max-width: none; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section class="shell" aria-label="Portfolio fotograficzne Jarek Żurawski">
-      <article class="card">
-        <header>
-          <p class="eyebrow">Fotografia · Bielsko-Biała</p>
-          <h1>Jarek Żurawski<br>fotografia uliczna, reportaż, portret.</h1>
-          <p class="subtitle">
-            Pracuję w przestrzeni miejskiej, na koncertach i wydarzeniach.
-            Łączę dokument z subtelną inscenizacją, szukając autentycznych historii zamiast idealnych póz.
-          </p>
-          <div class="tags">
-            <span class="tag">fotografia uliczna</span>
-            <span class="tag">reportaż z wydarzeń</span>
-            <span class="tag">portret editorial</span>
-          </div>
-        </header>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">J</span>
+        <span>Jarek Żurawski</span>
+      </div>
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:jaromir.zurawski@gmail.com">Kontakt</a>
+      </nav>
+    </header>
 
-        <div class="cta-row">
-          <a href="mailto:jarek.zurawski@example.com" class="btn-primary">Zapytaj o zlecenie</a>
-          <a href="https://niebiezki.myportfolio.com/" class="btn-secondary" target="_blank" rel="noopener noreferrer">Pełne portfolio</a>
+    <main class="hero">
+      <section class="panel hero-copy" aria-label="Wprowadzenie">
+        <div>
+          <p class="eyebrow">Fotografia · Bielsko-Biała · Silesia</p>
+          <h1>Fotografia <span class="serif">uliczna</span>, reportaż i portret.</h1>
+          <p class="lead">Pracuję w przestrzeni miejskiej, na koncertach i wydarzeniach. Szukam napięcia, światła i prawdziwych momentów — bez przesady, bez sztuczności, z naciskiem na atmosferę kadru.</p>
+
+          <div class="chips" aria-label="Specjalizacje">
+            <span class="chip">fotografia uliczna</span>
+            <span class="chip">reportaż z wydarzeń</span>
+            <span class="chip">portret editorial</span>
+          </div>
+
+          <div class="actions">
+            <a class="button button-primary" href="mailto:jaromir.zurawski@gmail.com">Zapytaj o zlecenie</a>
+            <a class="button button-secondary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Zobacz portfolio</a>
+          </div>
+
+          <p class="micro">
+            Lub napisz na IG:
+            <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a>
+          </p>
         </div>
 
-        <p class="note">
-          Lub napisz na IG:
-          <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent);">@niebiezki</a>
-        </p>
-
-        <section aria-label="Informacje o dostępności">
-          <div class="meta">
-            <div>
-              <div class="meta-label">Lokalizacja</div>
-              <div class="meta-value">Bielsko-Biała · Śląskie · PL</div>
-            </div>
-            <div>
-              <div class="meta-label">Specjalizacja</div>
-              <div class="meta-value">koncerty, eventy, portret w mieście</div>
-            </div>
-            <div>
-              <div class="meta-label">Dostępność</div>
-              <div class="meta-value">PL · EU · zapytania indywidualne</div>
-            </div>
+        <div class="facts" aria-label="Informacje podstawowe">
+          <div>
+            <div class="fact-label">Lokalizacja</div>
+            <div class="fact-value">Bielsko-Biała · Śląskie · PL</div>
           </div>
+          <div>
+            <div class="fact-label">Specjalizacja</div>
+            <div class="fact-value">koncerty, eventy, portret w mieście</div>
+          </div>
+          <div>
+            <div class="fact-label">Dostępność</div>
+            <div class="fact-value">PL · EU · zapytania indywidualne</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="hero-side" aria-label="Przejście do portfolio">
+        <section class="panel visual">
+          <div class="visual-frame" aria-hidden="true"></div>
+          <span class="visual-note">Adobe Portfolio · aktywne galerie</span>
         </section>
-      </article>
 
-      <aside class="portfolio-card" aria-label="Przejście do pełnego portfolio">
-        <div class="portfolio-preview">
-          <span class="portfolio-badge">Adobe Portfolio · aktywne galerie</span>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap: var(--space-4);">
-          <h2 style="font-size: var(--text-xl); line-height:1.15;">Wybrane serie i pełne galerie</h2>
-          <p class="portfolio-copy">
-            Twoje zdjęcia są już dostępne w Adobe Portfolio.
-            Na tej stronie zostawiamy prostą wizytówkę, a pełne galerie otwierają się po kliknięciu.
+        <section class="panel info-card">
+          <h2>Wybrane serie i pełne galerie</h2>
+          <p class="info-copy">
+            Twoje pełne portfolio jest już online. Ta strona działa jako mocna, szybka wizytówka pod własną domeną, a galerie otwierają się po kliknięciu.
           </p>
-          <div class="link-list">
+          <div class="inline-links">
             <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Otwórz portfolio</a>
             <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
-        </div>
+        </section>
       </aside>
-    </section>
-  </main>
+    </main>
 
-  <footer>
-    <div class="footer-inner">
+    <footer class="footer">
       <p>© <span id="year"></span> Jarek Żurawski. Wszystkie prawa zastrzeżone.</p>
-      <nav class="footer-links" aria-label="Linki zewnętrzne">
-        <a href="mailto:jarek.zurawski@example.com">E-mail</a>
+      <div class="footer-links">
+        <a href="mailto:jaromir.zurawski@gmail.com">E-mail</a>
         <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Adobe Portfolio</a>
-      </nav>
-    </div>
-  </footer>
+      </div>
+    </footer>
+  </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
