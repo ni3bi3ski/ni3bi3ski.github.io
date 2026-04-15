@@ -18,6 +18,7 @@
       --accent: #d6b06d;
       --max: 1360px;
       --radius: 28px;
+      --radius-sm: 22px;
       --shadow: 0 24px 80px rgba(0,0,0,0.38);
     }
 
@@ -34,6 +35,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     .page {
       width: min(var(--max), calc(100% - 28px));
@@ -68,7 +70,9 @@
     }
 
     .nav a:hover,
-    .nav a:focus-visible { color: var(--text); }
+    .nav a:focus-visible,
+    .project-card:hover .project-title,
+    .project-card:focus-within .project-title { color: var(--text); }
 
     .hero {
       display: grid;
@@ -108,6 +112,13 @@
       max-width: 6ch;
       margin-bottom: 26px;
       text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 10px;
     }
 
     .lead {
@@ -161,7 +172,7 @@
       justify-content: center;
       font-size: 14px;
       font-weight: 700;
-      transition: transform .18s ease, opacity .18s ease;
+      transition: transform .18s ease, opacity .18s ease, background .18s ease;
       cursor: pointer;
     }
 
@@ -170,6 +181,7 @@
     .button-primary {
       background: var(--text);
       color: #111;
+      border: none;
     }
 
     .button-secondary {
@@ -195,8 +207,7 @@
 
     .small-note a,
     .footer a,
-    .section a,
-    .project-item a { color: var(--accent); }
+    .section a { color: var(--accent); }
 
     .hero-visual {
       position: relative;
@@ -210,7 +221,7 @@
     }
 
     .visual-main {
-      border-radius: 22px;
+      border-radius: var(--radius-sm);
       border: 1px solid var(--border);
       background: #151515;
       position: relative;
@@ -226,7 +237,6 @@
       max-height: 420px;
       object-fit: cover;
       object-position: center 28%;
-      display: block;
     }
 
     .visual-bottom {
@@ -236,7 +246,7 @@
     }
 
     .mini-card {
-      border-radius: 22px;
+      border-radius: var(--radius-sm);
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.02);
       padding: 18px;
@@ -244,13 +254,6 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: 170px;
-    }
-
-    h2 {
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      margin-bottom: 10px;
     }
 
     .section-copy,
@@ -272,46 +275,98 @@
       min-height: 260px;
     }
 
-    .service-list,
-    .projects-list {
+    .service-list {
       display: grid;
       gap: 12px;
       margin-top: 10px;
     }
 
-    .service-item,
-    .project-item {
+    .service-item {
       border-top: 1px solid var(--border);
       padding-top: 12px;
     }
 
-    .service-item strong,
-    .project-item strong {
+    .service-item strong {
       display: block;
       font-size: 15px;
       margin-bottom: 4px;
     }
 
-    .service-item span,
-    .project-item span {
+    .service-item span {
       font-size: 14px;
       color: var(--muted);
     }
 
-    .project-item {
-      opacity: 0;
-      transform: translateY(18px);
-      max-height: 0;
-      overflow: hidden;
-      pointer-events: none;
-      transition: opacity 0.45s ease, transform 0.45s ease, max-height 0.45s ease;
+    .projects-panel {
+      margin-top: 18px;
+      padding: 24px;
     }
 
-    .project-item.is-visible {
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      opacity: 0;
+      transform: translateY(20px);
+      max-height: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease, transform 0.45s ease, max-height 0.45s ease, border-color 0.2s ease;
+    }
+
+    .project-card.is-visible {
       opacity: 1;
       transform: translateY(0);
-      max-height: 120px;
+      max-height: 520px;
       pointer-events: auto;
+    }
+
+    .project-card:hover {
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .project-thumb {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #121212;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .project-card:hover .project-thumb img {
+      transform: scale(1.03);
+    }
+
+    .project-body {
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .project-title {
+      font-size: 16px;
+      line-height: 1.2;
+      transition: color .2s ease;
+    }
+
+    .project-meta {
+      font-size: 13px;
+      color: var(--muted);
     }
 
     .footer {
@@ -328,14 +383,16 @@
 
     @media (max-width: 1100px) {
       .hero,
-      .sections { grid-template-columns: 1fr; }
+      .sections,
+      .projects-grid { grid-template-columns: 1fr; }
       .hero-copy,
       .hero-visual { min-height: auto; }
     }
 
     @media (max-width: 700px) {
       .page { width: min(var(--max), calc(100% - 18px)); }
-      .hero-copy { padding: 22px; }
+      .hero-copy,
+      .projects-panel { padding: 22px; }
       .hero-visual { padding: 14px; }
       .visual-bottom,
       .meta-grid { grid-template-columns: 1fr; }
@@ -473,4 +530,128 @@
             <a class="button button-primary" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
             <a class="button button-secondary" href="mailto:jarek.zurawski@gmail.com">Mail</a>
           </div>
-        </article
+        </article>
+      </section>
+
+      <section class="panel projects-panel" id="projects">
+        <p class="eyebrow">Projects</p>
+        <h2>Wybrane projekty</h2>
+        <p class="section-copy">Podgląd wybranych serii i reportaży z Adobe Portfolio. Kliknięcie otwiera pełny projekt w nowej karcie.</p>
+
+        <div class="projects-grid">
+          <a class="project-card is-visible" href="https://niebiezki.myportfolio.com/sportsy" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927" alt="Podgląd projektu Sportsy" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Sportsy</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card is-visible" href="https://niebiezki.myportfolio.com/sylwester-bielsko-biala-31122025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/4ebc0e4c-2479-48c8-b3eb-d5867ee9bb5d_rwc_0x508x1365x769x1365.jpg?h=2301dc38cae991b2d07e2d0b0bf1bdf2" alt="Podgląd projektu Sylwester Bielsko-Biała 25/26" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Sylwester Bielsko-Biała 25/26</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card is-visible" href="https://niebiezki.myportfolio.com/street-yourself-2-28062025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/0bf760d5-d0ef-4a40-9062-1af3265fad7e_rwc_0x305x1638x923x1638.jpg?h=b8da8e5156b530baed52a416b1b99727" alt="Podgląd projektu Street Yourself 2" width="1638" height="1638" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Street Yourself 2</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/rekord-sokol-15082025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/07d83596-9fd8-4a69-aeda-dcefad48ffb9_car_16x9.jpg?h=cfee3d55dc9ef0fc78cadea689acf54e" alt="Podgląd projektu Rekord - Sokół - Betclic II liga 2025/2026" width="1600" height="900" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Rekord - Sokół - Betclic II liga 2025/2026</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/psk-2026-inauguracja-20022025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/406e456c-f088-4069-a7d1-accf2fd26249_rwc_0x96x1920x1082x1920.jpg?h=8ad1e6aa8f30a5b7319024abaa1dca74" alt="Podgląd projektu PSK 2026 - Inauguracja" width="1920" height="1920" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">PSK 2026 - Inauguracja</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/mistrzostwa-polski-roasters-2025-04102025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/abb051f4-5ac9-4baa-8044-54693c335c1d_rwc_0x756x1365x769x1365.jpg?h=196e57710072ceadc534c0a5dbb14d5e" alt="Podgląd projektu Mistrzostwa Polski Roasters 2025" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Mistrzostwa Polski Roasters 2025</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/marsz-rownosci-w-bielsku-bialej-22062025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/838e1451-a9b9-465d-bbbf-2ad22f272d52_rwc_0x639x1365x769x1365.jpg?h=0ad53312dd4d806a7fe004ae34f6ab51" alt="Podgląd projektu Marsz Równości w Bielsku-Białej 2025" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Marsz Równości w Bielsku-Białej 2025</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/kwiat-paproci-24062025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/8261c1bd-b76a-4afd-b0d3-c6c1ed0741b5_rwc_0x565x1638x923x1638.jpg?h=6252e8cf10a2b5498913e422a488432c" alt="Podgląd projektu Kwiat Paproci" width="1638" height="1638" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Kwiat Paproci</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/kochac-wszystkie-pieski" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/035a6fad-6687-4bcb-bac7-954f982910d3_rwc_0x639x1365x769x1365.jpg?h=f081d256bcdc8a46c0f75d43079004ab" alt="Podgląd projektu KOCHAĆ WSZYSTKIE PIESKI!" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">KOCHAĆ WSZYSTKIE PIESKI!</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/inauguracja-27-zadymki-jazzowej-29062025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/598fc9df-7d6e-4abe-aba5-9e444181e53e_rwc_0x639x1365x769x1365.jpg?h=dec67ba1478da584bf72ac157b1ddbf0" alt="Podgląd projektu Inauguracja 27 Zadymki Jazzowej" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Inauguracja 27 Zadymki Jazzowej</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/gosiolek-11012026" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/281a2a65-608b-44e9-b8ca-18c1d64ffa80_rwc_0x366x1365x769x1365.jpg?h=a8c7370b0904b64db8043bf10ffa396f" alt="Podgląd projektu Gosiołki, lalki Małgorzaty Jankowskiej" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Gosiołki, lalki Małgorzaty Jankowskiej</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/beskidzki-rajd-pojazdow-zabytkowych-12072025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/5372c016-3b5f-49a2-99a5-cd2ca6e69a70_rwc_0x565x1638x923x1638.jpg?h=4fb644c1e20ff8ab970b0172292365f3" alt="Podgląd projektu 46. Międzynarodowy Beskidzki Rajd Pojazdów Zabytkowych" width="1638" height="1638" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">46. Międzynarodowy Beskidzki Rajd Pojazdów Zabytkowych</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/sztuka-tu-live-streetart-12062025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/f7d0725a-c89c-449f-a4bb-835b658aa84d_rwc_0x639x1365x769x1365.jpg?h=aa9257cfcfa092edcfb4d45da6178f80" alt="Podgląd projektu Sztuka Tu – Live StreetART" width="1365" height="1365" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">Sztuka Tu – Live StreetART</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/alleycat-22092025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/3ba5db16-565a-4aae-8dbf-c3d5eb504349_rwc_0x565x1638x923x1638.jpg?h=69da014cae94550b82656e07a314be63" alt="Podgląd projektu ALLEYCAT ŚLADAMI BIELSKICH BAJEK - Majsterkownia" width="1638" height="1638" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">ALLEYCAT ŚLADAMI BIELSKICH BAJEK - Majsterkownia</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+
+          <a class="project-card" href="https://niebiezki.myportfolio.com/3x3-13072025" target="_blank" rel="noopener noreferrer">
+            <div class="project-thumb"><img src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/c8255988-5e14-4f93-81b0-18dbf2f2384f_rwc_0x662x1638x923x1638.jpg?h=1b45e420755e4a6fafedff1484f00647" alt="Podgląd projektu 3x3 QUEST BIELSKO-BIAŁA 2025" width="1638" height="1638" loading="lazy" decoding="async"></div>
+            <div class="project-body"><strong class="project-title">3x3 QUEST BIELSKO-BIAŁA 2025</strong><span class="project-meta">Adobe Portfolio project</span></div>
+          </a>
+        </div>
+
+        <div class="button-row" style="margin-top:18px;">
+          <button class="button button-secondary" id="toggleProjects" type="button">Pokaż więcej</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Jarek Żurawski</p>
+      <div class="footer-links">
+        <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Adobe Portfolio</a>
+        <a href="mailto:jarek.zurawski@gmail.com">jarek.zurawski@gmail.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggleButton = document.getElementById('toggleProjects');
+    const hiddenProjects = Array.from(document.querySelectorAll('.project-card:not(.is-visible)'));
+    let expanded = false;
+
+    toggleButton.addEventListener('click', () => {
+      expanded = !expanded;
+
+      hiddenProjects.forEach((item, index) => {
+        if (expanded) {
+          setTimeout(() => item.classList.add('is-visible'), index * 70);
+        } else {
+          const reverseIndex = hiddenProjects.length - index - 1;
+          setTimeout(() => item.classList.remove('is-visible'), reverseIndex * 50);
+        }
+      });
+
+      toggleButton.textContent = expanded ? 'Pokaż mniej' : 'Pokaż więcej';
+    });
+  </script>
+</body>
+</html>
