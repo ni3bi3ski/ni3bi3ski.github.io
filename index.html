@@ -623,9 +623,9 @@
   </div>
   <div class="about-body">
     <p class="sec-label">O mnie</p>
-    <h2 class="about-heading" id="about-h">Naturalny<br>dokument</h2>
-    <p class="about-mission" id="about-m">Fotografuję to, co dzieje się naprawdę — zanim ktoś zdąży się ustawić.</p>
-    <p class="about-sub" id="about-s">Pracuję z naturalnym światłem i atmosferą miejsca. Interesuje mnie rytm miasta, emocja i gest — kadry, które mają ciężar i zostają dłużej niż kilka sekund.</p>
+    <h2 class="about-heading" id="about-h">Łapię momenty<br>zanim znikną</h2>
+    <p class="about-mission" id="about-m">Pracuję szybko, uważnie i bez sztucznego ustawiania sceny.</p>
+    <p class="about-sub" id="about-s">Najbardziej interesuje mnie światło, gest i prawda miejsca. Szukam kadrów, które mają energię, ciężar i zostają w pamięci dłużej niż kilka sekund.</p>
     <div class="stats" id="about-stats">
       <div class="stat"><div class="stat-n">7<em>+</em></div><div class="stat-l">Lat praktyki</div></div>
       <div class="stat"><div class="stat-n">200<em>+</em></div><div class="stat-l">Eventów</div></div>
@@ -667,17 +667,17 @@
     <div class="srv" id="srv1">
       <span class="srv-num">01</span>
       <h3 class="srv-name">Reportaż z wydarzeń</h3>
-      <p class="srv-desc">Koncerty, eventy kulturalne, backstage, sport i dokument miejsca. Rejestruję to, co dzieje się naprawdę — nie inscenizację, a prawdziwy przepływ chwil.</p>
+      <p class="srv-desc">Koncerty, eventy kulturalne, backstage, sport i dokument miejsca. Rejestruję to, co dzieje się naprawdę — bez inscenizacji i bez nadęcia.</p>
     </div>
     <div class="srv" id="srv2">
       <span class="srv-num">02</span>
       <h3 class="srv-name">Portret editorial</h3>
-      <p class="srv-desc">Sesje miejskie dla twórców, muzyków i marek osobistych. Pracuję w przestrzeni, gdzie jest napięcie, faktura i prawdziwe światło.</p>
+      <p class="srv-desc">Sesje miejskie dla twórców, muzyków i marek osobistych. Pracuję tam, gdzie są napięcie, faktura i prawdziwe światło.</p>
     </div>
     <div class="srv" id="srv3">
       <span class="srv-num">03</span>
       <h3 class="srv-name">Materiał promocyjny</h3>
-      <p class="srv-desc">Zdjęcia do social mediów, stron i publikacji online. Estetyczne, ale nie plastikowe — materiał, który wyróżnia markę bez utraty autentyczności.</p>
+      <p class="srv-desc">Zdjęcia do social mediów, stron i publikacji online. Mają wyglądać świeżo, mocno i naturalnie — bez plastikowego efektu.</p>
     </div>
   </div>
 </section>
@@ -758,7 +758,20 @@
   const extras = document.querySelectorAll('.p-item.extra');
   const txt = document.getElementById('btn-txt');
   let open = false;
-  btn.addEventListener('click', () => { open = !open; extras.forEach((el, i) => { if (open) { el.classList.add('show'); setTimeout(() => el.classList.add('go'), 30 + i * 100); } else { el.classList.remove('go'); setTimeout(() => el.classList.remove('show'), 500); } }); txt.textContent = open ? 'Pokaż mniej' : 'Pokaż więcej'; btn.classList.toggle('open', open); });
+  btn.addEventListener('click', () => {
+    open = !open;
+    extras.forEach((el, i) => {
+      if (open) {
+        el.classList.add('show');
+        setTimeout(() => el.classList.add('go'), 30 + i * 100);
+      } else {
+        el.classList.remove('go');
+        setTimeout(() => el.classList.remove('show'), 500);
+      }
+    });
+    txt.textContent = open ? 'Pokaż mniej' : 'Pokaż więcej';
+    btn.classList.toggle('open', open);
+  });
 </script>
 </body>
 </html>
