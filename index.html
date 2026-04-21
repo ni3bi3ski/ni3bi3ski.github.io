@@ -8,15 +8,14 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SS6526DSZQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS6526DSZQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SS6526DSZQ');
+  </script>
 
-  gtag('config', 'G-SS6526DSZQ');
-</script>
-  
   <style>
     :root {
       --bg: #070707;
@@ -431,6 +430,85 @@
     .srv-name { font-size: clamp(20px,2vw,28px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 14px; }
     .srv-desc { font-size: 14px; color: var(--muted); line-height: 1.72; }
 
+    .pricing {
+      border-top: 1px solid var(--border);
+      padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
+    }
+    .pricing-head {
+      margin-bottom: 34px;
+      max-width: 780px;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s, transform .6s;
+    }
+    .pricing-head.go { opacity: 1; transform: translateY(0); }
+    .pricing-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 60ch;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    .price-card {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 32px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease, border-color .25s ease, background .25s ease;
+    }
+    .price-card.go { opacity: 1; transform: translateY(0); }
+    .price-card:hover {
+      border-color: rgba(200,163,82,0.28);
+      background: rgba(200,163,82,0.03);
+    }
+    .price-card:nth-child(2) { transition-delay: .08s; }
+    .price-card:nth-child(3) { transition-delay: .16s; }
+    .price-kicker {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .price-title {
+      font-size: clamp(20px,2vw,28px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .price-value {
+      font-size: clamp(28px,3vw,42px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .price-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.72;
+      max-width: 34ch;
+    }
+    .pricing-foot {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+      max-width: 70ch;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s ease .12s, transform .6s ease .12s;
+    }
+    .pricing-foot.go { opacity: 1; transform: translateY(0); }
+
     .contact {
       border-top: 1px solid var(--border);
       padding: clamp(100px,12vw,180px) clamp(20px,4vw,64px);
@@ -476,7 +554,7 @@
     footer a:hover { color: var(--text); }
 
     @media (max-width: 960px) {
-      .featured-card, .about, .srv-grid { grid-template-columns: 1fr; }
+      .featured-card, .about, .srv-grid, .pricing-grid { grid-template-columns: 1fr; }
       .about-body { border-left: none; border-top: 1px solid var(--border); }
       .grid { grid-template-columns: 1fr; }
       .hero-inner { grid-template-columns: 1fr; }
@@ -516,6 +594,7 @@
     <a href="#work">Prace</a>
     <a href="#about">O mnie</a>
     <a href="#services">Usługi</a>
+    <a href="#pricing">Cennik</a>
     <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
     <a href="#contact">Kontakt</a>
   </div>
@@ -693,6 +772,45 @@
   </div>
 </section>
 
+<section class="pricing" id="pricing">
+  <div class="pricing-head" id="pricing-head">
+    <p class="sec-label">Cennik</p>
+    <h2 class="sec-title">Pakiety startowe</h2>
+    <p class="pricing-note">Ceny są orientacyjne i zależą od czasu pracy, lokalizacji oraz zakresu zlecenia. Przy większych realizacjach przygotowuję indywidualną wycenę.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <article class="price-card" id="price1">
+      <div>
+        <p class="price-kicker">01</p>
+        <h3 class="price-title">Reportaż z wydarzeń</h3>
+        <p class="price-value">od 450 zł</p>
+      </div>
+      <p class="price-desc">Koncerty, eventy, sport, backstage i dokument miejsca. Cena startowa za krótkie zlecenia lokalne.</p>
+    </article>
+
+    <article class="price-card" id="price2">
+      <div>
+        <p class="price-kicker">02</p>
+        <h3 class="price-title">Portret editorial</h3>
+        <p class="price-value">od 400 zł</p>
+      </div>
+      <p class="price-desc">Sesje miejskie dla osób prywatnych, twórców i marek osobistych. Naturalne światło, prosty proces i konkretne kadry.</p>
+    </article>
+
+    <article class="price-card" id="price3">
+      <div>
+        <p class="price-kicker">03</p>
+        <h3 class="price-title">Materiał promocyjny</h3>
+        <p class="price-value">od 600 zł</p>
+      </div>
+      <p class="price-desc">Zdjęcia do social mediów, strony i publikacji online. Wycena zależy od zakresu, liczby kadrów i sposobu użycia materiału.</p>
+    </article>
+  </div>
+
+  <p class="pricing-foot" id="pricing-foot">Większe wydarzenia, dłuższa obecność na miejscu i niestandardowe projekty wyceniam indywidualnie po krótkim briefie.</p>
+</section>
+
 <section class="contact" id="contact">
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
   <h2 class="contact-h" id="c-h">Masz<br>projekt<em>?</em></h2>
@@ -723,6 +841,7 @@
   (function loop() { rx += (mx-rx)*.1; ry += (my-ry)*.1; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(loop); })();
   document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cur.classList.add('on-link')); el.addEventListener('mouseleave', () => cur.classList.remove('on-link')); });
   document.querySelectorAll('img').forEach(el => { el.addEventListener('mouseenter', () => cur.classList.add('on-img')); el.addEventListener('mouseleave', () => cur.classList.remove('on-img')); });
+
   const navToggle = document.getElementById('nav-toggle');
   const navLinks = document.getElementById('nav-links');
   if (navToggle && navLinks) {
@@ -735,13 +854,45 @@
       navToggle.setAttribute('aria-expanded', false);
     }));
   }
-  window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('solid', window.scrollY > 50); }, {passive:true});
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('solid', window.scrollY > 50);
+  }, {passive:true});
+
   const heroImg = document.querySelector('.hero-img img');
-  window.addEventListener('scroll', () => { if (window.scrollY < window.innerHeight) { heroImg.style.transform = `translateY(${window.scrollY * 0.28}px)`; } }, {passive:true});
-  window.addEventListener('load', () => { document.getElementById('hero-title').classList.add('go'); document.getElementById('hero-aside').classList.add('go'); });
-  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('go'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
-  ['feat-label','feat-img','feat-body','work-head','about-img','about-h','about-m','about-s','about-stats','gear','srv-head','srv1','srv2','srv3','c-eye','c-h','c-row'].forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < window.innerHeight) {
+      heroImg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+    }
+  }, {passive:true});
+
+  window.addEventListener('load', () => {
+    document.getElementById('hero-title').classList.add('go');
+    document.getElementById('hero-aside').classList.add('go');
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('go');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  [
+    'feat-label','feat-img','feat-body','work-head',
+    'about-img','about-h','about-m','about-s','about-stats','gear',
+    'srv-head','srv1','srv2','srv3',
+    'pricing-head','price1','price2','price3','pricing-foot',
+    'c-eye','c-h','c-row'
+  ].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+
   document.querySelectorAll('.p-item').forEach(el => io.observe(el));
+
   const featured = [
     { title: 'Sportsy', desc: 'Reportaż z kultowego eventu ulicznego. Energia, ruch i kadry, które działy się tylko raz. Dokument chwil, które nie czekają.', href: 'https://niebiezki.myportfolio.com/sportsy', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927' },
     { title: 'Sylwester Bielsko-Biała 25/26', desc: 'Nocny reportaż z miasta. Światło, tłum i energia przejścia między starym a nowym rokiem.', href: 'https://niebiezki.myportfolio.com/sylwester-bielsko-biala-31122025', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/4ebc0e4c-2479-48c8-b3eb-d5867ee9bb5d_rwc_0x508x1365x769x1365.jpg?h=2301dc38cae991b2d07e2d0b0bf1bdf2' },
@@ -751,6 +902,7 @@
     { title: 'Mistrzostwa Polski Roasters 2025', desc: 'Reportaż z branżowego wydarzenia, w którym liczy się tempo, detal i atmosfera.', href: 'https://niebiezki.myportfolio.com/mistrzostwa-polski-roasters-2025-04102025', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/abb051f4-5ac9-4baa-8044-54693c335c1d_rwc_0x756x1365x769x1365.jpg?h=196e57710072ceadc534c0a5dbb14d5e' },
     { title: 'Marsz Równości — Bielsko-Biała 2025', desc: 'Dokument miejskiego wydarzenia z naciskiem na emocje i kontekst ulicy.', href: 'https://niebiezki.myportfolio.com/marsz-rownosci-w-bielsku-bialej-22062025', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/838e1451-a9b9-465d-bbbf-2ad22f272d52_rwc_0x639x1365x769x1365.jpg?h=0ad53312dd4d806a7fe004ae34f6ab51' }
   ];
+
   let pick = featured[Math.floor(Math.random() * featured.length)];
   try {
     const saved = sessionStorage.getItem('featuredIndex');
@@ -758,6 +910,7 @@
     if (Number.isInteger(idx) && idx >= 0 && idx < featured.length) pick = featured[idx];
     else sessionStorage.setItem('featuredIndex', String(featured.indexOf(pick)));
   } catch (e) {}
+
   const featImg = document.getElementById('feat-img');
   featImg.href = pick.href;
   featImg.querySelector('img').src = pick.img;
@@ -765,10 +918,12 @@
   document.querySelector('.feat-title').textContent = pick.title;
   document.querySelector('.feat-desc').textContent = pick.desc;
   document.querySelector('.feat-num').textContent = 'Wyróżniony projekt';
+
   const btn = document.getElementById('btn-more');
   const extras = document.querySelectorAll('.p-item.extra');
   const txt = document.getElementById('btn-txt');
   let open = false;
+
   btn.addEventListener('click', () => {
     open = !open;
     extras.forEach((el, i) => {
