@@ -396,6 +396,36 @@
       transition: border-color .2s, color .2s;
     }
     .gear-chip:hover { border-color: var(--accent); color: var(--text); }
+    .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 32px 0;
+}
+
+.benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.benefit-list li {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.benefit-list li strong {
+  color: var(--text);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.benefit-list li span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 
     .trust {
       border-top: 1px solid var(--border);
@@ -784,7 +814,6 @@
     <a href="#work">Prace</a>
     <a href="#about">O mnie</a>
     <a href="#services">Usługi</a>
-    <a href="#pricing">Cennik</a>
     <a href="#opinie">Opinie</a>
     <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
     <a href="#contact">Kontakt</a>
@@ -902,16 +931,32 @@
     <img class="img-responsive" src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg" alt="Jarek Żurawski" loading="lazy" width="1600" height="2000">
     <span class="about-badge">Bielsko-Biała · Śląsk</span>
   </div>
+  
   <div class="about-body">
-    <p class="sec-label">O mnie</p>
-    <h2 class="about-heading" id="about-h">Łapię momenty<br>zanim znikną</h2>
-    <p class="about-mission" id="about-m">Pracuję szybko, uważnie i bez sztucznego ustawiania sceny.</p>
-    <p class="about-sub" id="about-s">Najbardziej interesuje mnie światło, gest i prawda miejsca. Szukam kadrów, które mają energię, ciężar i zostają w pamięci dłużej niż kilka sekund.</p>
-    <div class="stats" id="about-stats">
-      <div class="stat"><div class="stat-n">7<em>+</em></div><div class="stat-l">Lat praktyki</div></div>
-      <div class="stat"><div class="stat-n">200<em>+</em></div><div class="stat-l">Eventów</div></div>
-      <div class="stat"><div class="stat-n">2<em>×</em></div><div class="stat-l">Systemy</div></div>
+    <div>
+      <p class="sec-label">O mnie</p>
+      <h2 class="about-heading" id="about-h">Łapię momenty<br>zanim znikną</h2>
+      <p class="about-mission" id="about-m">Pracuję szybko, uważnie i bez sztucznego ustawiania sceny.</p>
+      <p class="about-sub" id="about-s">Najbardziej interesuje mnie światło, gest i prawda miejsca. Szukam kadrów, które mają energię, ciężar i zostają w pamięci dłużej niż kilka sekund.</p>
     </div>
+
+    <div class="about-grid">
+      <div class="stats" id="about-stats">
+        <div class="stat"><div class="stat-n">7<em>+</em></div><div class="stat-l">Lat praktyki</div></div>
+        <div class="stat"><div class="stat-n">200<em>+</em></div><div class="stat-l">Eventów</div></div>
+        <div class="stat"><div class="stat-n">2<em>×</em></div><div class="stat-l">Systemy</div></div>
+      </div>
+
+      <div>
+        <p class="sec-label">Dlaczego to działa</p>
+        <ul class="benefit-list">
+          <li><strong>Jasny kontakt</strong><br><span>Szybka odpowiedź i konkretna umowa.</span></li>
+          <li><strong>Uniwersalne usługi</strong><br><span>Reportaż, portret, materiały promocyjne.</span></li>
+          <li><strong>Wszędzie dostępny</strong><br><span>Bielsko-Biała, Śląsk, wyjazdy dalej.</span></li>
+        </ul>
+      </div>
+    </div>
+
     <div class="gear-row" id="gear">
       <span class="gear-chip">Sony A7 IV</span>
       <span class="gear-chip">Ricoh GRIII</span>
@@ -922,6 +967,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="trust" id="trust">
   <div style="max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;">
