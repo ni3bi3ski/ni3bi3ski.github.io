@@ -402,112 +402,97 @@
       padding: clamp(56px,8vw,96px) clamp(20px,4vw,64px);
     }
 
-    .services {
-      border-top: 1px solid var(--border);
-      padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
-    }
-    .services-head {
-      margin-bottom: 56px;
-      opacity: 0; transform: translateY(18px);
-      transition: opacity .6s, transform .6s;
-    }
-    .services-head.go { opacity: 1; transform: translateY(0); }
-    .srv-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      border-top: 1px solid var(--border);
-    }
-    .srv {
-      padding: 40px 32px; border-right: 1px solid var(--border);
-      opacity: 0; transform: translateY(22px);
-      transition: opacity .6s ease, transform .6s ease, background .3s;
-    }
-    .srv:last-child { border-right: none; }
-    .srv:nth-child(2) { transition-delay: .08s; }
-    .srv:nth-child(3) { transition-delay: .16s; }
-    .srv.go { opacity: 1; transform: translateY(0); }
-    .srv:hover { background: rgba(255,255,255,.02); }
-    .srv-num { font-size: 11px; letter-spacing: .22em; color: var(--accent); display: block; margin-bottom: 22px; }
-    .srv-name { font-size: clamp(20px,2vw,28px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 14px; }
-    .srv-desc { font-size: 14px; color: var(--muted); line-height: 1.72; }
+    .services-pricing {
+  border-top: 1px solid var(--border);
+  padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
+}
+.sp-header {
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s, transform .6s;
+}
+.sp-header.go { opacity: 1; transform: translateY(0); }
+.sp-intro {
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease .08s, transform .6s ease .08s;
+}
+.sp-intro.go { opacity: 1; transform: translateY(0); }
+.sp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  margin-bottom: 40px;
+}
+.sp-card {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease, border-color .25s ease, background .25s ease;
+}
+.sp-card.go { opacity: 1; transform: translateY(0); }
+.sp-card:hover {
+  border-color: rgba(200,163,82,0.28);
+  background: rgba(200,163,82,0.03);
+}
+.sp-card:nth-child(2) { transition-delay: .08s; }
+.sp-card:nth-child(3) { transition-delay: .16s; }
+.sp-num {
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.sp-name {
+  font-size: clamp(18px,2vw,24px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.sp-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.72;
+  margin-bottom: 18px;
+}
+.sp-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin-top: auto;
+}
+.sp-footer {
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease .12s, transform .6s ease .12s;
+}
+.sp-footer.go { opacity: 1; transform: translateY(0); }
 
-    .pricing {
-      border-top: 1px solid var(--border);
-      padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
-    }
-    .pricing-head {
-      margin-bottom: 34px;
-      max-width: 780px;
-      opacity: 0; transform: translateY(18px);
-      transition: opacity .6s, transform .6s;
-    }
-    .pricing-head.go { opacity: 1; transform: translateY(0); }
-    .pricing-note {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-      max-width: 60ch;
-    }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
-    }
-    .price-card {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      padding: 32px;
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      opacity: 0; transform: translateY(22px);
-      transition: opacity .6s ease, transform .6s ease, border-color .25s ease, background .25s ease;
-    }
-    .price-card.go { opacity: 1; transform: translateY(0); }
-    .price-card:hover {
-      border-color: rgba(200,163,82,0.28);
-      background: rgba(200,163,82,0.03);
-    }
-    .price-card:nth-child(2) { transition-delay: .08s; }
-    .price-card:nth-child(3) { transition-delay: .16s; }
-    .price-kicker {
-      font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 18px;
-    }
-    .price-title {
-      font-size: clamp(20px,2vw,28px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-    .price-value {
-      font-size: clamp(28px,3vw,42px);
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .price-desc {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.72;
-      max-width: 34ch;
-    }
-    .pricing-foot {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.75;
-      max-width: 70ch;
-      opacity: 0; transform: translateY(18px);
-      transition: opacity .6s ease .12s, transform .6s ease .12s;
-    }
-    .pricing-foot.go { opacity: 1; transform: translateY(0); }
+@media (max-width: 960px) {
+  .sp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
     .testimonials {
       border-top: 1px solid var(--border);
@@ -930,44 +915,40 @@
   </div>
 </section>
 
-<section class="pricing" id="pricing">
-  <div class="pricing-head" id="pricing-head">
-    <p class="sec-label">Cennik</p>
-    <h2 class="sec-title">Pakiety startowe</h2>
-    <p class="pricing-note">Ceny są orientacyjne i zależą od czasu pracy, lokalizacji oraz zakresu zlecenia. Przy większych realizacjach przygotowuję indywidualną wycenę.</p>
+<section class="services-pricing" id="services">
+  <div class="sp-header">
+    <p class="sec-label">Co robię</p>
+    <h2 class="sec-title">Usługi i cennik</h2>
   </div>
 
-  <div class="pricing-grid">
-    <article class="price-card" id="price1">
-      <div>
-        <p class="price-kicker">01</p>
-        <h3 class="price-title">Reportaż z wydarzeń</h3>
-        <p class="price-value">od 450 zł</p>
-      </div>
-      <p class="price-desc">Koncerty, eventy, sport, backstage i dokument miejsca. Cena startowa za krótkie zlecenia lokalne.</p>
+  <div class="sp-intro">Krótko: jeśli chcesz zdjęcia z charakterem, odezwij się i sprawdzimy termin. Ceny są orientacyjne i zależą od czasu pracy, lokalizacji oraz zakresu zlecenia.</div>
+
+  <div class="sp-grid">
+    <article class="sp-card" id="sp-card1">
+      <div class="sp-num">01</div>
+      <h3 class="sp-name">Reportaż z wydarzeń</h3>
+      <p class="sp-desc">Koncerty, eventy kulturalne, backstage, sport i dokument miejsca. Rejestruję to, co dzieje się naprawdę — bez inscenizacji i bez nadęcia.</p>
+      <div class="sp-price">od 450 zł</div>
     </article>
 
-    <article class="price-card" id="price2">
-      <div>
-        <p class="price-kicker">02</p>
-        <h3 class="price-title">Portret editorial</h3>
-        <p class="price-value">od 400 zł</p>
-      </div>
-      <p class="price-desc">Sesje miejskie dla osób prywatnych, twórców i marek osobistych. Naturalne światło, prosty proces i konkretne kadry.</p>
+    <article class="sp-card" id="sp-card2">
+      <div class="sp-num">02</div>
+      <h3 class="sp-name">Portret editorial</h3>
+      <p class="sp-desc">Sesje miejskie dla twórców, muzyków i marek osobistych. Pracuję tam, gdzie są napięcie, faktura i prawdziwe światło.</p>
+      <div class="sp-price">od 400 zł</div>
     </article>
 
-    <article class="price-card" id="price3">
-      <div>
-        <p class="price-kicker">03</p>
-        <h3 class="price-title">Materiał promocyjny</h3>
-        <p class="price-value">od 600 zł</p>
-      </div>
-      <p class="price-desc">Zdjęcia do social mediów, strony i publikacji online. Wycena zależy od zakresu, liczby kadrów i sposobu użycia materiału.</p>
+    <article class="sp-card" id="sp-card3">
+      <div class="sp-num">03</div>
+      <h3 class="sp-name">Materiał promocyjny</h3>
+      <p class="sp-desc">Zdjęcia do social mediów, stron i publikacji online. Mają wyglądać świeżo, mocno i naturalnie — bez plastikowego efektu.</p>
+      <div class="sp-price">od 600 zł</div>
     </article>
   </div>
 
-  <p class="pricing-foot" id="pricing-foot">Większe wydarzenia, dłuższa obecność na miejscu i niestandardowe projekty wyceniam indywidualnie po krótkim briefie.</p>
+  <p class="sp-footer">Większe wydarzenia, dłuższa obecność na miejscu i niestandardowe projekty wyceniam indywidualnie po krótkim briefie.</p>
 </section>
+
 
 <section class="testimonials" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
