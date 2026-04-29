@@ -998,107 +998,42 @@
   <div class="testimonials-head" id="testimonials-head">
     <p class="sec-label">Referencje</p>
     <h2 class="sec-title">Opinie klientów</h2>
-    <p class="testimonials-note">
-      Kilka słów od osób i marek, z którymi pracowałem. Jeśli mamy za sobą wspólny projekt,
-      możesz też zostawić krótką opinię przez formularz poniżej.
-    </p>
+    <p class="testimonials-note">Kilka słów od osób i marek, z którymi pracowałem. Jeśli mamy za sobą wspólny projekt, możesz też zostawić krótką opinię przez formularz poniżej.</p>
   </div>
 
   <div class="testimonials-grid">
-    <article class="testimonial-card" id="testimonial1">
-      <div>
-        <p class="testimonial-kicker">01</p>
-        <p class="testimonial-quote">„Świetny kontakt, szybka reakcja i bardzo mocny materiał. Zdjęcia miały naturalny klimat i od razu nadawały się do publikacji.”</p>
-      </div>
-      <div class="testimonial-meta">
-        <strong>Klient eventowy</strong>
-        <span>Reportaż z wydarzenia</span>
-      </div>
-    </article>
-
-    <article class="testimonial-card" id="testimonial2">
-      <div>
-        <p class="testimonial-kicker">02</p>
-        <p class="testimonial-quote">„Bez zbędnego ustawiania, bez sztuczności. Kadry wyglądały świeżo i bardzo dobrze oddały charakter miejsca.”</p>
-      </div>
-      <div class="testimonial-meta">
-        <strong>Marka lokalna</strong>
-        <span>Materiał promocyjny</span>
-      </div>
-    </article>
-
-    <article class="testimonial-card" id="testimonial3">
-      <div>
-        <p class="testimonial-kicker">03</p>
-        <p class="testimonial-quote">„Cały proces był prosty i konkretny. Dobre wyczucie światła, atmosfery i momentu — dokładnie o to chodziło.”</p>
-      </div>
-      <div class="testimonial-meta">
-        <strong>Sesja prywatna</strong>
-        <span>Portret editorial</span>
-      </div>
-    </article>
+    <!-- Wklej tutaj kolejne karty opinii gdy je dostaniesz -->
   </div>
 
   <div class="testimonial-form-wrap">
     <div class="testimonial-form-intro" id="testimonial-intro">
       <p class="sec-label">Dodaj opinię</p>
       <h3 class="testimonial-form-title">Masz za sobą współpracę ze mną?</h3>
-      <p class="testimonial-form-text">
-        Jeśli chcesz, zostaw krótką opinię. Po akceptacji mogę dodać ją na stronę
-        razem z imieniem, nazwą firmy albo typem realizacji.
-      </p>
+      <p class="testimonial-form-text">Jeśli chcesz, zostaw krótką opinię. Po akceptacji dodam ją na stronę razem z imieniem, nazwą firmy albo typem realizacji.</p>
     </div>
-
-<form
-  class="testimonial-form"
-  id="testimonial-form"
-  action="https://formspree.io/f/xvzlprdq"
-  method="POST"
->
-  <div class="form-grid">
-    <label>
-      <span>Imię / nazwa</span>
-      <input type="text" name="name" placeholder="Np. Anna / Studio XYZ" required>
-    </label>
-
-    <label>
-      <span>Email</span>
-      <input type="email" name="email" placeholder="twoj@email.pl" required>
-    </label>
-  </div>
-
-  <label>
-    <span>Typ współpracy</span>
-    <input type="text" name="project_type" placeholder="Np. reportaż z eventu / portret / materiał promocyjny">
-  </label>
-
-  <label>
-    <span>Opinia</span>
-    <textarea name="testimonial" rows="6" placeholder="Napisz 2–4 zdania o współpracy" required></textarea>
-  </label>
-
-  <label class="check">
-    <input type="checkbox" name="publication_consent" required>
-    <span>Wyrażam zgodę na kontakt w sprawie opinii oraz na jej publikację na stronie w całości lub we fragmencie, razem z podanym imieniem / nazwą.</span>
-  </label>
-
-  <input type="hidden" name="_subject" value="Nowa opinia ze strony">
-  <input type="text" name="_gotcha" style="display:none">
-
-  <button class="testimonial-submit" type="submit">
-    Wyślij opinię
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
-    </svg>
-  </button>
-
-  <p class="testimonial-legal">
-    Dziękuję — po wysłaniu opinia trafia do weryfikacji.
-  </p>
-</form>
-
+    <form class="testimonial-form" id="testimonial-form" action="https://formspree.io/f/fxvzlprdq" method="POST">
+      <div class="form-grid">
+        <label><span>Imię / nazwa</span><input type="text" name="name" placeholder="Np. Anna / Studio XYZ" required></label>
+        <label><span>Email</span><input type="email" name="email" placeholder="twoj@email.pl" required></label>
+      </div>
+      <label><span>Typ współpracy</span><input type="text" name="projecttype" placeholder="Np. reportaż z eventu / portret / materiał promocyjny"></label>
+      <label><span>Opinia</span><textarea name="testimonial" rows="6" placeholder="Napisz 2–4 zdania o współpracy" required></textarea></label>
+      <label class="check">
+        <input type="checkbox" name="publicationconsent" required>
+        <span>Wyrażam zgodę na kontakt w sprawie opinii oraz na jej publikację na stronie w całości lub we fragmencie, razem z podanym imieniem/nazwą.</span>
+      </label>
+      <input type="hidden" name="subject" value="Nowa opinia ze strony">
+      <input type="text" name="gotcha" style="display:none">
+      <button class="testimonial-submit" type="submit">Wyślij opinię
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <p class="testimonial-legal">Dziękuję — po wysłaniu opinia trafia do weryfikacji.</p>
+    </form>
   </div>
 </section>
+
 
 <section class="contact" id="contact">
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
