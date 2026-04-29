@@ -429,6 +429,14 @@
     .srv-num { font-size: 11px; letter-spacing: .22em; color: var(--accent); display: block; margin-bottom: 22px; }
     .srv-name { font-size: clamp(20px,2vw,28px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 14px; }
     .srv-desc { font-size: 14px; color: var(--muted); line-height: 1.72; }
+    .srv-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin-top: auto;
+}
+
 
     .pricing {
       border-top: 1px solid var(--border);
@@ -933,66 +941,37 @@
 <section class="services" id="services">
   <div class="services-head" id="srv-head">
     <p class="sec-label">Co robię</p>
-    <h2 class="sec-title">Usługi</h2>
+    <h2 class="sec-title">Usługi i cennik</h2>
   </div>
-  <div style="grid-column:1/-1;padding:0 0 22px 0;color:var(--muted);font-size:14px;">Krótko: jeśli chcesz zdjęcia z charakterem, odezwij się i sprawdzimy termin.</div>
+  
+  <div style="grid-column:1/-1;padding:0 0 22px 0;color:var(--muted);font-size:14px;">Krótko: jeśli chcesz zdjęcia z charakterem, odezwij się i sprawdzimy termin. Ceny są orientacyjne i zależą od czasu pracy, lokalizacji oraz zakresu zlecenia.</div>
+
   <div class="srv-grid">
-    <div class="srv" id="srv1">
+    <article class="srv" id="srv1">
       <span class="srv-num">01</span>
       <h3 class="srv-name">Reportaż z wydarzeń</h3>
       <p class="srv-desc">Koncerty, eventy kulturalne, backstage, sport i dokument miejsca. Rejestruję to, co dzieje się naprawdę — bez inscenizacji i bez nadęcia.</p>
-    </div>
-    <div class="srv" id="srv2">
+      <p class="srv-price">od 450 zł</p>
+    </article>
+
+    <article class="srv" id="srv2">
       <span class="srv-num">02</span>
       <h3 class="srv-name">Portret editorial</h3>
       <p class="srv-desc">Sesje miejskie dla twórców, muzyków i marek osobistych. Pracuję tam, gdzie są napięcie, faktura i prawdziwe światło.</p>
-    </div>
-    <div class="srv" id="srv3">
+      <p class="srv-price">od 400 zł</p>
+    </article>
+
+    <article class="srv" id="srv3">
       <span class="srv-num">03</span>
       <h3 class="srv-name">Materiał promocyjny</h3>
       <p class="srv-desc">Zdjęcia do social mediów, stron i publikacji online. Mają wyglądać świeżo, mocno i naturalnie — bez plastikowego efektu.</p>
-    </div>
+      <p class="srv-price">od 600 zł</p>
+    </article>
   </div>
+
+  <p style="max-width:70ch;color:var(--muted);font-size:14px;line-height:1.75;margin-top:40px;">Większe wydarzenia, dłuższa obecność na miejscu i niestandardowe projekty wyceniam indywidualnie po krótkim briefie.</p>
 </section>
 
-<section class="pricing" id="pricing">
-  <div class="pricing-head" id="pricing-head">
-    <p class="sec-label">Cennik</p>
-    <h2 class="sec-title">Pakiety startowe</h2>
-    <p class="pricing-note">Ceny są orientacyjne i zależą od czasu pracy, lokalizacji oraz zakresu zlecenia. Przy większych realizacjach przygotowuję indywidualną wycenę.</p>
-  </div>
-
-  <div class="pricing-grid">
-    <article class="price-card" id="price1">
-      <div>
-        <p class="price-kicker">01</p>
-        <h3 class="price-title">Reportaż z wydarzeń</h3>
-        <p class="price-value">od 450 zł</p>
-      </div>
-      <p class="price-desc">Koncerty, eventy, sport, backstage i dokument miejsca. Cena startowa za krótkie zlecenia lokalne.</p>
-    </article>
-
-    <article class="price-card" id="price2">
-      <div>
-        <p class="price-kicker">02</p>
-        <h3 class="price-title">Portret editorial</h3>
-        <p class="price-value">od 400 zł</p>
-      </div>
-      <p class="price-desc">Sesje miejskie dla osób prywatnych, twórców i marek osobistych. Naturalne światło, prosty proces i konkretne kadry.</p>
-    </article>
-
-    <article class="price-card" id="price3">
-      <div>
-        <p class="price-kicker">03</p>
-        <h3 class="price-title">Materiał promocyjny</h3>
-        <p class="price-value">od 600 zł</p>
-      </div>
-      <p class="price-desc">Zdjęcia do social mediów, strony i publikacji online. Wycena zależy od zakresu, liczby kadrów i sposobu użycia materiału.</p>
-    </article>
-  </div>
-
-  <p class="pricing-foot" id="pricing-foot">Większe wydarzenia, dłuższa obecność na miejscu i niestandardowe projekty wyceniam indywidualnie po krótkim briefie.</p>
-</section>
 
 <section class="testimonials" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
