@@ -1123,6 +1123,27 @@
   });
 
   document.querySelectorAll('.p-item').forEach(el => io.observe(el));
+  fetch('./opinie.json')
+  .then(r => r.json())
+  .then(opinie => {
+    const grid = document.querySelector('.testimonials-grid');
+    const approved = opinie.filter(o => o.approved);
+    if (!approved.length) return;
+    grid.innerHTML = approved.map((o, i) => `
+      <article class="testimonial-card" id="testimonial${i+1}">
+        <div>
+          <p class="testimonial-kicker">${o.kicker}</p>
+          <p class="testimonial-quote">"${o.quote}"</p>
+        </div>
+        <div class="testimonial-meta">
+          <strong>${o.name}</strong>
+          <span>${o.meta}</span>
+        </div>
+      </article>
+    `).join('');
+    document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
+  });
+
 
   const featured = [
     { title: 'Sportsy', desc: 'Reportaż z kultowego eventu ulicznego. Energia, ruch i kadry, które działy się tylko raz. Dokument chwil, które nie czekają.', href: 'https://niebiezki.myportfolio.com/sportsy', img: 'https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927' },
