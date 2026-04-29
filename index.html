@@ -1049,51 +1049,54 @@
       </p>
     </div>
 
-    <form
-      class="testimonial-form"
-      id="testimonial-form"
-      action="https://formspree.io/f/xvzlprdq"
-      method="POST"
-    >
-      <div class="form-grid">
-        <label>
-          <span>Imię / nazwa</span>
-          <input type="text" name="name" placeholder="Np. Anna / Studio XYZ" required>
-        </label>
+<form
+  class="testimonial-form"
+  id="testimonial-form"
+  action="https://formspree.io/f/xvzlprdq"
+  method="POST"
+>
+  <div class="form-grid">
+    <label>
+      <span>Imię / nazwa</span>
+      <input type="text" name="name" placeholder="Np. Anna / Studio XYZ" required>
+    </label>
 
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" placeholder="twoj@email.pl" required>
-        </label>
-      </div>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" placeholder="twoj@email.pl" required>
+    </label>
+  </div>
 
-      <label>
-        <span>Typ współpracy</span>
-        <input type="text" name="project_type" placeholder="Np. reportaż z eventu / portret / materiał promocyjny">
-      </label>
+  <label>
+    <span>Typ współpracy</span>
+    <input type="text" name="project_type" placeholder="Np. reportaż z eventu / portret / materiał promocyjny">
+  </label>
 
-      <label>
-        <span>Opinia</span>
-        <textarea name="testimonial" rows="6" placeholder="Napisz 2–4 zdania o współpracy" required></textarea>
-      </label>
+  <label>
+    <span>Opinia</span>
+    <textarea name="testimonial" rows="6" placeholder="Napisz 2–4 zdania o współpracy" required></textarea>
+  </label>
 
-      <label class="check">
-        <input type="checkbox" name="publication_consent" required>
-        <span>Wyrażam zgodę na kontakt w sprawie opinii oraz na jej publikację na stronie w całości lub we fragmencie, razem z podanym imieniem / nazwą.</span>
-      </label>
+  <label class="check">
+    <input type="checkbox" name="publication_consent" required>
+    <span>Wyrażam zgodę na kontakt w sprawie opinii oraz na jej publikację na stronie w całości lub we fragmencie, razem z podanym imieniem / nazwą.</span>
+  </label>
 
-      <input type="hidden" name="_subject" value="Nowa opinia ze strony">
-      <button class="testimonial-submit" type="submit">
-        Wyślij opinię
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
+  <input type="hidden" name="_subject" value="Nowa opinia ze strony">
+  <input type="text" name="_gotcha" style="display:none">
 
-      <p class="testimonial-legal">
-        Po podpięciu formularza pod własny endpoint możesz zbierać opinie ze statycznej strony, bo takie formularze działają przez zewnętrzny endpoint zamiast własnego backendu [web:99][web:103].
-      </p>
-    </form>
+  <button class="testimonial-submit" type="submit">
+    Wyślij opinię
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  <p class="testimonial-legal">
+    Dziękuję — po wysłaniu opinia trafia do weryfikacji.
+  </p>
+</form>
+
   </div>
 </section>
 
