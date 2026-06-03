@@ -102,7 +102,7 @@
     .nav-links.open { display: flex; }
 
     .hero {
-      height: 100svh; min-height: 600px;
+      height: 72vh; min-height: 520px;
       position: relative; overflow: hidden;
       display: flex; align-items: flex-end;
     }
@@ -263,7 +263,7 @@
     }
     .all-link:hover { color: var(--text); border-color: var(--accent); }
 
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
     .p-item {
       position: relative; overflow: hidden;
       aspect-ratio: 4/3; background: #111;
@@ -746,10 +746,14 @@
     }
     footer a:hover { color: var(--text); }
 
+    @media (max-width: 760px) {
+      div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+      div[style*="grid-template-columns:1fr 1fr"] section { border-left: none !important; border-top: 1px solid var(--border) !important; }
+    }
     @media (max-width: 960px) {
       .featured-card, .about, .srv-grid, .pricing-grid, .testimonials-grid, .testimonial-form-wrap, .form-grid { grid-template-columns: 1fr; }
       .about-body { border-left: none; border-top: 1px solid var(--border); }
-      .grid { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
       .hero-inner { grid-template-columns: 1fr; }
       .hero-aside { text-align: left; }
       .nav-toggle { display: inline-flex; align-items: center; }
@@ -934,7 +938,8 @@
   </div>
 </section>
 
-<section class="trust" id="trust">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);">
+<section class="trust" id="trust" style="border-top:none;">
   <div style="max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;">
     <div>
       <p class="sec-label">Dlaczego to działa</p>
@@ -948,8 +953,7 @@
     </div>
   </div>
 </section>
-
-<section class="services" id="services">
+<section class="services" id="services" style="border-top:none;border-left:1px solid var(--border);">
   <div class="services-head" id="srv-head">
     <p class="sec-label">Co robię</p>
     <h2 class="sec-title">Usługi i cennik</h2>
@@ -984,7 +988,8 @@
 </section>
 
 
-<section class="testimonials" id="opinie">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);">
+<section class="testimonials" style="border-top:none;" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
     <p class="sec-label">Referencje</p>
     <h2 class="sec-title">Opinie klientów</h2>
@@ -1047,6 +1052,7 @@
     <details><summary>Jak wygląda rezerwacja terminu? <span class="qi">+</span></summary><p class="qb">Przez SMS, Instagram lub formularz na stronie. Termin potwierdzam po wpłacie zaliczki.</p></details>
   </div>
 </section>
+</div>
 
 <section class="contact" id="contact">
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
