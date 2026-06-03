@@ -517,6 +517,225 @@
     }
     .pricing-foot.go { opacity: 1; transform: translateY(0); }
 
+    .process {
+      border-top: 1px solid var(--border);
+      padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
+    }
+    .process-head {
+      margin-bottom: 40px;
+      max-width: 820px;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s, transform .6s;
+    }
+    .process-head.go { opacity: 1; transform: translateY(0); }
+    .process-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 60ch;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 3px;
+    }
+    .process-card {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 28px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease, border-color .25s ease, background .25s ease;
+    }
+    .process-card.go { opacity: 1; transform: translateY(0); }
+    .process-card:nth-child(2) { transition-delay: .08s; }
+    .process-card:nth-child(3) { transition-delay: .16s; }
+    .process-card:nth-child(4) { transition-delay: .24s; }
+    .process-card:hover {
+      border-color: rgba(200,163,82,0.28);
+      background: rgba(200,163,82,0.03);
+    }
+    .process-num {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .process-title {
+      font-size: clamp(20px,2vw,28px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+    .process-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.72;
+      max-width: 30ch;
+    }
+
+    .faq {
+      border-top: 1px solid var(--border);
+      padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
+    }
+    .faq-head {
+      margin-bottom: 34px;
+      max-width: 820px;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s, transform .6s;
+    }
+    .faq-head.go { opacity: 1; transform: translateY(0); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 24px 26px;
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease, border-color .25s ease, background .25s ease;
+    }
+    .faq-item.go { opacity: 1; transform: translateY(0); }
+    .faq-item:nth-child(2) { transition-delay: .06s; }
+    .faq-item:nth-child(3) { transition-delay: .12s; }
+    .faq-item:nth-child(4) { transition-delay: .18s; }
+    .faq-item:nth-child(5) { transition-delay: .24s; }
+    .faq-item:nth-child(6) { transition-delay: .3s; }
+    .faq-item:hover {
+      border-color: rgba(200,163,82,0.28);
+      background: rgba(200,163,82,0.03);
+    }
+    .faq-q {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .faq-a {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.72;
+      max-width: 40ch;
+    }
+
+    .brief {
+      border-top: 1px solid var(--border);
+      padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
+    }
+    .brief-wrap {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .brief-intro {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .brief-intro.go { opacity: 1; transform: translateY(0); }
+    .brief-title {
+      font-size: clamp(24px,3vw,40px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      line-height: .95;
+      margin-bottom: 14px;
+    }
+    .brief-text {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 44ch;
+      margin-bottom: 24px;
+    }
+    .brief-points {
+      display: grid;
+      gap: 12px;
+    }
+    .brief-point {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+    .brief-point strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .brief-form {
+      display: grid;
+      gap: 16px;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s ease .08s, transform .6s ease .08s;
+    }
+    .brief-form.go { opacity: 1; transform: translateY(0); }
+    .brief-form label {
+      display: grid;
+      gap: 8px;
+    }
+    .brief-form label span {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .brief-form input,
+    .brief-form textarea,
+    .brief-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 16px;
+      border-radius: 14px;
+      font: inherit;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .brief-form input::placeholder,
+    .brief-form textarea::placeholder {
+      color: #6e6a64;
+    }
+    .brief-form input:focus,
+    .brief-form textarea:focus,
+    .brief-form select:focus {
+      outline: none;
+      border-color: rgba(200,163,82,0.45);
+      background: rgba(255,255,255,0.03);
+    }
+    .brief-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border: 1px solid var(--faint);
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: transparent;
+      font-family: inherit;
+      transition: border-color .25s, color .25s, background .25s;
+    }
+    .brief-submit:hover {
+      border-color: var(--accent);
+      background: rgba(200,163,82,.05);
+    }
+    .brief-legal {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
     .testimonials {
       border-top: 1px solid var(--border);
       padding: clamp(80px,10vw,140px) clamp(20px,4vw,64px);
@@ -744,7 +963,7 @@
     footer a:hover { color: var(--text); }
 
     @media (max-width: 960px) {
-      .featured-card, .about, .srv-grid, .pricing-grid, .testimonials-grid, .testimonial-form-wrap, .form-grid { grid-template-columns: 1fr; }
+      .featured-card, .about, .srv-grid, .pricing-grid, .process-grid, .faq-grid, .brief-wrap, .testimonials-grid, .testimonial-form-wrap, .form-grid { grid-template-columns: 1fr; }
       .about-body { border-left: none; border-top: 1px solid var(--border); }
       .grid { grid-template-columns: 1fr; }
       .hero-inner { grid-template-columns: 1fr; }
@@ -972,6 +1191,113 @@
   <p style="max-width:70ch;color:var(--muted);font-size:14px;line-height:1.75;margin-top:40px;">Większe wydarzenia, dłuższa obecność na miejscu i niestandardowe projekty wyceniam indywidualnie po krótkim briefie.</p>
 </section>
 
+<section class="process" id="process">
+  <div class="process-head" id="process-head">
+    <p class="sec-label">Jak pracuję</p>
+    <h2 class="sec-title">Jak wygląda współpraca</h2>
+    <p class="process-note">Od pierwszej wiadomości do oddania materiału dbam o prosty proces, szybki kontakt i jasne ustalenia. Dzięki temu wiesz, czego się spodziewać, a ja mogę skupić się na zdjęciach.</p>
+  </div>
+
+  <div class="process-grid">
+    <article class="process-card" id="process1">
+      <span class="process-num">01 · Kontakt</span>
+      <h3 class="process-title">Krótki brief i termin</h3>
+      <p class="process-desc">Piszesz, czego potrzebujesz, gdzie i kiedy. Ustalamy zakres zdjęć, czas pracy, lokalizację i to, do czego materiał ma być później użyty.</p>
+    </article>
+
+    <article class="process-card" id="process2">
+      <span class="process-num">02 · Przygotowanie</span>
+      <h3 class="process-title">Plan bez zbędnej komplikacji</h3>
+      <p class="process-desc">Przed zleceniem dopinamy najważniejsze szczegóły: klimat zdjęć, rytm wydarzenia, osoby kluczowe i ewentualne ujęcia obowiązkowe.</p>
+    </article>
+
+    <article class="process-card" id="process3">
+      <span class="process-num">03 · Realizacja</span>
+      <h3 class="process-title">Pracuję dyskretnie i uważnie</h3>
+      <p class="process-desc">Na miejscu reaguję szybko i naturalnie. Nie przeszkadzam, nie inscenizuję na siłę, ale pilnuję światła, emocji i materiału, który naprawdę się przyda.</p>
+    </article>
+
+    <article class="process-card" id="process4">
+      <span class="process-num">04 · Oddanie materiału</span>
+      <h3 class="process-title">Selekcja, obróbka i gotowe pliki</h3>
+      <p class="process-desc">Dostajesz wybrane i dopracowane zdjęcia w wygodnej formie. W razie potrzeby ustalamy też priorytetowe kadry do szybkiej publikacji.</p>
+    </article>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="faq-head" id="faq-head">
+    <p class="sec-label">Pytania i odpowiedzi</p>
+    <h2 class="sec-title">FAQ</h2>
+  </div>
+
+  <div class="faq-grid">
+    <article class="faq-item" id="faq1">
+      <h3 class="faq-q">Na jakim obszarze pracujesz?</h3>
+      <p class="faq-a">Najczęściej działam w Bielsku-Białej i na Śląsku, ale dojeżdżam też dalej, jeśli projekt tego wymaga.</p>
+    </article>
+
+    <article class="faq-item" id="faq2">
+      <h3 class="faq-q">Jak szybko odpisujesz?</h3>
+      <p class="faq-a">Zwykle odpowiadam możliwie szybko, najczęściej tego samego dnia lub następnego dnia roboczego.</p>
+    </article>
+
+    <article class="faq-item" id="faq3">
+      <h3 class="faq-q">Czy pomagajesz ustalić zakres zdjęć?</h3>
+      <p class="faq-a">Tak. Jeśli nie masz gotowego briefu, pomagam ustalić najważniejsze potrzeby, styl pracy i priorytetowe ujęcia.</p>
+    </article>
+
+    <article class="faq-item" id="faq4">
+      <h3 class="faq-q">Ile kosztuje sesja albo reportaż?</h3>
+      <p class="faq-a">Na stronie podaję ceny orientacyjne. Ostateczna wycena zależy od czasu pracy, lokalizacji, terminu i zakresu materiału.</p>
+    </article>
+
+    <article class="faq-item" id="faq5">
+      <h3 class="faq-q">Kiedy dostanę zdjęcia?</h3>
+      <p class="faq-a">Termin oddania ustalam indywidualnie przy zleceniu. Jeśli potrzebujesz części materiału szybciej, warto zaznaczyć to już w pierwszej wiadomości.</p>
+    </article>
+
+    <article class="faq-item" id="faq6">
+      <h3 class="faq-q">Jak najlepiej wysłać zapytanie?</h3>
+      <p class="faq-a">Najlepiej napisać kilka konkretów: typ realizacji, termin, miejsce, przewidywany czas pracy i do czego zdjęcia będą używane.</p>
+    </article>
+  </div>
+</section>
+
+<section class="brief" id="brief">
+  <div class="brief-wrap">
+    <div class="brief-intro" id="brief-intro">
+      <p class="sec-label">Wyślij zapytanie</p>
+      <h2 class="brief-title">Krótki brief zamiast długiej wymiany wiadomości</h2>
+      <p class="brief-text">Jeśli wolisz od razu przejść do konkretów, wyślij kilka podstawowych informacji. To najszybszy sposób, żebym sprawdził termin i wrócił z sensowną odpowiedzią.</p>
+      <div class="brief-points">
+        <div class="brief-point"><strong>01</strong> Typ realizacji, np. event, portret, materiał promocyjny.</div>
+        <div class="brief-point"><strong>02</strong> Termin, miejsce i przewidywany czas pracy.</div>
+        <div class="brief-point"><strong>03</strong> Informacja, gdzie będą używane zdjęcia i jaki materiał jest najważniejszy.</div>
+      </div>
+    </div>
+
+    <form class="brief-form" id="brief-form" action="https://formspree.io/f/fxvzlprdq" method="POST">
+      <div class="form-grid">
+        <label><span>Imię / firma</span><input type="text" name="name" placeholder="Np. Anna / Studio XYZ" required></label>
+        <label><span>Email</span><input type="email" name="email" placeholder="twoj@email.pl" required></label>
+      </div>
+      <div class="form-grid">
+        <label><span>Typ realizacji</span><input type="text" name="projecttype" placeholder="Np. reportaż z eventu / portret / zdjęcia dla marki" required></label>
+        <label><span>Termin i miejsce</span><input type="text" name="termplace" placeholder="Np. 18 lipca 2026, Bielsko-Biała" required></label>
+      </div>
+      <label><span>Zakres i cel</span><textarea name="brief" rows="6" placeholder="Napisz krótko, czego potrzebujesz, jak długo potrwa realizacja i do czego zdjęcia będą używane." required></textarea></label>
+      <input type="hidden" name="subject" value="Nowe zapytanie ze strony">
+      <input type="text" name="gotcha" style="display:none">
+      <button class="brief-submit" type="submit">Wyślij zapytanie
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <p class="brief-legal">Po wysłaniu wiadomości wrócę z odpowiedzią, dostępnością terminu albo dodatkowymi pytaniami do briefu.</p>
+    </form>
+  </div>
+</section>
 
 <section class="testimonials" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
@@ -1018,9 +1344,10 @@
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
   <h2 class="contact-h" id="c-h">Masz<br>projekt<em>?</em></h2>
   <div class="contact-row" id="c-row">
+    <a class="c-link" href="mailto:kontakt@niebiezki.pl">kontakt@niebiezki.pl</a>
+    <a class="c-link" href="sms:+48572116577">SMS 572-116-577</a>
     <a class="c-link" href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a>
     <a class="c-link" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-    <a class="c-link" href="sms:+48572116577">SMS 572-116-577</a>
   </div>
 </section>
 
@@ -1094,6 +1421,9 @@
     'about-img','about-h','about-m','about-s','about-stats','gear',
     'srv-head','srv1','srv2','srv3',
     'pricing-head','price1','price2','price3','pricing-foot',
+    'process-head','process1','process2','process3','process4',
+    'faq-head','faq1','faq2','faq3','faq4','faq5','faq6',
+    'brief-intro','brief-form',
     'testimonials-head','testimonial1','testimonial2','testimonial3','testimonial-intro','testimonial-form',
     'c-eye','c-h','c-row'
   ].forEach(id => {
