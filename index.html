@@ -263,10 +263,10 @@
     }
     .all-link:hover { color: var(--text); border-color: var(--accent); }
 
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
     .p-item {
       position: relative; overflow: hidden;
-      aspect-ratio: 3/2; background: #111;
+      aspect-ratio: 4/3; background: #111;
       opacity: 0; transform: translateY(24px);
       transition: opacity .7s ease, transform .7s ease;
     }
@@ -274,6 +274,8 @@
     .p-item:nth-child(2) { transition-delay: .08s; }
     .p-item:nth-child(3) { transition-delay: .14s; }
     .p-item:nth-child(4) { transition-delay: .2s; }
+    .p-item:nth-child(5) { transition-delay: .26s; }
+    .p-item:nth-child(6) { transition-delay: .32s; }
     .p-item img {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform .65s cubic-bezier(.25,.46,.45,.94), filter .5s;
@@ -746,7 +748,7 @@
     @media (max-width: 960px) {
       .featured-card, .about, .srv-grid, .pricing-grid, .testimonials-grid, .testimonial-form-wrap, .form-grid { grid-template-columns: 1fr; }
       .about-body { border-left: none; border-top: 1px solid var(--border); }
-      .grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
       .hero-inner { grid-template-columns: 1fr; }
       .hero-aside { text-align: left; }
       .nav-toggle { display: inline-flex; align-items: center; }
@@ -770,6 +772,7 @@
       * { cursor: auto !important; }
       #cur { display: none; }
       .stats { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
