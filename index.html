@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fotograf Bielsko-Biała | Reportaż, portret, event</title>
-  <meta name="description" content="Fotograf z Bielska-Białej. Reportaż, portret i fotografia eventowa na Śląsku i w Polsce." />
+  <title>Fotograf eventowy i portretowy – Bielsko-Biała | Niebiezki</title>
+  <meta name="description" content="Fotograf eventowy, portretowy i promocyjny z Bielska-Białej. Zdjęcia dla marek, twórców i wydarzeń na Śląsku oraz w całej Polsce." />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 
   <!-- Google tag (gtag.js) -->
@@ -146,7 +146,98 @@
       font-size: 11px; letter-spacing: 0.24em;
       text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
     }
-    .hero-note { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .hero-note { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 34ch; margin-left: auto; }
+    .hero-copy {
+      margin-top: 20px;
+      max-width: 36ch;
+      font-size: 16px;
+      line-height: 1.72;
+      color: var(--text);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: border-color .25s, background .25s, color .25s, transform .25s;
+      background: rgba(255,255,255,0.02);
+    }
+    .hero-btn:hover { transform: translateY(-1px); }
+    .hero-btn.primary {
+      background: var(--accent);
+      color: #111;
+      border-color: var(--accent);
+    }
+    .hero-btn.primary:hover { background: #d6b267; border-color: #d6b267; }
+    .hero-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+      max-width: 560px;
+    }
+    .hero-proof-item {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 12px 14px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hero-proof-item strong {
+      font-size: 22px;
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: -0.04em;
+    }
+    .hero-proof-item span {
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .mobile-cta {
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 120;
+      display: none;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(7,7,7,0.9);
+      backdrop-filter: blur(14px);
+    }
+    .mobile-cta a {
+      flex: 1;
+      text-align: center;
+      padding: 14px 12px;
+      border-radius: 14px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+    .mobile-cta a.primary { background: var(--accent); color: #111; border-color: var(--accent); }
+    .mobile-cta a.secondary:hover { border-color: var(--accent); color: var(--accent); }
 
     .hero-scroll {
       position: absolute; bottom: 28px; left: 50%;
@@ -539,6 +630,8 @@
       display: grid;
       grid-template-columns: repeat(4,1fr);
       gap: 3px;
+      max-width: var(--max);
+      margin: 0 auto;
     }
     .process-card {
       border: 1px solid var(--border);
@@ -593,6 +686,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3px;
+      max-width: var(--max);
+      margin: 0 auto;
     }
     .faq-item {
       border: 1px solid var(--border);
@@ -634,6 +729,8 @@
       grid-template-columns: .9fr 1.1fr;
       gap: 32px;
       align-items: start;
+      max-width: var(--max);
+      margin: 0 auto;
     }
     .brief-intro {
       opacity: 0; transform: translateY(18px);
@@ -963,7 +1060,9 @@
     footer a:hover { color: var(--text); }
 
     @media (max-width: 960px) {
-      .featured-card, .about, .srv-grid, .pricing-grid, .process-grid, .faq-grid, .brief-wrap, .testimonials-grid, .testimonial-form-wrap, .form-grid { grid-template-columns: 1fr; }
+      .featured-card, .about, .srv-grid, .pricing-grid, .process-grid, .faq-grid, .brief-wrap, .testimonials-grid, .testimonial-form-wrap, .form-grid, .trust-wrap, .trust-proof, .hero-proof, .trust-logos { grid-template-columns: 1fr; }
+      .mobile-cta { display: flex; }
+      .hero-proof { max-width: 100%; }
       .about-body { border-left: none; border-top: 1px solid var(--border); }
       .grid { grid-template-columns: 1fr; }
       .hero-inner { grid-template-columns: 1fr; }
@@ -1003,7 +1102,9 @@
     <a href="#work">Prace</a>
     <a href="#about">O mnie</a>
     <a href="#services">Usługi</a>
-    <a href="#pricing">Cennik</a>
+    <a href="#process">Współpraca</a>
+    <a href="#faq">FAQ</a>
+    <a href="#brief">Brief</a>
     <a href="#opinie">Opinie</a>
     <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
     <a href="#contact">Kontakt</a>
@@ -1143,16 +1244,23 @@
 </section>
 
 <section class="trust" id="trust">
-  <div style="max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;">
+  <div class="trust-wrap">
     <div>
       <p class="sec-label">Dlaczego to działa</p>
-      <h2 class="sec-title" style="margin-bottom:18px;">Szybko, naturalnie, konkretnie</h2>
-      <p style="color:var(--muted);font-size:15px;line-height:1.75;max-width:62ch;">Pracuję tak, żeby zdjęcia były gotowe do użycia w portfolio, social mediach i materiałach promocyjnych bez zbędnego poprawiania. Najważniejsze jest dla mnie światło, emocja i porządek w całym materiale.</p>
+      <h2 class="sec-title" style="margin-bottom:18px;">Zdjęcia, które pracują dalej</h2>
+      <p class="trust-copy">Pracuję tak, żeby materiał był nie tylko estetyczny, ale też użyteczny. Zdjęcia mają działać na stronie, w social mediach, w komunikacji marki i w relacji z wydarzenia — bez chaosu, bez przypadkowych kadrów i bez zbędnego poprawiania.</p>
+      <div class="trust-proof">
+        <div class="trust-proof-item"><span>Czas odpowiedzi</span><strong>do 24 h</strong></div>
+        <div class="trust-proof-item"><span>Obszar działania</span><strong>Śląsk + wyjazdy</strong></div>
+        <div class="trust-proof-item"><span>Priorytet</span><strong>Materiał gotowy do użycia</strong></div>
+      </div>
     </div>
-    <div style="display:grid;gap:12px;">
-      <div style="padding:16px 18px;border:1px solid var(--border);border-radius:14px;color:var(--text);"><strong style="color:var(--accent);font-weight:700;">01</strong> Jasny kontakt i szybka odpowiedź.</div>
-      <div style="padding:16px 18px;border:1px solid var(--border);border-radius:14px;color:var(--text);"><strong style="color:var(--accent);font-weight:700;">02</strong> Reportaż, portret i materiał promocyjny.</div>
-      <div style="padding:16px 18px;border:1px solid var(--border);border-radius:14px;color:var(--text);"><strong style="color:var(--accent);font-weight:700;">03</strong> Bielsko-Biała, Śląsk i wyjazdy dalej.</div>
+    <div class="trust-list">
+      <div class="trust-list-item"><strong>01</strong> Jasny kontakt, szybka odpowiedź i konkretne ustalenia przed zdjęciami, bez zgadywania i bez chaosu.</div>
+      <div class="trust-list-item"><strong>02</strong> Reportaż, portret i materiał promocyjny dopasowany do marki, twórcy albo wydarzenia, a nie do jednego sztywnego schematu.</div>
+      <div class="trust-list-item"><strong>03</strong> Selekcja i obróbka z myślą o publikacji na stronie, w social mediach i materiałach promocyjnych — tak, żeby zdjęcia działały od razu.</div>
+      <div class="trust-list-item"><strong>04</strong> Bielsko-Biała, Śląsk i wyjazdy dalej — zależnie od projektu i terminu.</div>
+      <div class="trust-list-item"><strong>05</strong> Współpraca z markami, wydarzeniami i twórcami, którzy potrzebują zdjęć do realnego użycia.</div>
     </div>
   </div>
 </section>
@@ -1169,26 +1277,32 @@
     <article class="srv" id="srv1">
       <span class="srv-num">01</span>
       <h3 class="srv-name">Reportaż z wydarzeń</h3>
-      <p class="srv-desc">Koncerty, eventy kulturalne, backstage, sport i dokument miejsca. Rejestruję to, co dzieje się naprawdę — bez inscenizacji i bez nadęcia.</p>
+      <p class="srv-desc">Koncerty, eventy kulturalne, backstage, sport i dokument miejsca. Rejestruję to, co dzieje się naprawdę — bez inscenizacji i bez nadęcia. Dla organizatorów, marek i zespołów, które potrzebują materiału do relacji i promocji.</p>
+      <p class="srv-desc" style="margin-top:14px;color:var(--text);"><strong style="color:var(--accent);">Dla kogo:</strong> organizatorzy, agencje, sceny, marki.</p>
+      <p class="srv-desc" style="margin-top:6px;color:var(--text);"><strong style="color:var(--accent);">Co dostajesz:</strong> selekcję i gotowe zdjęcia do publikacji.</p>
       <p class="srv-price">od 450 zł</p>
     </article>
 
     <article class="srv" id="srv2">
       <span class="srv-num">02</span>
       <h3 class="srv-name">Portret editorial</h3>
-      <p class="srv-desc">Sesje miejskie dla twórców, muzyków i marek osobistych. Pracuję tam, gdzie są napięcie, faktura i prawdziwe światło.</p>
+      <p class="srv-desc">Sesje miejskie dla twórców, muzyków i marek osobistych. Pracuję tam, gdzie są napięcie, faktura i prawdziwe światło. To opcja dla osób, które chcą mocnych zdjęć do portfolio, okładek, social mediów i komunikacji marki osobistej.</p>
+      <p class="srv-desc" style="margin-top:14px;color:var(--text);"><strong style="color:var(--accent);">Dla kogo:</strong> twórcy, artyści, osoby budujące markę osobistą.</p>
+      <p class="srv-desc" style="margin-top:6px;color:var(--text);"><strong style="color:var(--accent);">Co dostajesz:</strong> kadry pod publikację, social i portfolio.</p>
       <p class="srv-price">od 400 zł</p>
     </article>
 
     <article class="srv" id="srv3">
       <span class="srv-num">03</span>
       <h3 class="srv-name">Materiał promocyjny</h3>
-      <p class="srv-desc">Zdjęcia do social mediów, stron i publikacji online. Mają wyglądać świeżo, mocno i naturalnie — bez plastikowego efektu.</p>
+      <p class="srv-desc">Zdjęcia do social mediów, stron i publikacji online. Mają wyglądać świeżo, mocno i naturalnie — bez plastikowego efektu. Dla marek, lokali i projektów, które potrzebują spójnych zdjęć do codziennej komunikacji.</p>
+      <p class="srv-desc" style="margin-top:14px;color:var(--text);"><strong style="color:var(--accent);">Dla kogo:</strong> firmy, lokale, marki osobiste i projekty online.</p>
+      <p class="srv-desc" style="margin-top:6px;color:var(--text);"><strong style="color:var(--accent);">Co dostajesz:</strong> materiał do strony, sociali i komunikacji marki.</p>
       <p class="srv-price">od 600 zł</p>
     </article>
   </div>
 
-  <p style="max-width:70ch;color:var(--muted);font-size:14px;line-height:1.75;margin-top:40px;">Większe wydarzenia, dłuższa obecność na miejscu i niestandardowe projekty wyceniam indywidualnie po krótkim briefie.</p>
+  <p style="max-width:70ch;color:var(--muted);font-size:14px;line-height:1.75;margin-top:40px;">Większe wydarzenia, dłuższa obecność na miejscu, sesje dla marek i niestandardowe projekty wyceniam indywidualnie po krótkim briefie. Jeśli chcesz, mogę też od razu pomóc ustalić zakres zdjęć i priorytetowe kadry.</p>
 </section>
 
 <section class="process" id="process">
@@ -1265,6 +1379,12 @@
 </section>
 
 <section class="brief" id="brief">
+  <div class="trust-logos" style="max-width:var(--max);margin:0 auto 28px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;">
+    <div style="padding:18px;border:1px solid var(--border);background:rgba(255,255,255,0.02);color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:11px;">Eventy</div>
+    <div style="padding:18px;border:1px solid var(--border);background:rgba(255,255,255,0.02);color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:11px;">Portrety</div>
+    <div style="padding:18px;border:1px solid var(--border);background:rgba(255,255,255,0.02);color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:11px;">Marki</div>
+    <div style="padding:18px;border:1px solid var(--border);background:rgba(255,255,255,0.02);color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:11px;">Publikacje</div>
+  </div>
   <div class="brief-wrap">
     <div class="brief-intro" id="brief-intro">
       <p class="sec-label">Wyślij zapytanie</p>
