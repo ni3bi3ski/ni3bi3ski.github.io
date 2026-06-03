@@ -102,7 +102,7 @@
     .nav-links.open { display: flex; }
 
     .hero {
-      height: 72vh; min-height: 520px;
+      height: 100svh; min-height: 600px;
       position: relative; overflow: hidden;
       display: flex; align-items: flex-end;
     }
@@ -351,7 +351,8 @@
       letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
     }
     .about-body {
-      display: flex; flex-direction: column; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      max-width: 600px;
     }
     .about-body .sec-label { margin-bottom: 12px; }
     .about-heading {
@@ -753,7 +754,7 @@
     @media (max-width: 960px) {
       .featured-card, .about, .srv-grid, .pricing-grid, .testimonials-grid, .testimonial-form-wrap, .form-grid { grid-template-columns: 1fr; }
       .about-body { border-left: none; border-top: 1px solid var(--border); }
-      .grid { grid-template-columns: repeat(2, 1fr); }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 3px; }
       .hero-inner { grid-template-columns: 1fr; }
       .hero-aside { text-align: left; }
       .nav-toggle { display: inline-flex; align-items: center; }
@@ -988,7 +989,7 @@
 </section>
 
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);">
+<div style="display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--border);">
 <section class="testimonials" style="border-top:none;" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
     <p class="sec-label">Referencje</p>
