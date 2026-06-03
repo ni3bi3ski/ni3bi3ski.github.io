@@ -989,19 +989,25 @@
 </section>
 
 
-<div style="display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--border);">
-<section class="testimonials" style="border-top:none;" id="opinie">
+<div style="border-top:1px solid var(--border);">
+
+  <!-- Rząd 1: Referencje + Dodaj opinię obok siebie -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+    <div style="padding:clamp(32px,4vw,60px) clamp(20px,3vw,48px);border-right:1px solid var(--border);">
+      <section class="testimonials" style="border-top:none;" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
     <p class="sec-label">Referencje</p>
     <h2 class="sec-title">Opinie klientów</h2>
     <p class="testimonials-note">Kilka słów od osób i marek, z którymi pracowałem. Jeśli mamy za sobą wspólny projekt, możesz też zostawić krótką opinię przez formularz poniżej.</p>
   </div>
-
-  <div class="testimonials-grid">
+      <div class="testimonials-grid">
     <!-- Wklej tutaj kolejne karty opinii gdy je dostaniesz -->
   </div>
 
-  <div class="testimonial-form-wrap">
+  
+    </div>
+    <div style="padding:clamp(32px,4vw,60px) clamp(20px,3vw,48px);">
+      <div class="testimonial-form-wrap">
     <div class="testimonial-form-intro" id="testimonial-intro">
       <p class="sec-label">Dodaj opinię</p>
       <h3 class="testimonial-form-title">Masz za sobą współpracę ze mną?</h3>
@@ -1028,11 +1034,13 @@
       <p class="testimonial-legal">Dziękuję — po wysłaniu opinia trafia do weryfikacji.</p>
     </form>
   </div>
-</section>
+    </div>
+  </div>
 
-
-
-<section id="faq" style="border-top:1px solid var(--border);padding:clamp(32px,4vw,60px) clamp(20px,4vw,64px);">
+  <!-- Rząd 2: FAQ pełna szerokość -->
+  <div style="border-top:1px solid var(--border);padding:clamp(32px,4vw,60px) clamp(20px,4vw,64px);">
+    <div style="max-width:740px;margin:0 auto;">
+      
   <div style="max-width:740px;margin:0 auto;">
     <p class="sec-label">FAQ</p>
     <h2 class="sec-title" style="margin-bottom:40px;">Często zadawane<br>pytania</h2>
@@ -1052,8 +1060,12 @@
     <details><summary>Ile zdjęć wchodzi w pakiet? <span class="qi">+</span></summary><p class="qb">Przy evencie od 80 do 200+ gotowych ujęć, przy sesji portretowej 20–40. Szczegóły ustalamy przed realizacją.</p></details>
     <details><summary>Jak wygląda rezerwacja terminu? <span class="qi">+</span></summary><p class="qb">Przez SMS, Instagram lub formularz na stronie. Termin potwierdzam po wpłacie zaliczki.</p></details>
   </div>
-</section>
+
+    </div>
+  </div>
+
 </div>
+
 
 <section class="contact" id="contact">
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
