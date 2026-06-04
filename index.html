@@ -1009,6 +1009,8 @@
   </div>
 </div>
 
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);">
 <section class="about" id="about">
   <div class="about-img-wrap" id="about-img">
     <img class="img-responsive" src="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC06720.jpg" alt="Jarek Żurawski" loading="lazy" width="1600" height="2000">
@@ -1034,6 +1036,28 @@
     </div>
   </div>
 </section>
+<section id="faq" style="border-top:none;border-left:1px solid var(--border);padding:clamp(32px,4vw,60px) clamp(20px,4vw,64px);">
+  <div style="max-width:740px;margin:0 auto;">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title" style="margin-bottom:40px;">Często zadawane<br>pytania</h2>
+    <style>
+      #faq details { border-top:1px solid var(--border); }
+      #faq details:last-child { border-bottom:1px solid var(--border); }
+      #faq summary { padding:18px 0;font-size:16px;font-weight:700;letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s; }
+      #faq summary::-webkit-details-marker { display:none; }
+      #faq summary:hover { color:var(--accent); }
+      #faq summary .qi { color:var(--accent);font-size:22px;line-height:1;flex-shrink:0;transition:transform .3s ease;font-weight:300; }
+      #faq details[open] summary .qi { transform:rotate(45deg); }
+      #faq .qb { color:var(--muted);font-size:14px;line-height:1.78;padding-bottom:18px;max-width:62ch; }
+    </style>
+    <details><summary>Jak szybko dostarczasz zdjęcia? <span class="qi">+</span></summary><p class="qb">Standardowo do 7 dni roboczych od realizacji. Przy większych projektach — do 14 dni. Termin ustalamy przed zleceniem.</p></details>
+    <details><summary>Czy wyjeżdżasz poza Bielsko-Białą? <span class="qi">+</span></summary><p class="qb">Tak — pracuję na Śląsku i w całej Polsce. Dojazd poza aglomerację wliczam w wycenę lub ustalamy indywidualnie.</p></details>
+    <details><summary>W jakim formacie dostarczasz pliki? <span class="qi">+</span></summary><p class="qb">Zdjęcia dostarczam jako JPG w wysokiej rozdzielczości, gotowe do druku i social mediów. Na życzenie również TIFF lub RAW.</p></details>
+    <details><summary>Ile zdjęć wchodzi w pakiet? <span class="qi">+</span></summary><p class="qb">Przy evencie od 80 do 200+ gotowych ujęć, przy sesji portretowej 20–40. Szczegóły ustalamy przed realizacją.</p></details>
+    <details><summary>Jak wygląda rezerwacja terminu? <span class="qi">+</span></summary><p class="qb">Przez SMS, Instagram lub formularz na stronie. Termin potwierdzam po wpłacie zaliczki.</p></details>
+  </div>
+</section>
+</div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);">
 <section class="trust" id="trust" style="border-top:none;">
@@ -1154,7 +1178,53 @@
 </section>
 </div>
 
-<section class="contact" id="contact">
+<div style="border-top:1px solid var(--border);">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+
+<section class="testimonials" style="border-top:none;border-right:1px solid var(--border);" id="opinie">
+  <div class="testimonials-head" id="testimonials-head">
+    <p class="sec-label">Referencje</p>
+    <h2 class="sec-title">Opinie klientów</h2>
+    <p class="testimonials-note">Kilka słów od osób i marek, z którymi pracowałem.</p>
+  </div>
+  <div class="testimonials-grid">
+    <!-- Wklej tutaj kolejne karty opinii gdy je dostaniesz -->
+  </div>
+</section>
+
+<section class="testimonials" style="border-top:none;" id="dodaj-opinie">
+  <div class="testimonial-form-wrap">
+    <div class="testimonial-form-intro" id="testimonial-intro">
+      <p class="sec-label">Dodaj opinię</p>
+      <h3 class="testimonial-form-title">Masz za sobą współpracę ze mną?</h3>
+      <p class="testimonial-form-text">Jeśli chcesz, zostaw krótką opinię. Po akceptacji dodam ją na stronę razem z imieniem, nazwą firmy albo typem realizacji.</p>
+    </div>
+    <form class="testimonial-form" id="testimonial-form" action="https://formspree.io/f/fxvzlprdq" method="POST">
+      <div class="form-grid">
+        <label><span>Imię / nazwa</span><input type="text" name="name" placeholder="Np. Anna / Studio XYZ" required></label>
+        <label><span>Email</span><input type="email" name="email" placeholder="twoj@email.pl" required></label>
+      </div>
+      <label><span>Typ współpracy</span><input type="text" name="projecttype" placeholder="Np. reportaż z eventu / portret / materiał promocyjny"></label>
+      <label><span>Opinia</span><textarea name="testimonial" rows="6" placeholder="Napisz 2–4 zdania o współpracy" required></textarea></label>
+      <label class="check">
+        <input type="checkbox" name="publicationconsent" required>
+        <span>Wyrażam zgodę na kontakt w sprawie opinii oraz na jej publikację na stronie w całości lub we fragmencie, razem z podanym imieniem/nazwą.</span>
+      </label>
+      <input type="hidden" name="subject" value="Nowa opinia ze strony">
+      <input type="text" name="gotcha" style="display:none">
+      <button class="testimonial-submit" type="submit">Wyślij opinię
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <p class="testimonial-legal">Dziękuję — po wysłaniu opinia trafia do weryfikacji.</p>
+    </form>
+  </div>
+</section>
+
+</div>
+
+<section class="contact" id="contact" style="border-top:1px solid var(--border);">
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
   <h2 class="contact-h" id="c-h">Masz<br>projekt<em>?</em></h2>
   <div style="max-width:580px;margin:0 auto 48px;text-align:left;">
@@ -1176,6 +1246,7 @@
     <a class="c-link" href="sms:+48572116577">SMS 572-116-577</a>
   </div>
 </section>
+
 
 
 <footer>
