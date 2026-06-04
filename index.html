@@ -840,31 +840,6 @@
       .grid { grid-template-columns: 1fr; }
     }
 
-    .section-newsletter {
-      background: var(--faint);
-      padding: clamp(48px,8vh,96px) clamp(20px,4vw,64px);
-      text-align: center;
-    }
-    .newsletter-inner { max-width: 560px; margin: 0 auto; }
-    .newsletter-title { font-size: clamp(24px,4vw,36px); font-weight: 700; margin-bottom: 12px; }
-    .newsletter-desc { color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
-    .newsletter-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-    .newsletter-input {
-      flex: 1; min-width: 220px;
-      padding: 12px 20px; background: var(--bg);
-      border: 1px solid var(--border); color: var(--text);
-      border-radius: 999px; font: inherit; font-size: 14px;
-      outline: none; transition: border-color .2s;
-    }
-    .newsletter-input:focus { border-color: var(--accent); }
-    .newsletter-btn {
-      padding: 12px 28px; background: var(--accent); color: var(--bg);
-      border: none; border-radius: 999px; font: inherit;
-      font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
-      cursor: pointer; touch-action: manipulation; transition: opacity .2s;
-    }
-    .newsletter-btn:hover { opacity: 0.85; }
-    .newsletter-legal { margin-top: 14px; font-size: 11px; color: var(--muted); }
   </style>
 
   <!-- Structured Data: PhotographyBusiness -->
@@ -1112,17 +1087,19 @@
 
 <div style="border-top:1px solid var(--border);">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+
 <section class="testimonials" style="border-top:none;border-right:1px solid var(--border);" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
     <p class="sec-label">Referencje</p>
     <h2 class="sec-title">Opinie klientów</h2>
-    <p class="testimonials-note">Kilka słów od osób i marek, z którymi pracowałem. Jeśli mamy za sobą wspólny projekt, możesz też zostawić krótką opinię przez formularz poniżej.</p>
+    <p class="testimonials-note">Kilka słów od osób i marek, z którymi pracowałem.</p>
   </div>
-
   <div class="testimonials-grid">
     <!-- Wklej tutaj kolejne karty opinii gdy je dostaniesz -->
   </div>
+</section>
 
+<section class="testimonials" style="border-top:none;" id="dodaj-opinie">
   <div class="testimonial-form-wrap">
     <div class="testimonial-form-intro" id="testimonial-intro">
       <p class="sec-label">Dodaj opinię</p>
@@ -1151,6 +1128,7 @@
     </form>
   </div>
 </section>
+
 </div>
 
 <section id="faq" style="border-top:1px solid var(--border);padding:clamp(32px,4vw,60px) clamp(20px,4vw,64px);">
@@ -1200,18 +1178,6 @@
 </section>
 
 
-<!-- Newsletter / Lead magnet -->
-<section class="section-newsletter" aria-labelledby="newsletter-heading">
-  <div class="newsletter-inner">
-    <h2 id="newsletter-heading" class="newsletter-title">Zapisz się do newslettera</h2>
-    <p class="newsletter-desc">Otrzymaj bezpłatnie <strong>10 wskazówek do fotografii eventowej</strong> + informacje o nowych sesjach i wolnych terminach.</p>
-    <form class="newsletter-form" action="#" method="post" novalidate>
-      <input type="email" name="email" placeholder="Twój adres e-mail" required aria-label="Adres e-mail" class="newsletter-input" />
-      <button type="submit" class="newsletter-btn">Zapisz się</button>
-    </form>
-    <p class="newsletter-legal">Bez spamu. Wypiszesz się w każdej chwili.</p>
-  </div>
-</section>
 <footer>
   <span>© 2026 Jarek Żurawski</span>
   <span>Bielsko-Biała / Śląsk / Polska</span>
@@ -1378,21 +1344,7 @@
         }
         if (!valid) e.preventDefault();
       });
-    }
-    var nlForm = document.querySelector('.newsletter-form');
-    if (nlForm) {
-      nlForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var emailInp = nlForm.querySelector('input[type="email"]'  );
-        if (!emailInp || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInp.value)) {
-          if(emailInp) emailInp.style.borderColor = '#e55';
-          return;
-        }
-        emailInp.style.borderColor = '';
-        nlForm.innerHTML = '<p style="color:var(--accent);font-size:14px;">Dziękujemy! Sprawdź skrzynkę e-mail.</p>';
-      });
-    }
-    var toggle = document.querySelector('.nav-toggle');
+    }    var toggle = document.querySelector('.nav-toggle');
     if (toggle) {
       toggle.addEventListener('click', function() {
         var expanded = toggle.getAttribute('aria-expanded') === 'true';
