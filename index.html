@@ -1111,8 +1111,9 @@
 
 
 <div style="border-top:1px solid var(--border);">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
 
-<section class="testimonials" style="border-top:none;" id="opinie">
+<section class="testimonials" style="border-top:none;border-right:1px solid var(--border);" id="opinie">
   <div class="testimonials-head" id="testimonials-head">
     <p class="sec-label">Referencje</p>
     <h2 class="sec-title">Opinie klientów</h2>
@@ -1123,7 +1124,7 @@
   </div>
 </section>
 
-<section class="testimonials" style="border-top:1px solid var(--border);" id="dodaj-opinie">
+<section class="testimonials" style="border-top:none;" id="dodaj-opinie">
   <div class="testimonial-form-wrap">
     <div class="testimonial-form-intro" id="testimonial-intro">
       <p class="sec-label">Dodaj opinię</p>
@@ -1154,12 +1155,13 @@
 </section>
 
 </div>
+</div>
 
-<section class="contact" id="contact" style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+<section class="contact" id="contact" style="display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;">
   <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
   <h2 class="contact-h" id="c-h">Masz<br>projekt<em>?</em></h2>
-  <div style="max-width:580px;width:100%;margin:0 auto 48px;">
-    <form action="https://formspree.io/f/fxvzlprdq" method="POST" style="display:grid;gap:14px;">
+  <div style="max-width:580px;width:100%;margin:0 auto 48px;justify-self:center;">
+    <form action="https://formspree.io/f/fxvzlprdq" method="POST" style="display:grid;gap:14px;width:100%;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <label style="display:grid;gap:6px;"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);">Imię</span><input type="text" name="name" placeholder="Twoje imię" required style="background:rgba(255,255,255,.02);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:12px;font:inherit;outline:none;transition:border-color .2s;"></label>
         <label style="display:grid;gap:6px;"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);">Email</span><input type="email" name="email" placeholder="twoj@email.pl" required style="background:rgba(255,255,255,.02);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:12px;font:inherit;outline:none;transition:border-color .2s;"></label>
