@@ -249,3 +249,23 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
     if (!valid) e.preventDefault();
   });
 })();
+
+// === HERO SLIDESHOW ===
+(function () {
+  var heroDiv = document.getElementById('hero-img');
+  if (!heroDiv) return;
+  var slides = JSON.parse(heroDiv.dataset.slides || '[]');
+  if (slides.length < 2) return;
+  var img = document.getElementById('hero-slide-img');
+  var current = 0;
+  var preloadImg = new Image();
+  function preload(idx) { preloadImg.src = slides[(idx + 1) % slides.length]; }
+  function transition() {
+    current = (current + 1) % slides.length;
+    img.style.transition = 'opacity 1.2s ease';
+    img.style.opacity = '0';
+    setTimeout(function () { img.src = slides[current]; img.style.opacity = '1'; preload(current); }, 1200);
+  }
+  preload(0);
+  setInterval(transition, 5000);
+})();
