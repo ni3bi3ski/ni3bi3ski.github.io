@@ -177,16 +177,7 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
     }
   ];
 
-  let pick = featured[Math.floor(Math.random() * featured.length)];
-  try {
-    const saved = sessionStorage.getItem('featuredIndex');
-    const idx   = saved === null ? -1 : Number(saved);
-    if (Number.isInteger(idx) && idx >= 0 && idx < featured.length) {
-      pick = featured[idx];
-    } else {
-      sessionStorage.setItem('featuredIndex', String(featured.indexOf(pick)));
-    }
-  } catch (e) { /* sessionStorage zablokowany */ }
+  const pick = featured[Math.floor(Math.random() * featured.length)];
 
   const featImg = document.getElementById('feat-img');
   if (!featImg) return;
