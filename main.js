@@ -1,6 +1,5 @@
 /* ================================================
    ni3bi3ski.github.io — main.js
-   (gtag inicjalizowany inline w <head>)
    ================================================ */
 
 /* ---------- CUSTOM CURSOR ---------- */
@@ -103,7 +102,7 @@ const io = new IntersectionObserver(entries => {
 });
 document.querySelectorAll('.p-item').forEach(el => io.observe(el));
 
-/* ---------- OPINIE — dynamiczne ładowanie ---------- */
+/* ---------- OPINIE — dynamiczne ładowanie z opinie.json ---------- */
 (function () {
   const grid = document.querySelector('.testimonials-grid');
   if (!grid) return;
@@ -115,14 +114,12 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
       if (!approved.length) return;
       grid.innerHTML = approved.map((o, i) => `
         <article class="testimonial-card" id="testimonial${i + 1}">
-          <div>
-            <p class="testimonial-kicker">${o.kicker}</p>
-            <p class="testimonial-quote">&ldquo;${o.quote}&rdquo;</p>
-          </div>
-          <div class="testimonial-meta">
-            <strong>${o.name}</strong>
-            <span>${o.meta}</span>
-          </div>
+          <p class="t-kicker">${o.kicker}</p>
+          <blockquote class="t-quote">&ldquo;${o.quote}&rdquo;</blockquote>
+          <footer class="t-footer">
+            <span class="t-name">${o.name}</span>
+            <span class="t-meta">${o.meta}</span>
+          </footer>
         </article>
       `).join('');
       document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
@@ -178,7 +175,6 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   ];
 
   const pick = featured[Math.floor(Math.random() * featured.length)];
-
   const featImg = document.getElementById('feat-img');
   if (!featImg) return;
   featImg.href = pick.href;
@@ -187,9 +183,11 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   const title = document.querySelector('.feat-title');
   const desc  = document.querySelector('.feat-desc');
   const num   = document.querySelector('.feat-num');
+  const link  = document.querySelector('.featured-body .feat-link');
   if (title) title.textContent = pick.title;
   if (desc)  desc.textContent  = pick.desc;
   if (num)   num.textContent   = 'Wyróżniony projekt';
+  if (link)  link.href         = pick.href;
 })();
 
 /* ---------- "POKAŻ WIĘCEJ" ---------- */
@@ -216,25 +214,71 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   });
 })();
 
+/* ---------- FAQ — animowane zamykanie <details> ---------- */
+(function () {
+  document.querySelectorAll('details').forEach(details => {
+    const summary = details.querySelector('summary');
+    const content = details.querySelector('.qb');
+    if (!summary || !content) return;
+
+    const qi = summary.querySelector('.qi');
+
+    summary.addEventListener('click', e => {
+      e.preventDefault();
+
+      if (details.open) {
+        // zamykanie z animacją
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+        requestAnimationFrame(() => {
+          content.style.transition = 'max-height 0.35s ease, opacity 0.25s ease';
+          content.style.maxHeight = '0';
+          content.style.opacity = '0';
+        });
+        content.addEventListener('transitionend', () => {
+          details.open = false;
+          content.style.transition = '';
+          if (qi) qi.textContent = '+';
+        }, { once: true });
+      } else {
+        // otwieranie
+        details.open = true;
+        content.style.maxHeight = '0';
+        content.style.opacity = '0';
+        requestAnimationFrame(() => {
+          content.style.transition = 'max-height 0.35s ease, opacity 0.25s ease';
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+        });
+        content.addEventListener('transitionend', () => {
+          content.style.maxHeight = 'none';
+          content.style.transition = '';
+          if (qi) qi.textContent = '−';
+        }, { once: true });
+      }
+    });
+  });
+})();
+
 /* ---------- FORMULARZ KONTAKTOWY — walidacja ---------- */
 (function () {
-  const form = document.querySelector('form[id="kontakt-form"], form.contact-form');
+  const form = document.getElementById('contact-form');
   if (!form) return;
 
   form.addEventListener('submit', e => {
     let valid = true;
 
     form.querySelectorAll('input[required], textarea[required]').forEach(inp => {
-      inp.style.borderColor = '';
+      inp.classList.remove('input-error');
       if (!inp.value.trim()) {
-        inp.style.borderColor = 'rgba(200,80,80,0.7)';
+        inp.classList.add('input-error');
         valid = false;
       }
     });
 
     const emailInp = form.querySelector('input[type="email"]');
     if (emailInp && emailInp.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInp.value)) {
-      emailInp.style.borderColor = 'rgba(200,80,80,0.7)';
+      emailInp.classList.add('input-error');
       valid = false;
     }
 
@@ -242,21 +286,96 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   });
 })();
 
-// === HERO SLIDESHOW ===
+/* ---------- HERO SLIDESHOW — z kontrolkami i pauzą ---------- */
 (function () {
-  var heroDiv = document.getElementById('hero-img');
+  const heroDiv   = document.getElementById('hero-img');
   if (!heroDiv) return;
-  var slides = JSON.parse(heroDiv.dataset.slides || '[]');
+  const slides    = JSON.parse(heroDiv.dataset.slides || '[]');
   if (slides.length < 2) return;
-  var img = document.getElementById('hero-slide-img');
-  var current = 0;
-  var preloadImg = new Image();
-  function preload(idx) { preloadImg.src = slides[(idx + 1) % slides.length]; }
-  function transition() {
-    current = (current + 1) % slides.length;
-    img.style.opacity = '0';
-    setTimeout(function () { img.src = slides[current]; img.style.opacity = '1'; preload(current); }, 1200);
+
+  const img       = document.getElementById('hero-slide-img');
+  const prevBtn   = document.getElementById('slide-prev');
+  const nextBtn   = document.getElementById('slide-next');
+  const pauseBtn  = document.getElementById('slide-pause');
+  const dotsWrap  = document.getElementById('slide-dots');
+  const iconPause = pauseBtn && pauseBtn.querySelector('.icon-pause');
+  const iconPlay  = pauseBtn && pauseBtn.querySelector('.icon-play');
+
+  let current  = 0;
+  let paused   = false;
+  let timer    = null;
+  const DELAY  = 5000;
+
+  // Buduj kropki
+  const dots = [];
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Slajd ${i + 1}`);
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    if (dotsWrap) dotsWrap.appendChild(dot);
+    dots.push(dot);
+  });
+
+  function updateDots(idx) {
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
   }
+
+  const preloadImg = new Image();
+  function preload(idx) { preloadImg.src = slides[(idx + 1) % slides.length]; }
+
+  function showSlide(idx) {
+    img.style.opacity = '0';
+    setTimeout(() => {
+      img.src = slides[idx];
+      img.style.opacity = '1';
+      preload(idx);
+      updateDots(idx);
+    }, 400);
+  }
+
+  function goTo(idx) {
+    current = (idx + slides.length) % slides.length;
+    showSlide(current);
+    resetTimer();
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function resetTimer() {
+    clearInterval(timer);
+    if (!paused) timer = setInterval(next, DELAY);
+  }
+
+  function togglePause() {
+    paused = !paused;
+    if (paused) {
+      clearInterval(timer);
+      if (iconPause) iconPause.style.display = 'none';
+      if (iconPlay)  iconPlay.style.display  = 'block';
+      if (pauseBtn)  pauseBtn.setAttribute('aria-pressed', 'true');
+      if (pauseBtn)  pauseBtn.setAttribute('aria-label', 'Wznów pokaz');
+    } else {
+      resetTimer();
+      if (iconPause) iconPause.style.display = 'block';
+      if (iconPlay)  iconPlay.style.display  = 'none';
+      if (pauseBtn)  pauseBtn.setAttribute('aria-pressed', 'false');
+      if (pauseBtn)  pauseBtn.setAttribute('aria-label', 'Zatrzymaj pokaz');
+    }
+  }
+
+  if (prevBtn)  prevBtn.addEventListener('click',  prev);
+  if (nextBtn)  nextBtn.addEventListener('click',  next);
+  if (pauseBtn) pauseBtn.addEventListener('click', togglePause);
+
+  // Pauza po najechaniu myszką lub focusie
+  heroDiv.addEventListener('mouseenter', () => { if (!paused) { clearInterval(timer); } });
+  heroDiv.addEventListener('mouseleave', () => { if (!paused) resetTimer(); });
+  heroDiv.addEventListener('focusin',    () => { if (!paused) { clearInterval(timer); } });
+  heroDiv.addEventListener('focusout',   () => { if (!paused) resetTimer(); });
+
   preload(0);
-  setInterval(transition, 5000);
+  timer = setInterval(next, DELAY);
 })();
