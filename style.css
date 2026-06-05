@@ -779,3 +779,9 @@ footer a:hover { color: var(--text); }
   .stats { grid-template-columns: 1fr 1fr; }
   .grid  { grid-template-columns: 1fr; }
 }
+
+/* === HERO SLIDESHOW === */
+#hero-slide-img {
+  transition: opacity 1.2s ease;
+  will-change: opacity;
+}

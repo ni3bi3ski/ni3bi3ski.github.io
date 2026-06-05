@@ -61,7 +61,8 @@ window.addEventListener('scroll', () => {
 
 /* ---------- HERO — parallax ---------- */
 (function () {
-  const heroImg = document.querySelector('.hero-img img');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const heroImg = document.querySelector('.hero-img');
   if (!heroImg) return;
   window.addEventListener('scroll', () => {
     if (window.scrollY < window.innerHeight) {
@@ -126,7 +127,7 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
       `).join('');
       document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
     })
-    .catch(() => {}); // cicha obsługa błędu – siatka zostaje ze statycznym HTML
+    .catch(err => console.warn('Opinie: nie można załadować', err));
 })();
 
 /* ---------- FEATURED — losowy projekt ---------- */
@@ -262,7 +263,6 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   function preload(idx) { preloadImg.src = slides[(idx + 1) % slides.length]; }
   function transition() {
     current = (current + 1) % slides.length;
-    img.style.transition = 'opacity 1.2s ease';
     img.style.opacity = '0';
     setTimeout(function () { img.src = slides[current]; img.style.opacity = '1'; preload(current); }, 1200);
   }
