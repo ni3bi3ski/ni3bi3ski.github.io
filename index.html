@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fotograf Bielsko-Biała | Reportaż, portret, event</title>
   <meta name="description" content="Fotograf z Bielska-Białej. Reportaż, portret i fotografia eventowa na Śląsku i w Polsce." />
-  <meta name="keywords" content="fotograf Bielsko-Biała, fotografia eventowa, portret, reportaż, fotograf śląsk, sesja zdjęciowa, event photography" />
   <meta name="author" content="Jarek Żurawski" />
   <link rel="canonical" href="https://jarekzurawski.pl/" />
 
@@ -14,7 +13,7 @@
   <meta property="og:url" content="https://jarekzurawski.pl/" />
   <meta property="og:title" content="Jarek Żurawski – Fotograf Bielsko-Biała" />
   <meta property="og:description" content="Fotograf z Bielska-Białej. Reportaż, portret i fotografia eventowa na Śląsku i w Polsce." />
-  <meta property="og:image" content="https://jarekzurawski.pl/assets/og-image.jpg" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC08526.jpg" />
   <meta property="og:locale" content="pl_PL" />
   <meta property="og:site_name" content="Jarek Żurawski Fotografia" />
 
@@ -22,12 +21,11 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Jarek Żurawski – Fotograf Bielsko-Biała" />
   <meta name="twitter:description" content="Fotograf z Bielska-Białej. Reportaż, portret i fotografia eventowa na Śląsku i w Polsce." />
-  <meta name="twitter:image" content="https://jarekzurawski.pl/assets/og-image.jpg" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC08526.jpg" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230d0d0d'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='serif'>J</text></svg>" />
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='20' fill='%230d0d0d'/><text x='90' y='125' font-size='100' text-anchor='middle' fill='white' font-family='serif'>J</text></svg>" />
   <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Preconnect -->
@@ -66,7 +64,7 @@
     "sameAs": [
       "https://www.instagram.com/ni3bi3ski/"
     ],
-    "image": "https://jarekzurawski.pl/assets/og-image.jpg",
+    "image": "https://raw.githubusercontent.com/ni3bi3ski/ni3bi3ski.github.io/main/DSC08526.jpg",
     "founder": {
       "@type": "Person",
       "name": "Jarek Żurawski"
@@ -118,7 +116,6 @@
     <span>Przewiń</span>
   </div>
 </section>
-</div>
 
 <div class="marquee">
   <div class="marquee-track">
@@ -272,7 +269,7 @@
   
   <div style="grid-column:1/-1;padding:0 0 22px 0;color:var(--muted);font-size:14px;">Krótko: jeśli chcesz zdjęcia z charakterem, odezwij się i sprawdzimy termin. Ceny są orientacyjne i zależą od czasu pracy, lokalizacji oraz zakresu zlecenia.</div>
 
-  <div class="srv-grid">
+  <div class="srv-grid" id="pricing">
     <article class="srv" id="srv1">
       <span class="srv-num">01</span>
       <h3 class="srv-name">Reportaż z wydarzeń</h3>
@@ -364,13 +361,13 @@
         </div>
         <label style="display:grid;gap:6px;"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);">Temat</span><input type="text" name="subject_detail" placeholder="Np. reportaż z eventu, sesja portretowa…" style="background:rgba(255,255,255,.02);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:12px;font:inherit;outline:none;"></label>
         <label style="display:grid;gap:6px;"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);">Wiadomość</span><textarea name="message" rows="5" placeholder="Napisz kilka słów o projekcie…" required style="background:rgba(255,255,255,.02);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:12px;font:inherit;resize:vertical;outline:none;"></textarea></label>
-        <input type="hidden" name="subject" value="Nowa wiadomość ze strony">
+        <input type="hidden" name="subject" value="Nowa wiadomość kontaktowa">
         <input type="text" name="gotcha" style="display:none">
-        <button type="submit" style="align-self:center;display:inline-flex;margin:0 auto;align-items:center;gap:10px;padding:14px 28px;border:1px solid var(--faint);border-radius:999px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;font-family:inherit;cursor:none;transition:border-color .25s,background .25s;">Wyślij wiadomość <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <button type="submit" style="align-self:center;display:inline-flex;margin:0 auto;align-items:center;gap:10px;padding:14px 28px;border:1px solid var(--faint);border-radius:999px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:transparent;font-family:inherit;cursor:pointer;transition:border-color .25s,background .25s;">Wyślij wiadomość <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </form>
     </div>
     <div class="contact-row" id="c-row">
-      <a class="c-link" href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">@niebiezki</a>
+      <a class="c-link" href="https://instagram.com/ni3bi3ski" target="_blank" rel="noopener noreferrer">@ni3bi3ski</a>
       <a class="c-link" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
       <a class="c-link" href="sms:+48572116577">SMS 572-116-577</a>
     </div>
@@ -385,7 +382,7 @@
   <span>
     <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
     &nbsp;·&nbsp;
-    <a href="https://instagram.com/niebiezki" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://instagram.com/ni3bi3ski" target="_blank" rel="noopener noreferrer">Instagram</a>
     &nbsp;·&nbsp;
     <a href="https://www.linkedin.com/in/jarekzurawski/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </span>
