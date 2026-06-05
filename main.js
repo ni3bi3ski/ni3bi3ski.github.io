@@ -92,9 +92,7 @@ const io = new IntersectionObserver(entries => {
   'feat-label', 'feat-img', 'feat-body', 'work-head',
   'about-img', 'about-h', 'about-m', 'about-s', 'about-stats', 'gear',
   'srv-head', 'srv1', 'srv2', 'srv3',
-  'pricing-head', 'price1', 'price2', 'price3', 'pricing-foot',
-  'testimonials-head', 'testimonial1', 'testimonial2', 'testimonial3',
-  'testimonial-intro', 'testimonial-form',
+  'testimonials-head', 'testimonial-intro', 'testimonial-form',
   'c-eye', 'c-h', 'c-row'
 ].forEach(id => {
   const el = document.getElementById(id);
@@ -235,7 +233,14 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
           content.style.maxHeight = '0';
           content.style.opacity = '0';
         });
+        // fallback: jeśli transitionend nie odpali (minimalizacja okna, throttling), zamknij po czasie
+        const fallback = setTimeout(() => {
+          details.open = false;
+          content.style.transition = '';
+          if (qi) qi.textContent = '+';
+        }, 400);
         content.addEventListener('transitionend', () => {
+          clearTimeout(fallback);
           details.open = false;
           content.style.transition = '';
           if (qi) qi.textContent = '+';
@@ -250,7 +255,13 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
           content.style.maxHeight = content.scrollHeight + 'px';
           content.style.opacity = '1';
         });
+        const fallback = setTimeout(() => {
+          content.style.maxHeight = 'none';
+          content.style.transition = '';
+          if (qi) qi.textContent = '−';
+        }, 400);
         content.addEventListener('transitionend', () => {
+          clearTimeout(fallback);
           content.style.maxHeight = 'none';
           content.style.transition = '';
           if (qi) qi.textContent = '−';
@@ -260,14 +271,16 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   });
 })();
 
-/* ---------- FORMULARZ KONTAKTOWY — walidacja ---------- */
+/* ---------- FORMULARZ KONTAKTOWY — fetch submit z komunikatem ---------- */
 (function () {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
   form.addEventListener('submit', e => {
-    let valid = true;
+    e.preventDefault();
 
+    // walidacja
+    let valid = true;
     form.querySelectorAll('input[required], textarea[required]').forEach(inp => {
       inp.classList.remove('input-error');
       if (!inp.value.trim()) {
@@ -275,14 +288,35 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
         valid = false;
       }
     });
-
     const emailInp = form.querySelector('input[type="email"]');
     if (emailInp && emailInp.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInp.value)) {
       emailInp.classList.add('input-error');
       valid = false;
     }
+    if (!valid) return;
 
-    if (!valid) e.preventDefault();
+    const btn = form.querySelector('[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Wysyłanie…'; }
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(r => {
+        if (r.ok) {
+          form.innerHTML = '<p class="contact-success">Wiadomość wysłana — odezwę się wkrótce. ✓</p>';
+        } else {
+          throw new Error('server');
+        }
+      })
+      .catch(() => {
+        if (btn) { btn.disabled = false; btn.textContent = 'Wyślij wiadomość'; }
+        const err = form.querySelector('.contact-error') || document.createElement('p');
+        err.className = 'contact-error';
+        err.textContent = 'Coś poszło nie tak — spróbuj jeszcze raz lub napisz bezpośrednio na kontakt@jarekzurawski.pl';
+        if (!form.querySelector('.contact-error')) form.appendChild(err);
+      });
   });
 })();
 
@@ -301,10 +335,11 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   const iconPause = pauseBtn && pauseBtn.querySelector('.icon-pause');
   const iconPlay  = pauseBtn && pauseBtn.querySelector('.icon-play');
 
-  let current  = 0;
-  let paused   = false;
-  let timer    = null;
-  const DELAY  = 5000;
+  // Szanuj prefers-reduced-motion — zacznij zatrzymany
+  let paused  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current = 0;
+  let timer   = null;
+  const DELAY = 5000;
 
   // Buduj kropki
   const dots = [];
@@ -317,6 +352,14 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
     if (dotsWrap) dotsWrap.appendChild(dot);
     dots.push(dot);
   });
+
+  // Ustaw stan przycisku pauzy zgodnie z początkowym stanem
+  if (paused) {
+    if (iconPause) iconPause.style.display = 'none';
+    if (iconPlay)  iconPlay.style.display  = 'block';
+    if (pauseBtn)  pauseBtn.setAttribute('aria-pressed', 'true');
+    if (pauseBtn)  pauseBtn.setAttribute('aria-label', 'Wznów pokaz');
+  }
 
   function updateDots(idx) {
     dots.forEach((d, i) => d.classList.toggle('active', i === idx));
@@ -377,5 +420,5 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   heroDiv.addEventListener('focusout',   () => { if (!paused) resetTimer(); });
 
   preload(0);
-  timer = setInterval(next, DELAY);
+  if (!paused) timer = setInterval(next, DELAY);
 })();
