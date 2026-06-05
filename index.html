@@ -36,7 +36,12 @@
 
   <!-- Google tag (gtag.js) -->
   <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-SS6526DSZQ"></script>
-  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SS6526DSZQ');
+  </script>
 
   <!-- Structured Data: PhotographyBusiness -->
   <script type="application/ld+json">
@@ -87,6 +92,7 @@
     <a href="#services">Usługi</a>
     <a href="#pricing">Cennik</a>
     <a href="#opinie">Opinie</a>
+    <a href="#dodaj-opinie">Dodaj opinię</a>
     <a href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Kontakt</a>
@@ -94,7 +100,9 @@
   <a href="tel:+48572116577" class="nav-phone" aria-label="Zadzwoń">+48 572 116 577</a>
 </nav>
 
-<section id="main" class="hero">
+<main id="main">
+
+<section class="hero">
   <div class="hero-img" id="hero-img" data-slides='["https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927","https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/4ebc0e4c-2479-48c8-b3eb-d5867ee9bb5d_rwc_0x508x1365x769x1365.jpg?h=2301dc38cae991b2d07e2d0b0bf1bdf2","https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/0bf760d5-d0ef-4a40-9062-1af3265fad7e_rwc_0x305x1638x923x1638.jpg?h=b8da8e5156b530baed52a416b1b99727","https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/07d83596-9fd8-4a69-aeda-dcefad48ffb9_car_16x9.jpg?h=cfee3d55dc9ef0fc78cadea689acf54e","https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/406e456c-f088-4069-a7d1-accf2fd26249_rwc_0x96x1920x1082x1920.jpg?h=8ad1e6aa8f30a5b7319024abaa1dca74","https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/abb051f4-5ac9-4baa-8044-54693c335c1d_rwc_0x756x1365x769x1365.jpg?h=196e57710072ceadc534c0a5dbb14d5e","https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/838e1451-a9b9-465d-bbbf-2ad22f272d52_rwc_0x639x1365x769x1365.jpg?h=0ad53312dd4d806a7fe004ae34f6ab51"]'>
   <img class="img-responsive" id="hero-slide-img" src="https://cdn.myportfolio.com/c707dd54-58cb-4c19-95f2-7e640d370fe9/d1a3c43f-dbc9-47b0-9f42-f532847b142a_rwc_0x1123x1365x769x1365.jpg?h=1055083717dcadb5010ca4b808729927" alt="" aria-hidden="true" fetchpriority="high" loading="eager" width="1365" height="769">
 </div>
@@ -349,7 +357,7 @@
 
   </div>
 
-  <section class="contact" id="contact" style="display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;border-top:1px solid var(--border);">
+  <section class="contact" id="contact">
 
     <p class="contact-eyebrow" id="c-eye">Zacznijmy rozmawiać</p>
     <h2 class="contact-h" id="c-h">Masz<br>projekt<em>?</em></h2>
@@ -369,12 +377,13 @@
     <div class="contact-row" id="c-row">
       <a class="c-link" href="https://instagram.com/ni3bi3ski" target="_blank" rel="noopener noreferrer">@ni3bi3ski</a>
       <a class="c-link" href="https://niebiezki.myportfolio.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-      <a class="c-link" href="sms:+48572116577">SMS 572-116-577</a>
+      <a class="c-link" href="tel:+48572116577">572-116-577</a>
     </div>
   </section>
 
 </div>
 
+</main>
 
 <footer>
   <span>© 2026 Jarek Żurawski</span>
