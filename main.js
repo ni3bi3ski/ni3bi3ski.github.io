@@ -1,5 +1,6 @@
 /* ================================================
    ni3bi3ski.github.io — main.js
+   (gtag inicjalizowany inline w <head>)
    ================================================ */
 
 /* ---------- CUSTOM CURSOR ---------- */
@@ -92,7 +93,9 @@ const io = new IntersectionObserver(entries => {
   'feat-label', 'feat-img', 'feat-body', 'work-head',
   'about-img', 'about-h', 'about-m', 'about-s', 'about-stats', 'gear',
   'srv-head', 'srv1', 'srv2', 'srv3',
-  'testimonials-head', 'testimonial-intro', 'testimonial-form',
+  'pricing-head', 'price1', 'price2', 'price3', 'pricing-foot',
+  'testimonials-head', 'testimonial1', 'testimonial2', 'testimonial3',
+  'testimonial-intro', 'testimonial-form',
   'c-eye', 'c-h', 'c-row'
 ].forEach(id => {
   const el = document.getElementById(id);
@@ -100,7 +103,7 @@ const io = new IntersectionObserver(entries => {
 });
 document.querySelectorAll('.p-item').forEach(el => io.observe(el));
 
-/* ---------- OPINIE — dynamiczne ładowanie z opinie.json ---------- */
+/* ---------- OPINIE — dynamiczne ładowanie ---------- */
 (function () {
   const grid = document.querySelector('.testimonials-grid');
   if (!grid) return;
@@ -112,12 +115,14 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
       if (!approved.length) return;
       grid.innerHTML = approved.map((o, i) => `
         <article class="testimonial-card" id="testimonial${i + 1}">
-          <p class="t-kicker">${o.kicker}</p>
-          <blockquote class="t-quote">&ldquo;${o.quote}&rdquo;</blockquote>
-          <footer class="t-footer">
-            <span class="t-name">${o.name}</span>
-            <span class="t-meta">${o.meta}</span>
-          </footer>
+          <div>
+            <p class="testimonial-kicker">${o.kicker}</p>
+            <p class="testimonial-quote">&ldquo;${o.quote}&rdquo;</p>
+          </div>
+          <div class="testimonial-meta">
+            <strong>${o.name}</strong>
+            <span>${o.meta}</span>
+          </div>
         </article>
       `).join('');
       document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
@@ -173,6 +178,7 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   ];
 
   const pick = featured[Math.floor(Math.random() * featured.length)];
+
   const featImg = document.getElementById('feat-img');
   if (!featImg) return;
   featImg.href = pick.href;
@@ -181,11 +187,9 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   const title = document.querySelector('.feat-title');
   const desc  = document.querySelector('.feat-desc');
   const num   = document.querySelector('.feat-num');
-  const link  = document.querySelector('.featured-body .feat-link');
   if (title) title.textContent = pick.title;
   if (desc)  desc.textContent  = pick.desc;
   if (num)   num.textContent   = 'Wyróżniony projekt';
-  if (link)  link.href         = pick.href;
 })();
 
 /* ---------- "POKAŻ WIĘCEJ" ---------- */
@@ -212,213 +216,47 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   });
 })();
 
-/* ---------- FAQ — animowane zamykanie <details> ---------- */
+/* ---------- FORMULARZ KONTAKTOWY — walidacja ---------- */
 (function () {
-  document.querySelectorAll('details').forEach(details => {
-    const summary = details.querySelector('summary');
-    const content = details.querySelector('.qb');
-    if (!summary || !content) return;
-
-    const qi = summary.querySelector('.qi');
-
-    summary.addEventListener('click', e => {
-      e.preventDefault();
-
-      if (details.open) {
-        // zamykanie z animacją
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.opacity = '1';
-        requestAnimationFrame(() => {
-          content.style.transition = 'max-height 0.35s ease, opacity 0.25s ease';
-          content.style.maxHeight = '0';
-          content.style.opacity = '0';
-        });
-        // fallback: jeśli transitionend nie odpali (minimalizacja okna, throttling), zamknij po czasie
-        const fallback = setTimeout(() => {
-          details.open = false;
-          content.style.transition = '';
-          if (qi) qi.textContent = '+';
-        }, 400);
-        content.addEventListener('transitionend', () => {
-          clearTimeout(fallback);
-          details.open = false;
-          content.style.transition = '';
-          if (qi) qi.textContent = '+';
-        }, { once: true });
-      } else {
-        // otwieranie
-        details.open = true;
-        content.style.maxHeight = '0';
-        content.style.opacity = '0';
-        requestAnimationFrame(() => {
-          content.style.transition = 'max-height 0.35s ease, opacity 0.25s ease';
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.opacity = '1';
-        });
-        const fallback = setTimeout(() => {
-          content.style.maxHeight = 'none';
-          content.style.transition = '';
-          if (qi) qi.textContent = '−';
-        }, 400);
-        content.addEventListener('transitionend', () => {
-          clearTimeout(fallback);
-          content.style.maxHeight = 'none';
-          content.style.transition = '';
-          if (qi) qi.textContent = '−';
-        }, { once: true });
-      }
-    });
-  });
-})();
-
-/* ---------- FORMULARZ KONTAKTOWY — fetch submit z komunikatem ---------- */
-(function () {
-  const form = document.getElementById('contact-form');
+  const form = document.querySelector('form[id="kontakt-form"], form.contact-form');
   if (!form) return;
 
   form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    // walidacja
     let valid = true;
+
     form.querySelectorAll('input[required], textarea[required]').forEach(inp => {
-      inp.classList.remove('input-error');
+      inp.style.borderColor = '';
       if (!inp.value.trim()) {
-        inp.classList.add('input-error');
+        inp.style.borderColor = 'rgba(200,80,80,0.7)';
         valid = false;
       }
     });
+
     const emailInp = form.querySelector('input[type="email"]');
     if (emailInp && emailInp.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInp.value)) {
-      emailInp.classList.add('input-error');
+      emailInp.style.borderColor = 'rgba(200,80,80,0.7)';
       valid = false;
     }
-    if (!valid) return;
 
-    const btn = form.querySelector('[type="submit"]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Wysyłanie…'; }
-
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    })
-      .then(r => {
-        if (r.ok) {
-          form.innerHTML = '<p class="contact-success">Wiadomość wysłana — odezwę się wkrótce. ✓</p>';
-        } else {
-          throw new Error('server');
-        }
-      })
-      .catch(() => {
-        if (btn) { btn.disabled = false; btn.textContent = 'Wyślij wiadomość'; }
-        const err = form.querySelector('.contact-error') || document.createElement('p');
-        err.className = 'contact-error';
-        err.textContent = 'Coś poszło nie tak — spróbuj jeszcze raz lub napisz bezpośrednio na kontakt@jarekzurawski.pl';
-        if (!form.querySelector('.contact-error')) form.appendChild(err);
-      });
+    if (!valid) e.preventDefault();
   });
 })();
 
-/* ---------- HERO SLIDESHOW — z kontrolkami i pauzą ---------- */
+// === HERO SLIDESHOW ===
 (function () {
-  const heroDiv   = document.getElementById('hero-img');
+  var heroDiv = document.getElementById('hero-img');
   if (!heroDiv) return;
-  const slides    = JSON.parse(heroDiv.dataset.slides || '[]');
+  var slides = JSON.parse(heroDiv.dataset.slides || '[]');
   if (slides.length < 2) return;
-
-  const img       = document.getElementById('hero-slide-img');
-  const prevBtn   = document.getElementById('slide-prev');
-  const nextBtn   = document.getElementById('slide-next');
-  const pauseBtn  = document.getElementById('slide-pause');
-  const dotsWrap  = document.getElementById('slide-dots');
-  const iconPause = pauseBtn && pauseBtn.querySelector('.icon-pause');
-  const iconPlay  = pauseBtn && pauseBtn.querySelector('.icon-play');
-
-  // Szanuj prefers-reduced-motion — zacznij zatrzymany
-  let paused  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let current = 0;
-  let timer   = null;
-  const DELAY = 5000;
-
-  // Buduj kropki
-  const dots = [];
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.setAttribute('role', 'tab');
-    dot.setAttribute('aria-label', `Slajd ${i + 1}`);
-    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
-    if (dotsWrap) dotsWrap.appendChild(dot);
-    dots.push(dot);
-  });
-
-  // Ustaw stan przycisku pauzy zgodnie z początkowym stanem
-  if (paused) {
-    if (iconPause) iconPause.style.display = 'none';
-    if (iconPlay)  iconPlay.style.display  = 'block';
-    if (pauseBtn)  pauseBtn.setAttribute('aria-pressed', 'true');
-    if (pauseBtn)  pauseBtn.setAttribute('aria-label', 'Wznów pokaz');
-  }
-
-  function updateDots(idx) {
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-  }
-
-  const preloadImg = new Image();
+  var img = document.getElementById('hero-slide-img');
+  var current = 0;
+  var preloadImg = new Image();
   function preload(idx) { preloadImg.src = slides[(idx + 1) % slides.length]; }
-
-  function showSlide(idx) {
+  function transition() {
+    current = (current + 1) % slides.length;
     img.style.opacity = '0';
-    setTimeout(() => {
-      img.src = slides[idx];
-      img.style.opacity = '1';
-      preload(idx);
-      updateDots(idx);
-    }, 400);
+    setTimeout(function () { img.src = slides[current]; img.style.opacity = '1'; preload(current); }, 1200);
   }
-
-  function goTo(idx) {
-    current = (idx + slides.length) % slides.length;
-    showSlide(current);
-    resetTimer();
-  }
-
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
-
-  function resetTimer() {
-    clearInterval(timer);
-    if (!paused) timer = setInterval(next, DELAY);
-  }
-
-  function togglePause() {
-    paused = !paused;
-    if (paused) {
-      clearInterval(timer);
-      if (iconPause) iconPause.style.display = 'none';
-      if (iconPlay)  iconPlay.style.display  = 'block';
-      if (pauseBtn)  pauseBtn.setAttribute('aria-pressed', 'true');
-      if (pauseBtn)  pauseBtn.setAttribute('aria-label', 'Wznów pokaz');
-    } else {
-      resetTimer();
-      if (iconPause) iconPause.style.display = 'block';
-      if (iconPlay)  iconPlay.style.display  = 'none';
-      if (pauseBtn)  pauseBtn.setAttribute('aria-pressed', 'false');
-      if (pauseBtn)  pauseBtn.setAttribute('aria-label', 'Zatrzymaj pokaz');
-    }
-  }
-
-  if (prevBtn)  prevBtn.addEventListener('click',  prev);
-  if (nextBtn)  nextBtn.addEventListener('click',  next);
-  if (pauseBtn) pauseBtn.addEventListener('click', togglePause);
-
-  // Pauza po najechaniu myszką lub focusie
-  heroDiv.addEventListener('mouseenter', () => { if (!paused) { clearInterval(timer); } });
-  heroDiv.addEventListener('mouseleave', () => { if (!paused) resetTimer(); });
-  heroDiv.addEventListener('focusin',    () => { if (!paused) { clearInterval(timer); } });
-  heroDiv.addEventListener('focusout',   () => { if (!paused) resetTimer(); });
-
   preload(0);
-  if (!paused) timer = setInterval(next, DELAY);
+  setInterval(transition, 5000);
 })();
