@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /dziekuje.html
+Disallow: /polityka-prywatnosci.html
 
 Sitemap: https://jarekzurawski.pl/sitemap.xml
