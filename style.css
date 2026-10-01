@@ -10,7 +10,8 @@
 :root {
   --bg:     #070707;
   --text:   #edeae3;
-  --muted:  #706c65;
+  --fg:     #edeae3;
+  --muted:  #8f8a82;
   --faint:  #343230;
   --accent: #c8a352;
   --border: rgba(255,255,255,0.06);
@@ -100,7 +101,10 @@ textarea:focus-visible {
 }
 
 /* ---------- CUSTOM CURSOR ---------- */
-@media (pointer: fine) { * { cursor: none !important; } }
+@media (pointer: fine) {
+  * { cursor: none !important; }
+  input, textarea, select { cursor: text !important; }
+}
 
 #cur {
   position: fixed; z-index: 9999;
@@ -256,8 +260,8 @@ nav.solid {
   animation: fadeup .8s ease 1.5s forwards;
 }
 .hero-scroll span {
-  font-size: 9px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--faint);
+  font-size: 11px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--muted);
 }
 .scroll-line {
   width: 1px; height: 36px;
@@ -304,7 +308,7 @@ nav.solid {
 .marquee-track:hover { animation-play-state: paused; }
 .m-item {
   font-size: 11px; letter-spacing: 0.26em;
-  text-transform: uppercase; color: var(--faint);
+  text-transform: uppercase; color: var(--muted);
   padding: 0 28px; white-space: nowrap;
 }
 .m-dot { color: var(--accent); margin-right: 28px; }
@@ -789,4 +793,15 @@ footer a:hover { color: var(--text); }
 #hero-slide-img {
   transition: opacity 1.2s ease;
   will-change: opacity;
+}
+
+/* === FALLBACK BEZ JAVASCRIPTU === */
+@media (scripting: none) {
+  .hero-aside, .featured-label, .featured-img, .featured-body, .work-header,
+  .p-item, .about-img-wrap, .about-heading, .about-mission, .about-sub,
+  .stats, .gear-row, .services-head, .srv, .pricing-head, .price-card,
+  .pricing-foot, .testimonials-head, .testimonial-card,
+  .testimonial-form-intro, .testimonial-form, .contact-eyebrow,
+  .contact-h, .contact-row { opacity: 1 !important; transform: none !important; }
+  .hero-title .line span { transform: none !important; }
 }
