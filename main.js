@@ -21,29 +21,39 @@ function esc(s) {
     if (typeof gtag !== 'function') return;
     gtag('consent', 'update', { analytics_storage: granted ? 'granted' : 'denied' });
   }
+
+  function showBar() {
+    if (document.getElementById('cookie-bar')) return;
+    var bar = document.createElement('div');
+    bar.id = 'cookie-bar';
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Zgoda na pliki cookies');
+    bar.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;padding:16px 18px;background:#141414;color:#f2f2f2;border:1px solid rgba(255,255,255,.18);border-radius:14px;font-size:13px;line-height:1.6;display:flex;gap:12px;align-items:center;flex-wrap:wrap;';
+    bar.innerHTML = '<span style="flex:1 1 240px">Używam Google Analytics do statystyk odwiedzin. Zgadzasz się na analityczne pliki cookies?</span>' +
+      '<span style="display:flex;gap:8px">' +
+      '<button type="button" data-c="no" style="padding:8px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:transparent;color:inherit;font:inherit;cursor:pointer">Odrzuć</button>' +
+      '<button type="button" data-c="yes" style="padding:8px 14px;border:1px solid #fff;border-radius:999px;background:#fff;color:#0d0d0d;font:inherit;cursor:pointer">Akceptuję</button>' +
+      '</span>';
+    bar.addEventListener('click', function (e) {
+      var c = e.target && e.target.getAttribute && e.target.getAttribute('data-c');
+      if (!c) return;
+      var granted = c === 'yes';
+      try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (err) {}
+      update(granted);
+      bar.remove();
+    });
+    document.body.appendChild(bar);
+  }
+
+  // Link „Ustawienia cookies” w stopce pozwala zmienić wcześniejszą decyzję.
+  var settings = document.getElementById('cookie-settings');
+  if (settings) settings.addEventListener('click', function (e) { e.preventDefault(); showBar(); });
+
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   if (saved === 'granted') { update(true); return; }
   if (saved === 'denied') return;
-
-  var bar = document.createElement('div');
-  bar.setAttribute('role', 'dialog');
-  bar.setAttribute('aria-label', 'Zgoda na pliki cookies');
-  bar.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;padding:16px 18px;background:#141414;color:#f2f2f2;border:1px solid rgba(255,255,255,.18);border-radius:14px;font-size:13px;line-height:1.6;display:flex;gap:12px;align-items:center;flex-wrap:wrap;';
-  bar.innerHTML = '<span style="flex:1 1 240px">Używam Google Analytics do statystyk odwiedzin. Zgadzasz się na analityczne pliki cookies?</span>' +
-    '<span style="display:flex;gap:8px">' +
-    '<button type="button" data-c="no" style="padding:8px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:transparent;color:inherit;font:inherit;cursor:pointer">Odrzuć</button>' +
-    '<button type="button" data-c="yes" style="padding:8px 14px;border:1px solid #fff;border-radius:999px;background:#fff;color:#0d0d0d;font:inherit;cursor:pointer">Akceptuję</button>' +
-    '</span>';
-  bar.addEventListener('click', function (e) {
-    var c = e.target && e.target.getAttribute && e.target.getAttribute('data-c');
-    if (!c) return;
-    var granted = c === 'yes';
-    try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (err) {}
-    update(granted);
-    bar.remove();
-  });
-  document.body.appendChild(bar);
+  showBar();
 })();
 
 /* ---------- CUSTOM CURSOR (tylko mysz, bez reduced-motion) ---------- */
