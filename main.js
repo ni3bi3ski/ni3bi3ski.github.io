@@ -52,7 +52,14 @@ function esc(s) {
   const dot  = document.getElementById('cur-dot');
   const ring = document.getElementById('cur-ring');
   if (!cur || !dot || !ring) return;
-  if (!hasFinePointer || prefersReducedMotion) { cur.style.display = 'none'; return; }
+  if (!hasFinePointer || prefersReducedMotion) {
+    cur.style.display = 'none';
+    // CSS ukrywa systemowy kursor dla pointer: fine, więc gdy własny jest wyłączony, przywracamy systemowy.
+    const restore = document.createElement('style');
+    restore.textContent = '* { cursor: auto !important; } a, button, summary, label, [role="button"] { cursor: pointer !important; } input, textarea, select { cursor: text !important; }';
+    document.head.appendChild(restore);
+    return;
+  }
 
   let mx = window.innerWidth / 2, my = window.innerHeight / 2;
   let rx = mx, ry = my;
@@ -145,6 +152,8 @@ const io = new IntersectionObserver(entries => {
   if (el) io.observe(el);
 });
 document.querySelectorAll('.p-item').forEach(el => io.observe(el));
+// Statyczne karty opinii z HTML (wersja zapasowa) też muszą się pojawić, gdy opinie.json się nie wczyta.
+document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
 
 /* ---------- OPINIE — dynamiczne ładowanie (z escapowaniem) ---------- */
 (function () {
@@ -222,35 +231,125 @@ document.querySelectorAll('.p-item').forEach(el => io.observe(el));
   });
 })();
 
-/* ---------- FORMULARZE — walidacja i komunikat po wysyłce ---------- */
+/* ---------- FORMULARZE — walidacja, wysyłka (fetch) i komunikaty ---------- */
 (function () {
   const forms = document.querySelectorAll('form.contact-form, form.testimonial-form');
-  const mark = el => { el.style.borderColor = 'rgba(200,80,80,0.7)'; };
+  if (!forms.length) return;
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const FALLBACK = 'Nie udało się wysłać formularza. Spróbuj ponownie albo napisz na kontakt@jarekzurawski.pl lub zadzwoń: +48 572 116 577.';
+  let errCount = 0;
+
+  const css = document.createElement('style');
+  css.textContent = '[aria-invalid="true"] { border-color: rgba(200,80,80,0.7) !important; }';
+  document.head.appendChild(css);
+
+  function track(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+  }
+
+  function clearError(inp) {
+    inp.removeAttribute('aria-invalid');
+    const id = inp.getAttribute('aria-describedby');
+    if (id && id.indexOf('field-err-') === 0) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+      inp.removeAttribute('aria-describedby');
+    }
+  }
+
+  function setError(inp, msg) {
+    clearError(inp);
+    inp.setAttribute('aria-invalid', 'true');
+    const holder = inp.closest('label') || inp.parentElement;
+    const err = document.createElement('span');
+    err.id = 'field-err-' + (++errCount);
+    err.className = 'field-error';
+    err.textContent = msg;
+    err.style.cssText = 'flex-basis:100%;font-size:12px;letter-spacing:.02em;text-transform:none;color:#e29a9a;';
+    if (holder.classList.contains('check')) holder.style.flexWrap = 'wrap';
+    holder.appendChild(err);
+    inp.setAttribute('aria-describedby', err.id);
+  }
+
+  function validate(form) {
+    let first = null;
+    form.querySelectorAll('input[required], textarea[required]').forEach(inp => {
+      clearError(inp);
+      const empty = inp.type === 'checkbox' ? !inp.checked : !inp.value.trim();
+      if (empty) {
+        setError(inp, inp.type === 'checkbox' ? 'Zaznacz zgodę, aby wysłać formularz.' : 'Uzupełnij to pole.');
+        if (!first) first = inp;
+      }
+    });
+    const emailInp = form.querySelector('input[type="email"]');
+    if (emailInp && emailInp.value.trim() && !EMAIL_RE.test(emailInp.value.trim())) {
+      setError(emailInp, 'Podaj poprawny adres e-mail.');
+      if (!first) first = emailInp;
+    }
+    return first;
+  }
 
   forms.forEach(form => {
-    form.addEventListener('submit', e => {
-      let valid = true;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const status = document.createElement('p');
+    status.className = 'form-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.style.cssText = 'min-height:1.5em;margin:0;font-size:13px;line-height:1.6;text-align:center;color:var(--muted,#999);';
+    if (submitBtn) submitBtn.insertAdjacentElement('afterend', status);
+    else form.appendChild(status);
 
-      form.querySelectorAll('input[required], textarea[required]').forEach(inp => {
-        inp.style.borderColor = '';
-        const empty = inp.type === 'checkbox' ? !inp.checked : !inp.value.trim();
-        if (empty) { mark(inp); valid = false; }
-      });
+    form.addEventListener('input', e => {
+      const t = e.target;
+      if (t && t.getAttribute && t.getAttribute('aria-invalid') === 'true') clearError(t);
+    });
 
-      const emailInp = form.querySelector('input[type="email"]');
-      if (emailInp && emailInp.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInp.value)) {
-        mark(emailInp);
-        valid = false;
-      }
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (form.dataset.sending === '1') return;
 
       const hp = form.querySelector('input[name="gotcha"]');
-      if (hp && hp.value) valid = false;
+      if (hp && hp.value) return;
 
-      if (!valid) { e.preventDefault(); return; }
+      status.textContent = '';
+      status.style.color = 'var(--muted,#999)';
 
-      if (typeof gtag === 'function') {
-        const t = form.querySelector('input[name="form_type"]');
-        gtag('event', 'generate_lead', { form_type: t ? t.value : 'unknown' });
+      const firstInvalid = validate(form);
+      if (firstInvalid) {
+        status.textContent = 'Sprawdź zaznaczone pola.';
+        firstInvalid.focus();
+        return;
+      }
+
+      const typeInp = form.querySelector('input[name="form_type"]');
+      const formType = typeInp ? typeInp.value : 'unknown';
+      track('form_submit_attempt', { form_type: formType });
+
+      form.dataset.sending = '1';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.setAttribute('aria-busy', 'true'); }
+      status.textContent = 'Wysyłam…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        form.reset();
+        status.style.color = 'var(--accent,#c8a352)';
+        status.textContent = form.classList.contains('testimonial-form')
+          ? 'Dziękuję! Opinia trafiła do weryfikacji.'
+          : 'Dziękuję! Wiadomość wysłana — odezwę się najszybciej, jak to możliwe.';
+        track('generate_lead', { form_type: formType });
+      } catch (err) {
+        status.style.color = '#e29a9a';
+        status.textContent = FALLBACK;
+        track('form_submit_error', { form_type: formType });
+      } finally {
+        delete form.dataset.sending;
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.removeAttribute('aria-busy'); }
       }
     });
   });
