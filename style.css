@@ -101,7 +101,7 @@ textarea:focus-visible {
 }
 
 /* ---------- CUSTOM CURSOR ---------- */
-@media (pointer: fine) {
+@media (pointer: fine) and (scripting: enabled) {
   * { cursor: none !important; }
   input, textarea, select { cursor: text !important; }
 }
@@ -805,3 +805,4 @@ footer a:hover { color: var(--text); }
   .contact-h, .contact-row { opacity: 1 !important; transform: none !important; }
   .hero-title .line span { transform: none !important; }
 }
+
