@@ -237,7 +237,7 @@ document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
   if (!forms.length) return;
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const FALLBACK = 'Nie udało się wysłać formularza. Spróbuj ponownie albo napisz na kontakt@jarekzurawski.pl lub zadzwoń: +48 572 116 577.';
+  const FALLBACK = 'Nie udało się wysłać formularza. Spróbuj ponownie lub skontaktuj się bezpośrednio: kontakt@jarekzurawski.pl, +48 572 116 577.';
   let errCount = 0;
 
   const css = document.createElement('style');
@@ -278,13 +278,13 @@ document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
       clearError(inp);
       const empty = inp.type === 'checkbox' ? !inp.checked : !inp.value.trim();
       if (empty) {
-        setError(inp, inp.type === 'checkbox' ? 'Zaznacz zgodę, aby wysłać formularz.' : 'Uzupełnij to pole.');
+        setError(inp, inp.type === 'checkbox' ? 'Zaznacz zgodę, aby wysłać formularz.' : 'To pole jest wymagane.');
         if (!first) first = inp;
       }
     });
     const emailInp = form.querySelector('input[type="email"]');
     if (emailInp && emailInp.value.trim() && !EMAIL_RE.test(emailInp.value.trim())) {
-      setError(emailInp, 'Podaj poprawny adres e-mail.');
+      setError(emailInp, 'Wpisz poprawny adres e-mail.');
       if (!first) first = emailInp;
     }
     return first;
@@ -328,7 +328,7 @@ document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
 
       form.dataset.sending = '1';
       if (submitBtn) { submitBtn.disabled = true; submitBtn.setAttribute('aria-busy', 'true'); }
-      status.textContent = 'Wysyłam…';
+      status.textContent = 'Wysyłanie…';
 
       try {
         const res = await fetch(form.action, {
@@ -340,8 +340,8 @@ document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
         form.reset();
         status.style.color = 'var(--accent,#c8a352)';
         status.textContent = form.classList.contains('testimonial-form')
-          ? 'Dziękuję! Opinia trafiła do weryfikacji.'
-          : 'Dziękuję! Wiadomość wysłana — odezwę się najszybciej, jak to możliwe.';
+          ? 'Dziękuję, opinia została wysłana i trafi do weryfikacji.'
+          : 'Dziękuję, wiadomość została wysłana. Odpowiem najszybciej, jak to możliwe.';
         track('generate_lead', { form_type: formType });
       } catch (err) {
         status.style.color = '#e29a9a';
