@@ -247,7 +247,7 @@ document.querySelectorAll('.testimonial-card').forEach(el => io.observe(el));
   if (!forms.length) return;
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const FALLBACK = 'Nie udało się wysłać formularza. Spróbuj ponownie lub skontaktuj się bezpośrednio: kontakt@jarekzurawski.pl, +48 572 116 577.';
+  const FALLBACK = 'Nie udało się wysłać formularza. Spróbuj ponownie lub skontaktuj się bezpośrednio: fundacjaportret@gmail.com, +48 572 116 577.';
   let errCount = 0;
 
   const css = document.createElement('style');
