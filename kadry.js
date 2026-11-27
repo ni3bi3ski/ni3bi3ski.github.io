@@ -8,10 +8,18 @@
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
   fetch('/kadry.json')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (list) {
-      var items = list.filter(function (p) { return p && p.src; });
+      var items = shuffle(list.filter(function (p) { return p && p.src; }));
       if (!items.length) return;
       var anchor = document.querySelector('.split');
       if (!anchor) return;
